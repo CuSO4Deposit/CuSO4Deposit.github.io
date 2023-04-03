@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="问题如何判断单链表中是否存在环？如何判断两个单链表是否相交？如果相交，如何求出相交点？ 思路初见的思路判断环：对链表进行遍历，如果无环则会访问到NULL，有环则会访问到head。判断相交：单链表仅有一个next域，则相交必定是“两个均无环” 或 “一个有环一个无环”的两种情况。初见的思路都有哪里不周全呢？经过接下来几天的考虑，我渐渐地意识到不周密之处所在… 修正后的思路首先脱离形象上的“凭感觉”，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单链表的含环和相交性质探究过程记录">
+<meta property="og:url" content="http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="CuSO4D&#39;s Electrolytic Cell">
+<meta property="og:description" content="问题如何判断单链表中是否存在环？如何判断两个单链表是否相交？如果相交，如何求出相交点？ 思路初见的思路判断环：对链表进行遍历，如果无环则会访问到NULL，有环则会访问到head。判断相交：单链表仅有一个next域，则相交必定是“两个均无环” 或 “一个有环一个无环”的两种情况。初见的思路都有哪里不周全呢？经过接下来几天的考虑，我渐渐地意识到不周密之处所在… 修正后的思路首先脱离形象上的“凭感觉”，">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://depoze.uden.ai/wp-content/uploads/2021/09/%E6%83%85%E5%86%B5%E6%95%B0.png">
+<meta property="og:image" content="https://depoze.uden.ai/wp-content/uploads/2021/09/Lfs_L0.png">
+<meta property="article:published_time" content="2021-09-22T17:05:49.000Z">
+<meta property="article:modified_time" content="2023-04-03T14:00:23.407Z">
+<meta property="article:author" content="CuSO4_Deposit">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="Data Structure">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://depoze.uden.ai/wp-content/uploads/2021/09/%E6%83%85%E5%86%B5%E6%95%B0.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>单链表的含环和相交性质探究过程记录</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/pages/">Pages</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2021/09/sequence-stack-implement-in-c/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2021/09/Function-pointer/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/&text=单链表的含环和相交性质探究过程记录"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/&title=单链表的含环和相交性质探究过程记录"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/&is_video=false&description=单链表的含环和相交性质探究过程记录"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=单链表的含环和相交性质探究过程记录&body=Check out this article: http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/&title=单链表的含环和相交性质探究过程记录"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/&title=单链表的含环和相交性质探究过程记录"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/&title=单链表的含环和相交性质探究过程记录"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/&title=单链表的含环和相交性质探究过程记录"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/&name=单链表的含环和相交性质探究过程记录&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/&t=单链表的含环和相交性质探究过程记录"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E8%A7%81%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="toc-number">2.1.</span> <span class="toc-text">初见的思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%AD%A3%E5%90%8E%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="toc-number">2.2.</span> <span class="toc-text">修正后的思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%B1%82%E8%A7%A3"><span class="toc-number">3.</span> <span class="toc-text">实现和求解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="toc-number">3.1.</span> <span class="toc-text">预定义：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E7%9A%84%E5%B7%A5%E5%85%B7%EF%BC%9A%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88"><span class="toc-number">3.2.</span> <span class="toc-text">重要的工具：快慢指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E9%81%8D%E5%8E%86%E5%B8%A6%E7%8E%AF%E9%93%BE%E8%A1%A8%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-number">3.3.</span> <span class="toc-text">快慢指针遍历带环链表的性质</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E9%80%9F%E5%BA%A6%E5%8F%96%E5%80%BC%E7%9A%84%E8%AF%81%E6%98%8E"><span class="toc-number">3.3.1.</span> <span class="toc-text">关于快慢指针速度取值的证明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E9%80%9F%E5%BA%A6%E5%8F%96%E5%88%86%E5%88%AB%E5%8F%962%E5%92%8C1%E6%97%B6%E5%B1%95%E7%8E%B0%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-number">3.3.2.</span> <span class="toc-text">在速度取分别取2和1时展现的性质</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        单链表的含环和相交性质探究过程记录
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">CuSO4_Deposit</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-09-22T17:05:49.000Z" itemprop="datePublished">2021-09-22</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>, <a class="tag-link-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>如何判断单链表中是否存在环？如何判断两个单链表是否相交？如果相交，如何求出相交点？</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="初见的思路"><a href="#初见的思路" class="headerlink" title="初见的思路"></a>初见的思路</h3><p>判断环：对链表进行遍历，如果无环则会访问到NULL，有环则会访问到head。<br>判断相交：单链表仅有一个next域，则相交必定是“两个均无环” 或 “一个有环一个无环”的两种情况。<br>初见的思路都有哪里不周全呢？经过接下来几天的考虑，我渐渐地意识到不周密之处所在…</p>
+<h3 id="修正后的思路"><a href="#修正后的思路" class="headerlink" title="修正后的思路"></a>修正后的思路</h3><p>首先脱离形象上的“凭感觉”，尽管从形象上比较容易理解，但仍需要定义“含环”和“相交”的概念。</p>
+<p>如果严格遵循单链表的ADT，是不会出现含环和相交的现象的。因为指针表示的是元素间的逻辑顺序，而ADT中并没有尾结点指向其他结点的逻辑关系。因此这里考虑的“单链表”应当仅指的是“结点的结构为：含有一个data域和一个next域”的数据结构。</p>
+<p>含环：如果链表中的一个结点的next域仍指向这个表中的结点，则称链表含环。</p>
+<p>相交：如果从L1出发，可以访问到L2中的结点，则称L1和L2相交。</p>
+<p>最先意识到的错误：如果链表含环，在遍历它的过程中并不是一定会访问到head的，而且在通常情况下是不会访问到的，因为含环的链表实际上分为环外和环内两部分，而head只能处于环外的部分。另外，贸然对链表进行和原来一样形式的“遍历”是危险的。因为对于有环的链表来说，使用通常的遍历方法只会引起无穷递归。</p>
+<p>另外，对相交的理解加深之后就可以意识到：原来理解的“一个有环一个无环”的情况，并不是真正的“一个有环一个无环”，事实上如果两个链表相交且一个有环，则另一个一定会访问到那个环，也就是说一定会推出“两个均含环”。如果一个链表有环，另一个链表无环，则它们一定不会相交。</p>
+<p>进一步地，链表是否相交，可以分为七种情况。</p>
+<p><img src="https://depoze.uden.ai/wp-content/uploads/2021/09/%E6%83%85%E5%86%B5%E6%95%B0.png"></p>
+<p>分类讨论（注意右下角一个图代表两种情况：环内和环外相交）</p>
+<h2 id="实现和求解"><a href="#实现和求解" class="headerlink" title="实现和求解"></a>实现和求解</h2><h3 id="预定义："><a href="#预定义：" class="headerlink" title="预定义："></a>预定义：</h3><p>首先定义数据结构：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">Datatype data;</span><br><span class="line">LNode* next;</span><br><span class="line">&#125;LNode;</span><br></pre></td></tr></table></figure>
+
+<p>我们需要实现的函数包括：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LNode* <span class="title function_">IfCircle</span><span class="params">(LNode* L)</span>; <span class="comment">//判断是否有环</span></span><br><span class="line">LNode* <span class="title function_">IfCross</span><span class="params">(LNode* L1, LNode* L2)</span>; <span class="comment">//判断是否相交</span></span><br></pre></td></tr></table></figure>
+
+<p>判断是否有环的函数最开始是写成返回bool型的，返回1代表有环。但是在随后的IfCross的实现中，渐渐发现其实入环的点的位置相当重要。因此将IfCircle写成返回地址值的函数。</p>
+<p>为什么说IfCross的实现依赖入环点？在它的七种情况中包括：</p>
+<ul>
+<li>（两种）不含环的，可以通过一般的遍历方法求得交点或确认无交点；</li>
+<li>（一种）一含环一不含环的，必然无交点；</li>
+<li>两者都含环的：<ul>
+<li>”链表重合“和”链表完全不相关“：相对容易通过检测直接实现；</li>
+<li>最麻烦的后两种”环内相交“和”环外相交“：如果环内相交，则两个交点就是两个链表的入环点；如果环外相交，那么也需要通过入环点限制遍历的条件，这样就可以使用一般的遍历方法进行遍历。</li>
+</ul>
+</li>
+</ul>
+<h3 id="重要的工具：快慢指针"><a href="#重要的工具：快慢指针" class="headerlink" title="重要的工具：快慢指针"></a>重要的工具：快慢指针</h3><p>既然通常的遍历方式已经不适用，应当怎样对链表进行遍历呢？一个好办法是引入快慢指针的工具。如果从头结点出发的是两个指针，但它们的行进速度不同，那么可以通过将“一个与另一个追及”作为条件，来控制退出循环。当快者追及到慢者时，快指针至少应走过一遍链表了。（这里的走过并不一定是遍历到所有结点，有可能是”跳着“走过。但如果希望访问到所有的结点，可以要求快指针每次前进一步时就伴随访问一次结点）而从退出条件分析，将快者的速度设置为2，慢者的速度设置为1，则相当于快者相对于慢者每次严格前进1，环的长度有限，一定可以退出。更广泛地考虑下，慢者和快者的速度并不一定是1和2，在环长度L给定的情况下，只需要求（快指针速度-慢指针速度）和L互质即可。证明在后面给出。</p>
+<p>通过快慢指针遍历最初是写在IfCircle函数中的，但在后来的实现中发现它在这里很常用，因此单独写一个函数出来。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">Traverse</span><span class="params">(LNode* start)</span> &#123;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* return value:使用快慢两个指针遍历链表，若无环则返回0，有环则返回慢指针行进的距离。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">LNode* fast = start; LNode* slow = start;</span><br><span class="line"><span class="keyword">if</span> (start-&gt;next == <span class="literal">NULL</span>)</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> counter = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (slow = slow-&gt;next) &#123;</span><br><span class="line">counter++;</span><br><span class="line"><span class="keyword">if</span> (fast-&gt;next == <span class="literal">NULL</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">fast = fast-&gt;next;</span><br><span class="line"><span class="keyword">if</span> (fast-&gt;next == <span class="literal">NULL</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">fast = fast-&gt;next;</span><br><span class="line"><span class="keyword">if</span> (slow == fast)<span class="keyword">return</span> counter;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="快慢指针遍历带环链表的性质"><a href="#快慢指针遍历带环链表的性质" class="headerlink" title="快慢指针遍历带环链表的性质"></a>快慢指针遍历带环链表的性质</h3><h4 id="关于快慢指针速度取值的证明"><a href="#关于快慢指针速度取值的证明" class="headerlink" title="关于快慢指针速度取值的证明"></a>关于快慢指针速度取值的证明</h4><p>首先，只要要求快指针行进时，每一个小步(f &#x3D; f-&gt;next)时都进行一次访问，就可以做到每个元素至少访问一遍，所以”遍历“的要求很容易满足。我们主要思考如何取值可以满足遍历的退出条件（f &#x3D;&#x3D; s）。</p>
+<p>显然，不管链表结构如何，在有限步内，快指针和慢指针都会进入环。所以我们只需要考虑均在环内时（初始位置不确定），快指针是否一定会赶上慢指针。这个问题等价于，慢指针不动，快指针以(快-慢)的速度移动，是否一定会走到慢指针。由于初始相对位置不确定，满足“一定会走到慢指针”的唯一途径就是“快指针在有限步内可以走到每一个环内结点”。从而问题可以抽象成如下形式：</p>
+<p>设快指针的速度为$f$，慢指针的速度为$s$，环的长度为$L_c$，则快指针的相对速度为$v &#x3D; f - s$。现有</p>
+<p>$$iv\equiv b_i \pmod {L_c}.$$</p>
+<p>其中$i$从$0$取到$L_c - 1$时，$b_i$也应取遍$\{0, 1, \dots , L_c - 1\}$.求满足此条件的$v$.</p>
+<p>（解一）使用$Bezout$定理，只要$\gcd(v , L_c) &#x3D; 1$，则$\exists c_1, c_2$, s.t.$c_1 v + c_2 L_c &#x3D; 1.$，将$L_c v +(-v)L_c &#x3D; 0$累加到上式中，一定可以得到$$c_1’ v &#x3D; 1 + c_2’ L_c.(c_1 &gt; 0)$$从而可以取遍$0$到$L_c-1$的值。</p>
+<p>（解二）利用一个重要的性质：</p>
+<p>$(a,m)&#x3D;1, \forall b \in \mathbb{Z}, ax\equiv b\pmod m$，且$ax\equiv b\pmod m$有模$m$唯一的解。此时若考虑$b\in\{0,1,\dots,m-1\}, x\in \{0,1,\dots,m-1\}$，则此时$b$和$x$建立双射。</p>
+<p>（证明）假设不构成一一映射，则必有$$x_1 a - b &#x3D; k_1 m, x_2 a - b &#x3D; k_2 m, x_1\not&#x3D; x_2\in{0,1,\dots,m-1}. $$</p>
+<p>那么有$$(x_1 - x_2) a &#x3D; (k_1 - k_2) m.$$</p>
+<p>由于$\gcd (a,m) &#x3D; 1$，必定有$$m\mid (x_1 - x_2).$$</p>
+<p>然而我们知道$ x_1\not&#x3D; x_2\in{0,1,\dots,m-1} $，所以产生了矛盾。</p>
+<p>故必定构成一一映射。</p>
+<p>那么由上述性质我们有$$iv\equiv b_i\pmod{L_c}.$$</p>
+<p>其中$i\in\{0,1,\dots,L_c-1\}, b\in\{0,1,\dots,L_c-1\}$，且$i$与$b_i$建立双射，故必然可以取到全部值。</p>
+<h4 id="在速度取分别取2和1时展现的性质"><a href="#在速度取分别取2和1时展现的性质" class="headerlink" title="在速度取分别取2和1时展现的性质"></a>在速度取分别取2和1时展现的性质</h4><p>既然只需要速度的差与环长互质，而环长不确定，那么只能设置速度差为1。我们不妨取最方便实现的：快指针速度为2，慢指针速度为1.</p>
+<p>我们希望IfCircle函数的返回值为入环点的地址，这经历了不小的困难。对一个一般的含环链表，我们假设环外部分的长度为$L_0$，环长度为$L_c$。在使用快慢指针遍历结束时，快慢指针分别走过的总路程为$L_f$和$L_s$，另假设慢指针进入环的那一时刻，它若向前追赶到快指针当时所处位置，所需的距离为$L_{fs}$。接下来对这些量之间的关系进行考察。</p>
+<p>一个基础的性质：由于设定快指针f的步长为2，慢指针s的步长为1，易知：$$L_f &#x3D; 2L_s.$$</p>
+<p>由于s入环时与快指针的距离是$L_{fs}$，接下来相对s，f应行进的距离为$L_c - L_{fs}$，而相对s行进的距离等于s行进的绝对距离，故有：</p>
+<p>$$L_s &#x3D; L_0 + (L_c -L_{fs}).$$</p>
+<p>而从出发到相遇，事实上快指针和慢指针相比，只是多在环内转几圈。故有：</p>
+<p>$$L_f &#x3D; L_0 + n L_c -L_{fs}.$$</p>
+<p>另外由于s入环时行进了$L_0$，这时的f应当行进了$2L_0$，也就是在环内走了$L_0$的路程到达$L_{fs}$，则有：</p>
+<p>$$L_0 \equiv L_{fs} \pmod {L_c}.$$</p>
+<p>联立上述几个方程就可以得到：</p>
+<p>$$L_s &#x3D; (n-1) L_c.$$</p>
+<p>这是一个非常好的性质，慢指针从出发到相遇，行进的绝对距离是环长度的整数倍。</p>
+<p>接下来我们可以获取的量$L_f, L_s$可推导的就结束了，还有很多未知量，需要进一步探究。我们这时注意到f和s一定在环内相遇。我们从它们的相遇点开始再次使用快慢指针遍历，则此时$L_0’ &#x3D; 0, L_{fs} &#x3D; 0$，那么$$L_s’ &#x3D; L_c.$$于是我们通过对环内结点的遍历得到了环的长度，进一步可以得到$n$的值。</p>
+<p>但再继续对上面的方程操作，我们会发现$L_0 - L_{fs}$始终作为一个整体被消去、被求得。然而我们真正需要的是它们中的一个，这样才能求得入环点的地址。事实上如下图所示，现在我们需要的就是$L_0$和$L_{fs}$更精确的关系，也即在同余的基础上，它们到底差多少个$L_c$。</p>
+<p><img src="https://depoze.uden.ai/wp-content/uploads/2021/09/Lfs_L0.png"></p>
+<p>Traverse(head)的终点（相遇点）的性质</p>
+<p>这里的信息隐含在：在s入环后，f相对s行进了 $L_c - L_{fs}$ ，则f行进的绝对距离应为$2(L_c - L_{fs})$. 我们有f在s入环前行进的距离为：</p>
+<p>$$L_{f1} &#x3D; 2L_0 &#x3D; L_0 + (?) L_c +L_{fs}.$$</p>
+<p>我们又知道了s入环后f行进的路程，和f行进的总路程：</p>
+<p>$$L_{f2} &#x3D; 2(L_c - L_{fs}).$$</p>
+<p>$$L_f &#x3D; L_0 + nLc - L_{fs} &#x3D; L_{f1} + L_{f2}.$$</p>
+<p>联立即得：</p>
+<p>$$(?) &#x3D; (n - 2).$$</p>
+<p>那么同余式$L_0 \equiv L_{fs} \pmod {L_c}$便有了更精确的表达：</p>
+<p>$$L_0 &#x3D; (n-2)L_c + L_{fs}.$$</p>
+<p>现在我们就可以找到入环点的地址了：只需令指针p从head先走$(n-2)L_c$，令指针q在Traverse(head)的相遇点，那么此时p和q与入环点的距离均为$L_{fs}$，且均朝向入环点。只需让他们以相同的步长前进，则相遇点即为环点。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">LNode* <span class="title function_">IfCircle</span><span class="params">(LNode* head)</span> &#123;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* return value: 若无环则返回NULL，有环则返回入环点的地址.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">if</span> (!Traverse(head))<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line"><span class="comment">//未退出，则有环。下一段算法和Traverse完全相同，只是此函数中return时返回的是地址。目的是得到环内的一个结点地址。</span></span><br><span class="line">LNode* fast = head; LNode* slow = head;</span><br><span class="line"><span class="keyword">while</span> (slow = slow-&gt;next) &#123;</span><br><span class="line">fast = fast-&gt;next;</span><br><span class="line">fast = fast-&gt;next;</span><br><span class="line"><span class="keyword">if</span> (slow == fast)<span class="keyword">break</span>;<span class="comment">//现在slow是环内的一个节点地址。</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 关于单链表上环的性质的推导： </span></span><br><span class="line"><span class="comment">* 假设从链表头到入环点处的长度为 L0, 环的长度为 Lc, 快指针行进路程为Lf, 慢指针行进路程为Ls,</span></span><br><span class="line"><span class="comment">* 慢指针进入环的时候，快慢指针之间的距离（以慢指针行进多远能赶上快指针计）为Lfs, 则Lfs与L0模Lc同余。</span></span><br><span class="line"><span class="comment">* 则Traverse(head)的过程中，Ls = L0 + Lc - Lfs; Lf = 2Ls = L0 + n * Lc - Lfs.</span></span><br><span class="line"><span class="comment">* 联立两方程则有Ls = (n-1) * Lc.</span></span><br><span class="line"><span class="comment">* </span></span><br><span class="line"><span class="comment">* 下一步从相遇点开始Traverse(slow)，此时的Ls&#x27; = Lc; Lf&#x27; = 2Ls&#x27;. 也就是求出了Lc.</span></span><br><span class="line"><span class="comment">* 那么和上一步的Ls联立即可求出整数n，那么此时满足 (L0 + n * Lc - Lfs) = (L0 + ? * Lc + Lfs) + 2(Lc-Lfs)</span></span><br><span class="line"><span class="comment">* (等式右边前一项是s入环前，后一项是s入环后，其中的？表示在s入环前f转了多少圈)</span></span><br><span class="line"><span class="comment">* 所以在L0 ≡ Lfs (mod Lc)的基础上可以得到L0 = (n-2)Lc + Lfs.</span></span><br><span class="line"><span class="comment">* 于是可以找到到入环点的的地址:</span></span><br><span class="line"><span class="comment">* p = head; q = slow（指Traverse(head)的相遇点)，p前进(n-2)Lc步后，p和q距离入环点均为Lfs，故此时令它们均向前相遇即可。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> Lc = Traverse(slow);<span class="comment">//=Lc. 从环上一点开始遍历，必然是走（环的长度）距离时两指针相遇。</span></span><br><span class="line"><span class="type">int</span> Ls = Traverse(head);<span class="comment">//=Ls = (n-1) * Lc.</span></span><br><span class="line"><span class="type">int</span> n = Ls / Lc + <span class="number">1</span>;</span><br><span class="line">LNode* p = head; LNode* q = slow;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">2</span>; i++)</span><br><span class="line">p = p-&gt;next;</span><br><span class="line"><span class="keyword">while</span> (p != q) &#123;</span><br><span class="line">p = p-&gt;next;</span><br><span class="line">q = q-&gt;next;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>那么IfCross的实现在有了可以返回入环点的IfCircle帮助下可以较方便地实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">LNode* <span class="title function_">IfCross</span><span class="params">(LNode* L1, LNode* L2)</span> &#123;</span><br><span class="line"><span class="keyword">if</span> ((IfCircle(L1) &amp;&amp; !IfCircle(L2))  (!IfCircle(L1) &amp;&amp; IfCircle(L2)))<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line"><span class="comment">//一个有环，另一个无环，必定不相交。</span></span><br><span class="line"></span><br><span class="line">LNode* p = L1; LNode* q = L2;</span><br><span class="line"><span class="keyword">if</span> (!(IfCircle(L1)  IfCircle(L2))) &#123;<span class="comment">//两个都无环</span></span><br><span class="line"><span class="keyword">while</span> (p-&gt;next)</span><br><span class="line">p = p-&gt;next;</span><br><span class="line"><span class="keyword">while</span> (q-&gt;next)</span><br><span class="line">q = q-&gt;next;</span><br><span class="line"><span class="keyword">if</span> (p != q)<span class="keyword">return</span> <span class="literal">NULL</span>;<span class="comment">//末地址不同，不相交</span></span><br><span class="line"><span class="comment">//执行到此步：相交</span></span><br><span class="line">p = L1; q = L2;</span><br><span class="line"><span class="keyword">do</span> &#123; <span class="comment">//从L1的第一个节点开始，固定p，遍历q，若找不到相同则p = p-&gt;next，继续遍历q，如此循环。</span></span><br><span class="line"><span class="keyword">while</span> (q) &#123;</span><br><span class="line"><span class="keyword">if</span> (p == q)<span class="keyword">return</span> q;<span class="comment">//p == q：此时找到交点。</span></span><br><span class="line">q = q-&gt;next;</span><br><span class="line">&#125;</span><br><span class="line">q = L2;</span><br><span class="line">&#125; <span class="keyword">while</span> (p = p-&gt;next);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span> &#123;<span class="comment">//两个都有环</span></span><br><span class="line"><span class="keyword">if</span> (IfCircle(p) == IfCircle(q)) &#123;<span class="comment">//入环点是同一个，在环外相交。</span></span><br><span class="line">LNode* CirPoint = IfCircle(p);</span><br><span class="line"><span class="keyword">do</span> &#123; <span class="comment">//从L1的第一个节点开始，固定p，遍历q至环点，若找不到相同则p = p-&gt;next，继续遍历q，如此循环。</span></span><br><span class="line"><span class="keyword">while</span> (q!= CirPoint) &#123;</span><br><span class="line"><span class="keyword">if</span> (p == q)<span class="keyword">return</span> q;<span class="comment">//p == q：此时找到交点。</span></span><br><span class="line">q = q-&gt;next;</span><br><span class="line">&#125;</span><br><span class="line">q = L2;</span><br><span class="line">&#125; <span class="keyword">while</span> ((p = p-&gt;next) &amp;&amp; p != CirPoint);</span><br><span class="line">&#125;<span class="comment">//end if</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span> &#123;<span class="comment">//入环点不同，在环内相交。</span></span><br><span class="line"><span class="keyword">return</span> IfCircle(p);<span class="comment">//在环内相交事实上有两个交点，由于C语言的限制此处只返回一个。</span></span><br><span class="line"><span class="comment">//事实上两个交点就是两个链表的入环点：IfCircle(p)和IfCircle(q).</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/pages/">Pages</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E8%A7%81%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="toc-number">2.1.</span> <span class="toc-text">初见的思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%AD%A3%E5%90%8E%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="toc-number">2.2.</span> <span class="toc-text">修正后的思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%92%8C%E6%B1%82%E8%A7%A3"><span class="toc-number">3.</span> <span class="toc-text">实现和求解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="toc-number">3.1.</span> <span class="toc-text">预定义：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E7%9A%84%E5%B7%A5%E5%85%B7%EF%BC%9A%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88"><span class="toc-number">3.2.</span> <span class="toc-text">重要的工具：快慢指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E9%81%8D%E5%8E%86%E5%B8%A6%E7%8E%AF%E9%93%BE%E8%A1%A8%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-number">3.3.</span> <span class="toc-text">快慢指针遍历带环链表的性质</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E9%80%9F%E5%BA%A6%E5%8F%96%E5%80%BC%E7%9A%84%E8%AF%81%E6%98%8E"><span class="toc-number">3.3.1.</span> <span class="toc-text">关于快慢指针速度取值的证明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E9%80%9F%E5%BA%A6%E5%8F%96%E5%88%86%E5%88%AB%E5%8F%962%E5%92%8C1%E6%97%B6%E5%B1%95%E7%8E%B0%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-number">3.3.2.</span> <span class="toc-text">在速度取分别取2和1时展现的性质</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/&text=单链表的含环和相交性质探究过程记录"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/&title=单链表的含环和相交性质探究过程记录"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/&is_video=false&description=单链表的含环和相交性质探究过程记录"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=单链表的含环和相交性质探究过程记录&body=Check out this article: http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/&title=单链表的含环和相交性质探究过程记录"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/&title=单链表的含环和相交性质探究过程记录"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/&title=单链表的含环和相交性质探究过程记录"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/&title=单链表的含环和相交性质探究过程记录"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/&name=单链表的含环和相交性质探究过程记录&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/09/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%90%AB%E7%8E%AF%E5%92%8C%E7%9B%B8%E4%BA%A4%E6%80%A7%E8%B4%A8%E6%8E%A2%E7%A9%B6%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/&t=单链表的含环和相交性质探究过程记录"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2023
+    CuSO4_Deposit
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/pages/">Pages</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="IntroductionI already have Windows 10 installed on my computer, and want to install Linux to dual boot. PreparationI don’t have any experience on installing a new OS. So I have to investigate enough t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dual-boot Win10 and Linux Mint">
+<meta property="og:url" content="http://example.com/2022/01/dual-boot-win10-and-linux-mint/index.html">
+<meta property="og:site_name" content="CuSO4D&#39;s Electrolytic Cell">
+<meta property="og:description" content="IntroductionI already have Windows 10 installed on my computer, and want to install Linux to dual boot. PreparationI don’t have any experience on installing a new OS. So I have to investigate enough t">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/2022/SHA256-1.png">
+<meta property="og:image" content="http://example.com/images/2022/%E5%9B%BE%E7%89%87.png">
+<meta property="og:image" content="http://example.com/images/2022/Etcher_Success.png">
+<meta property="og:image" content="http://example.com/images/2022/UDisk_done.png">
+<meta property="og:image" content="http://example.com/images/2022/packagekitd1.png">
+<meta property="og:image" content="http://example.com/images/2022/packagekitd2.png">
+<meta property="og:image" content="http://example.com/images/2022/packagekitd3.png">
+<meta property="og:image" content="http://example.com/images/2022/image.png">
+<meta property="og:image" content="http://example.com/images/2022/mem1.png">
+<meta property="og:image" content="http://example.com/images/2022/mem2.png">
+<meta property="og:image" content="http://example.com/images/2022/blueinterface-edited-scaled.jpeg">
+<meta property="og:image" content="http://example.com/images/2022/driver.png">
+<meta property="article:published_time" content="2022-01-22T13:16:00.000Z">
+<meta property="article:modified_time" content="2023-04-03T14:31:28.233Z">
+<meta property="article:author" content="CuSO4_Deposit">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/2022/SHA256-1.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Dual-boot Win10 and Linux Mint</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/pages/">Pages</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2022/02/crawl-song-lyrics-in-netease/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/01/dual-boot-win10-and-linux-mint/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/01/dual-boot-win10-and-linux-mint/&text=Dual-boot Win10 and Linux Mint"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/01/dual-boot-win10-and-linux-mint/&title=Dual-boot Win10 and Linux Mint"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/01/dual-boot-win10-and-linux-mint/&is_video=false&description=Dual-boot Win10 and Linux Mint"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Dual-boot Win10 and Linux Mint&body=Check out this article: http://example.com/2022/01/dual-boot-win10-and-linux-mint/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/01/dual-boot-win10-and-linux-mint/&title=Dual-boot Win10 and Linux Mint"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/01/dual-boot-win10-and-linux-mint/&title=Dual-boot Win10 and Linux Mint"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/01/dual-boot-win10-and-linux-mint/&title=Dual-boot Win10 and Linux Mint"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/01/dual-boot-win10-and-linux-mint/&title=Dual-boot Win10 and Linux Mint"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/01/dual-boot-win10-and-linux-mint/&name=Dual-boot Win10 and Linux Mint&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/01/dual-boot-win10-and-linux-mint/&t=Dual-boot Win10 and Linux Mint"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Preparation"><span class="toc-number">2.</span> <span class="toc-text">Preparation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Distro"><span class="toc-number">2.1.</span> <span class="toc-text">Distro</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Creating-a-bootable-USB-Stick"><span class="toc-number">2.2.</span> <span class="toc-text">Creating a bootable USB Stick</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fundamental-Knowledges"><span class="toc-number">2.3.</span> <span class="toc-text">Fundamental Knowledges</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Backup-data"><span class="toc-number">2.4.</span> <span class="toc-text">Backup data</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation"><span class="toc-number">3.</span> <span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Configuration"><span class="toc-number">4.</span> <span class="toc-text">Configuration</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-problem-packagekitd"><span class="toc-number">4.1.</span> <span class="toc-text">A problem - packagekitd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Driver-Manager"><span class="toc-number">4.2.</span> <span class="toc-text">Driver Manager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Another-problem-Can%E2%80%99t-shut-down"><span class="toc-number">4.3.</span> <span class="toc-text">Another problem - Can’t shut down</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3rd-problem-too-much-buffer-x2F-cache-memory"><span class="toc-number">4.4.</span> <span class="toc-text">3rd problem - too much buffer&#x2F;cache memory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Emergency-Blurred-screen"><span class="toc-number">4.5.</span> <span class="toc-text">Emergency - Blurred screen</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Configure-VPN-with-valid-conf-file-using-WireGuard"><span class="toc-number">4.6.</span> <span class="toc-text">Configure VPN with valid *.conf file using WireGuard</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Dual-boot Win10 and Linux Mint
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">CuSO4_Deposit</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-01-22T13:16:00.000Z" itemprop="datePublished">2022-01-22</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Linux/" rel="tag">Linux</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>I already have Windows 10 installed on my computer, and want to install Linux to dual boot.</p>
+<h2 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h2><p>I don’t have any experience on installing a new OS. So I have to investigate enough to minimize the probability that emergencies happen.</p>
+<h3 id="Distro"><a href="#Distro" class="headerlink" title="Distro"></a>Distro</h3><p>I choose Linux Mint 20.03(Edge). This stable edition is distributed on Jan. 17, 2022. Some videos that helps to choose a distro (provided by @Erik):</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=0506yDSgU7M">Linux HATES Me – Daily Driver CHALLENGE Pt.1 - YouTube</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=D8j1n05s9-w">Linus BREAKS Linux! - Daily Driver Challenge Reaction - YouTube</a></p>
+<h3 id="Creating-a-bootable-USB-Stick"><a href="#Creating-a-bootable-USB-Stick" class="headerlink" title="Creating a bootable USB Stick"></a>Creating a bootable USB Stick</h3><p><a target="_blank" rel="noopener" href="https://linuxmint-installation-guide.readthedocs.io/en/latest/burn.html">Create the bootable media</a><br><a target="_blank" rel="noopener" href="https://linuxmint-installation-guide.readthedocs.io/en/latest/burn.html#create-the-bootable-media">Create the bootable media</a></p>
+<p>Download the iso image from <a target="_blank" rel="noopener" href="https://www.linuxmint.com/mirrors.php">mirrors</a>. I chose <a target="_blank" rel="noopener" href="https://mirror.sjtu.edu.cn/linuxmint-cd/">the one</a> the SJTUG site provided. Download the iso file.</p>
+<p>Remember to check the file integrity using SHA256.<br><a target="_blank" rel="noopener" href="https://linuxmint-installation-guide.readthedocs.io/en/latest/verify.html#verify-your-iso-image">Verify your ISO image</a><br>As I am now operating on Windows, call cmd and type command:</p>
+<p>CertUtil -hashfile &lt;filename.iso&gt; SHA256</p>
+<p>where the &lt;filename.iso&gt; is the file name of the iso file.</p>
+<p>(<a target="_blank" rel="noopener" href="https://forums.linuxmint.com/viewtopic.php?f=42&t=291093&sid=5a96f0c51c745ca15875f8c818af15df">How to verify the ISO image on Windows</a>)</p>
+<p><img src="/../images/2022/SHA256-1.png"></p>
+<p>screenshot of my SHA256 check</p>
+<p>Download <a target="_blank" rel="noopener" href="https://etcher.io/">Etcher</a>, install and run it.</p>
+<ul>
+<li><p><img src="/../images/2022/%E5%9B%BE%E7%89%87.png"></p>
+</li>
+<li><p><img src="/../images/2022/Etcher_Success.png"></p>
+</li>
+<li><p><img src="/../images/2022/UDisk_done.png"></p>
+<p>16GB UDisk, after flashing</p>
+</li>
+</ul>
+<h3 id="Fundamental-Knowledges"><a href="#Fundamental-Knowledges" class="headerlink" title="Fundamental Knowledges"></a>Fundamental Knowledges</h3><p><a target="_blank" rel="noopener" href="https://linuxmint-installation-guide.readthedocs.io/en/latest/partitioning.html">Partitioning — Linux Mint Installation Guide documentation</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.debian.org/releases/wheezy/amd64/apcs04.html.en">C.4. Device Names in Linux</a></p>
+<p><a target="_blank" rel="noopener" href="http://etutorials.org/Linux+systems/red+hat+linux+9+professional+secrets/Part+II+Exploring+Red+Hat+Linux/Chapter+7+Red+Hat+Linux+Basics/Understanding+the+Linux+File+System/">Understanding the Linux File System :: Chapter 7: Red Hat Linux Basics :: Part II: Exploring Red Hat Linux :: Red Hat Linux 9 Professional Secrets :: Linux systems :: eTutorials.org</a></p>
+<p><a target="_blank" rel="noopener" href="https://linuxbsdos.com/2014/11/08/a-beginners-guide-to-disks-and-disk-partitions-in-linux/">A beginner’s guide to disks and disk partitions in Linux – LinuxBSDos.com</a></p>
+<h3 id="Backup-data"><a href="#Backup-data" class="headerlink" title="Backup data"></a>Backup data</h3><p>There’s not a lot of things to say here. In case of emergencies, always remember to backup your important data!</p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>A full <a target="_blank" rel="noopener" href="https://youtu.be/IzVnTSklWa0">tutorial</a> by LearnLinuxTV:</p>
+<p>Choose my USB stick as boot device (rather than “Windows boot manager”).</p>
+<p>Actually, this process is really easy. Everything is pre-configured. I just need to choose a few options.</p>
+<p>My computer only has one hard drive. I give Linux Mint 50GB space. At first I am afraid that: as it automatically re-partition the drive, the C:(the partition where my Windows system is put) of my Windows may be full, and Windows can’t run. But finally it turns out that it doesn’t touch the system partition, and my D: (partition that saves data, with 175GB free) reduced to 125GB free. Meaning the re-partition process takes its 50GB all frm D: .</p>
+<p>After configuring, the system tells me to restart. Then a blue screen “Perform MOK management” jumps out, which i have never seen in other tutorials. Some websites say it has something to do with graphics cards. They say I should choose “Enroll MOK” to load the graphic card’s driver properly, but at this time my keyboard doesn’t work. I can’t gain control of anything on my computer. Then it automatically enters “continue boot”. So my graphic card may be misconfigured. I will try to fix this in the future.</p>
+<h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><h3 id="A-problem-packagekitd"><a href="#A-problem-packagekitd" class="headerlink" title="A problem - packagekitd"></a>A problem - packagekitd</h3><p>After some time (about 1 hour) I installed Linux, something went wrong. I can’t access anything about packages, including installing applications, updating cache, and so on.</p>
+<ul>
+<li><p><img src="/../images/2022/packagekitd1.png"></p>
+</li>
+<li><p><img src="/../images/2022/packagekitd2.png"></p>
+</li>
+<li><p><img src="/../images/2022/packagekitd3.png"></p>
+</li>
+</ul>
+<p>All the things above were stuck. Waiting for them for a long time, I came to know that packagekitd must have run into a loop. This is an error. So I have to stop it:</p>
+<p>sudo kill -9 43984</p>
+<p>where 43984 is the process id of packagekitd. After doing this, the command line still told me that the file that installation needed was still locked by “aptd”. Then after a while, system jumped out a window, asking me to set a secure boot password. Then after several minutes, when I was randomly trying, I found the process was no longer locked. Then everything stuck was solved. But I still don’t know whether the system heals itself after “packagekitd” was killed, or setting that password worked.</p>
+<h3 id="Driver-Manager"><a href="#Driver-Manager" class="headerlink" title="Driver Manager"></a>Driver Manager</h3><p><img src="/../images/2022/image.png"></p>
+<p>Some websites recommended this option.</p>
+<p>Some websites recommend the NVIDIA official driver, but <strong><a href="#Blurred-Screen">later it gave me a lot of trouble</a></strong>. Next time when I install a Linux system on a computer with NVIDIA, I will directly choose “Xserver driver”.</p>
+<h3 id="Another-problem-Can’t-shut-down"><a href="#Another-problem-Can’t-shut-down" class="headerlink" title="Another problem - Can’t shut down"></a>Another problem - Can’t shut down</h3><p>Each time when i press “shut down”, it just restarts the system, doesn’t give me a chance to boot into Windows.</p>
+<p>Solution[ref]<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/378106182">Linux Mint 无法关机（关机自动重启）问题解决</a>[&#x2F;ref]:</p>
+<p>sudo apt-get install laptop-mode-tools</p>
+<p>Problem solved.</p>
+<h3 id="3rd-problem-too-much-buffer-x2F-cache-memory"><a href="#3rd-problem-too-much-buffer-x2F-cache-memory" class="headerlink" title="3rd problem - too much buffer&#x2F;cache memory"></a>3rd problem - too much buffer&#x2F;cache memory</h3><p>The free memory is very little. My laptop has 16GB RAM, but memory are almost all buffered&#x2F;cached, making the free mem less then 1GB:</p>
+<p><img src="/../images/2022/mem1.png"></p>
+<p>I tried a lot, but nothing works. Then the blurred screen(mentioned later) happened, and I changed the driver of graphic cards. And now I suddenly find it is solved, even though I don’t know when and how:</p>
+<p><img src="/../images/2022/mem2.png"></p>
+<p>Maybe it was because of the driver, I don’t know. That is the only thing changed that I can think of.</p>
+<h3 id="Emergency-Blurred-screen"><a href="#Emergency-Blurred-screen" class="headerlink" title="Emergency - Blurred screen"></a>Emergency - Blurred screen</h3><p>When I get almost everything done, I choose to restart the machine. Then the blue interface comes out again, and I still cannot control the keyboard. Then following this tutorial:</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_51449137/article/details/114462411">【联想拯救者R7000】安装nvidia驱动Perform MOK management 界面键盘失灵现象（已解决）</a></p>
+<p>Disable the secure root, and choose the switching mode. Next time the keyboard does work, but the meau is a little different:</p>
+<p>The second option is no longer “enroll MOK” as <a target="_blank" rel="noopener" href="https://www.cnblogs.com/yutian-blogs/p/13019226.html">every tutorial says</a>. It becomes “<strong>reset MOK</strong>“.</p>
+<p><img src="/../images/2022/blueinterface-edited-scaled.jpeg"></p>
+<p>In normal case</p>
+<p>Then I dare not choose reset, I let it “continue boot”, and then the whole screen became blurred. It really scared me that I didn’t take a picture, so here is no pictures.</p>
+<p>According to <a target="_blank" rel="noopener" href="https://www.cnblogs.com/real010/p/14678546.html">some tutorials</a>, I entered the settings of the Advanced Options for Linux Mint, searching for this line:</p>
+<p>ash $vt_handoff</p>
+<p>Sadly I did not find this line. Maybe it’s because mine is Linux Mint 20.04, this line has been removed.</p>
+<p>The next tutorial helped me:</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_61536749/article/details/121673359">安装Linux Mint遇到的坑和解决方法花屏无法进入安装引导界面驱动异常无法连接WiFi……</a></p>
+<p>Enter recovery mode, connect to the network(before the screen is blurred, we have connected to network), choose “root” and type:</p>
+<p>ubuntu-drivers devices</p>
+<p>It will retiurn a lot of drivers. Choose one to install:</p>
+<p>sudo apt install nvidia-driver-470</p>
+<p>After installing, input</p>
+<p>reboot</p>
+<p>and the system will restart. Boot into the normal Linux system, there is no more blurred screen, but the display is still not right. The brightness isn’t modifiable. No matter where I put the “brightness percent” to, the actual brightness is fixed at 100%. Too bright, making me nearly blind.</p>
+<p>Once I have met this problem when on Windows, it was because I chose the wrong mode of the graphic card. Discrete mode is OK, switchable mode is “fixed at 100% brightness”. But this time I find the graphic card’s settings is correct, in Windows the brightness is still modifiable. So this is just some problem for this driver of Linux. Then I decide to directly change the driver of graphic cards.</p>
+<p><img src="/../images/2022/driver.png"></p>
+<p>After applying on this driver, the brightness is modifiable now.</p>
+<p>Here are some other possible ways to solve this problem, but I didn’t try:</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44120025/article/details/118875998?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163463823816780357241251%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=163463823816780357241251&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-1-118875998.first_rank_v2_pc_rank_v29&utm_term=ubuntu%E5%B1%8F%E5%B9%95%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82%E6%97%A0%E6%95%88%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95&spm=1018.2226.3001.4187">ubuntu20.04屏幕亮度无法调节（亮度条调节无效）的简单靠谱解决方案及踩坑历程</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/397952249">Linux &#x2F; Ubuntu+win10双系统安装记录(2):AMD核显驱动引发的问题</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/348624522">联想拯救者R7000安装Ubuntu20.04后屏幕亮度调节终极解决方案</a></p>
+<h3 id="Configure-VPN-with-valid-conf-file-using-WireGuard"><a href="#Configure-VPN-with-valid-conf-file-using-WireGuard" class="headerlink" title="Configure VPN with valid *.conf file using WireGuard"></a>Configure VPN with valid *.conf file using WireGuard</h3><p>reference:</p>
+<p><a target="_blank" rel="noopener" href="https://engineerworkshop.com/blog/how-to-set-up-a-wireguard-client-on-linux-with-conf-file/">How to Set Up a WireGuard Client on Linux with .conf File</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/147377961">聊聊内核里的 WireGuard</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.adamintech.com/use-wg-quick-to-make-your-wireguard-tunnels-easy-and-persistent-on-linux/">Use wg-quick to make your Wireguard tunnels easy and persistent on Linux.</a></p>
+<p>Move the *.conf to &#x2F;etc&#x2F;wireguard&#x2F;, and type(in the following, I use the filename “Depoze_Laptop.conf”):</p>
+<p>sudo wg-quick up Depoze_Laptop</p>
+<p>It returns this message.</p>
+<p>[#] ip link add Depoze_Laptop type wireguard<br>[#] wg setconf Depoze_Laptop &#x2F;dev&#x2F;fd&#x2F;63<br>[#] ip -4 address add 10.6.0.22&#x2F;24 dev Depoze_Laptop<br>[#] ip link set mtu 1420 up dev Depoze_Laptop<br>[#] resolvconf -a Depoze_Laptop -m 0 -x<br>&#x2F;usr&#x2F;bin&#x2F;wg-quick: line 32: resolvconf: command not found<br>[#] ip link delete dev Depoze_Laptop</p>
+<p>We should install resolvconf<br><a target="_blank" rel="noopener" href="https://superuser.com/questions/1500691/usr-bin-wg-quick-line-31-resolvconf-command-not-found-wireguard-debian">&#x2F;usr&#x2F;bin&#x2F;wg-quick: line 31: resolvconf: command not found [WireGuard Debian]</a>.</p>
+<p>sudo apt-get install resolvconf</p>
+<p>After installing, execute:</p>
+<p>sudo wg-quick up Depoze_Laptop</p>
+<p>Then check if success:</p>
+<p>sudo wg</p>
+<p>it returns an interface, establishing connection successfully.</p>
+<p>If want to quit the connection, use</p>
+<p>sudo wg-quick down Depoze_laptop</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/pages/">Pages</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Preparation"><span class="toc-number">2.</span> <span class="toc-text">Preparation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Distro"><span class="toc-number">2.1.</span> <span class="toc-text">Distro</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Creating-a-bootable-USB-Stick"><span class="toc-number">2.2.</span> <span class="toc-text">Creating a bootable USB Stick</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fundamental-Knowledges"><span class="toc-number">2.3.</span> <span class="toc-text">Fundamental Knowledges</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Backup-data"><span class="toc-number">2.4.</span> <span class="toc-text">Backup data</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation"><span class="toc-number">3.</span> <span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Configuration"><span class="toc-number">4.</span> <span class="toc-text">Configuration</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-problem-packagekitd"><span class="toc-number">4.1.</span> <span class="toc-text">A problem - packagekitd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Driver-Manager"><span class="toc-number">4.2.</span> <span class="toc-text">Driver Manager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Another-problem-Can%E2%80%99t-shut-down"><span class="toc-number">4.3.</span> <span class="toc-text">Another problem - Can’t shut down</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3rd-problem-too-much-buffer-x2F-cache-memory"><span class="toc-number">4.4.</span> <span class="toc-text">3rd problem - too much buffer&#x2F;cache memory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Emergency-Blurred-screen"><span class="toc-number">4.5.</span> <span class="toc-text">Emergency - Blurred screen</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Configure-VPN-with-valid-conf-file-using-WireGuard"><span class="toc-number">4.6.</span> <span class="toc-text">Configure VPN with valid *.conf file using WireGuard</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/01/dual-boot-win10-and-linux-mint/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/01/dual-boot-win10-and-linux-mint/&text=Dual-boot Win10 and Linux Mint"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/01/dual-boot-win10-and-linux-mint/&title=Dual-boot Win10 and Linux Mint"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/01/dual-boot-win10-and-linux-mint/&is_video=false&description=Dual-boot Win10 and Linux Mint"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Dual-boot Win10 and Linux Mint&body=Check out this article: http://example.com/2022/01/dual-boot-win10-and-linux-mint/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/01/dual-boot-win10-and-linux-mint/&title=Dual-boot Win10 and Linux Mint"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/01/dual-boot-win10-and-linux-mint/&title=Dual-boot Win10 and Linux Mint"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/01/dual-boot-win10-and-linux-mint/&title=Dual-boot Win10 and Linux Mint"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/01/dual-boot-win10-and-linux-mint/&title=Dual-boot Win10 and Linux Mint"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/01/dual-boot-win10-and-linux-mint/&name=Dual-boot Win10 and Linux Mint&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/01/dual-boot-win10-and-linux-mint/&t=Dual-boot Win10 and Linux Mint"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2023
+    CuSO4_Deposit
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/pages/">Pages</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

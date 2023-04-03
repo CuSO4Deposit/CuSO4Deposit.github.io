@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="IntroductionBeginning to learn Python, @Zei_Wai and I want to do some simple tasks, instead of diving into the sea of the documentation of Python. Then we chose this: generating a WordCloud picture of">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Crawl song lyrics in NetEase">
+<meta property="og:url" content="http://example.com/2022/02/crawl-song-lyrics-in-netease/index.html">
+<meta property="og:site_name" content="CuSO4D&#39;s Electrolytic Cell">
+<meta property="og:description" content="IntroductionBeginning to learn Python, @Zei_Wai and I want to do some simple tasks, instead of diving into the sea of the documentation of Python. Then we chose this: generating a WordCloud picture of">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/2022/Screenshot-from-2022-02-08-09-03-32.png">
+<meta property="og:image" content="http://example.com/images/2022/Screenshot-from-2022-02-08-09-04-37.png">
+<meta property="og:image" content="http://example.com/images/2022/Screenshot-from-2022-02-08-10-16-54.png">
+<meta property="og:image" content="http://example.com/images/2022/Screenshot-from-2022-02-08-10-17-29.png">
+<meta property="og:image" content="http://example.com/images/2022/image-3.png">
+<meta property="og:image" content="http://example.com/images/2022/image-5.png">
+<meta property="article:published_time" content="2022-02-08T05:22:46.000Z">
+<meta property="article:modified_time" content="2023-04-03T14:27:59.464Z">
+<meta property="article:author" content="CuSO4_Deposit">
+<meta property="article:tag" content="Crawler">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/2022/Screenshot-from-2022-02-08-09-03-32.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Crawl song lyrics in NetEase</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/pages/">Pages</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2022/02/configure-vim-on-linux-mint-20-03/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2022/01/dual-boot-win10-and-linux-mint/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/02/crawl-song-lyrics-in-netease/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/02/crawl-song-lyrics-in-netease/&text=Crawl song lyrics in NetEase"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/02/crawl-song-lyrics-in-netease/&title=Crawl song lyrics in NetEase"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/02/crawl-song-lyrics-in-netease/&is_video=false&description=Crawl song lyrics in NetEase"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Crawl song lyrics in NetEase&body=Check out this article: http://example.com/2022/02/crawl-song-lyrics-in-netease/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/02/crawl-song-lyrics-in-netease/&title=Crawl song lyrics in NetEase"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/02/crawl-song-lyrics-in-netease/&title=Crawl song lyrics in NetEase"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/02/crawl-song-lyrics-in-netease/&title=Crawl song lyrics in NetEase"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/02/crawl-song-lyrics-in-netease/&title=Crawl song lyrics in NetEase"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/02/crawl-song-lyrics-in-netease/&name=Crawl song lyrics in NetEase&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/02/crawl-song-lyrics-in-netease/&t=Crawl song lyrics in NetEase"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-urllib-package"><span class="toc-number">2.</span> <span class="toc-text">Using urllib package</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-cloudmusic-package"><span class="toc-number">3.</span> <span class="toc-text">Using cloudmusic package</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WordCloud"><span class="toc-number">4.</span> <span class="toc-text">WordCloud</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Integration"><span class="toc-number">5.</span> <span class="toc-text">Integration</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#File-Organization"><span class="toc-number">5.1.</span> <span class="toc-text">File Organization:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Readme-md"><span class="toc-number">5.2.</span> <span class="toc-text">Readme.md</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#start-bash"><span class="toc-number">5.3.</span> <span class="toc-text">start.bash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Main-program"><span class="toc-number">5.4.</span> <span class="toc-text">Main program:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Result-Output"><span class="toc-number">6.</span> <span class="toc-text">Result Output</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Crawl song lyrics in NetEase
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">CuSO4_Deposit</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-02-08T05:22:46.000Z" itemprop="datePublished">2022-02-08</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Crawler/" rel="tag">Crawler</a>, <a class="tag-link-link" href="/tags/Python/" rel="tag">Python</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Beginning to learn Python, @Zei_Wai and I want to do some simple tasks, instead of diving into the sea of the documentation of Python. Then we chose this: generating a WordCloud picture of the lyrics of NeteaseMusic Songlist.</p>
+<h2 id="Using-urllib-package"><a href="#Using-urllib-package" class="headerlink" title="Using urllib package"></a>Using urllib package</h2><p>First we found an api of Netease:</p>
+<p><a target="_blank" rel="noopener" href="https://music.163.com/api/song/lyric?id=%3Csong.id%3E&lv=1&kv=1&tv=-1">https://music.163.com/api/song/lyric?id=&lt;song.id&gt;&amp;lv&#x3D;1&amp;kv&#x3D;1&amp;tv&#x3D;-1</a></p>
+<p>where &lt;song.id&gt; is the id of songs in Netease database. When we use web client to play music, the URL of music playing page contains this id. For a simple example, if we want to get the lyrics of <em>Bad Apple!!</em> we just need to do like this:</p>
+<p><img src="/../images/2022/Screenshot-from-2022-02-08-09-03-32.png"></p>
+<p><img src="/../images/2022/Screenshot-from-2022-02-08-09-04-37.png"></p>
+<p>Then we just need to get the songs’ id in a automatic way, then we can generate a text file. But when we use this method to send request to Netease Songlist page, what it returns doesn’t contain songid. This is the code we use:<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_38103546/article/details/81666687">【python爬虫自学笔记】—–爬取网易云歌单中歌曲歌词</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_html</span>(<span class="params">url</span>):</span><br><span class="line">    myheaders = &#123;</span><br><span class="line">            <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (X11; U; Linux i686) Gecko/20071127 Firefox/2.0.0.11 &quot;</span>,</span><br><span class="line">            <span class="string">&quot;Referer&quot;</span>: <span class="string">&quot;http://music.163.com/&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Host&quot;</span>: <span class="string">&quot;music.163.com&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        response = requests.get(url, headers= myheaders)</span><br><span class="line">        html = response.text</span><br><span class="line">        <span class="keyword">return</span> html</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;request error&#x27;</span>)</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"><span class="built_in">print</span>(get_html(<span class="string">&quot;https://music.163.com/#/playlist?id=117012154&quot;</span>))</span><br><span class="line">myurl = <span class="string">&quot;https://music.163.com/#/playlist?id=117012154&quot;</span></span><br><span class="line">myheaders = &#123;</span><br><span class="line">        <span class="string">&quot;Host&quot;</span> : <span class="string">&quot;music.163.com&quot;</span>,</span><br><span class="line">        <span class="string">&quot;User-Agent&quot;</span> : <span class="string">&quot;Mozilla/5.0 (X11; U; Linux i686) Gecko/20071127 Firefox/2.0.0.11 &quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">myrequest = urllib.request.Request(myurl, headers = myheaders)</span><br><span class="line">myresponse = urllib.request.urlopen(myrequest)</span><br><span class="line">html = myresponse.read().decode(<span class="string">&#x27;utf-8&#x27;</span>, <span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">file = <span class="built_in">open</span>(<span class="string">&#x27;/home/cuso4d/Archives/Python/NeteaseCrawler/NeteasePageEx.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">file.write(soup.prettify())</span><br><span class="line">file.close()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;done&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>And here are some pieces of file it returns, it’s not what we expected.</p>
+<p><img src="/../images/2022/Screenshot-from-2022-02-08-10-16-54.png"></p>
+<p>expected</p>
+<p><img src="/../images/2022/Screenshot-from-2022-02-08-10-17-29.png"></p>
+<p>actual result</p>
+<p>According to a Zhihu article, it’s because Netease hides its data, we need to figure out a “real” url of song list. Code:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/208837699">利用Python网络爬虫抓取网易云音乐歌词</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_html</span>(<span class="params">url</span>):</span><br><span class="line">    myheaders = &#123;</span><br><span class="line">            <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (X11; U; Linux i686) Gecko/20071127 Firefox/2.0.0.11 &quot;</span>,</span><br><span class="line">            <span class="string">&quot;Referer&quot;</span>: <span class="string">&quot;http://music.163.com/&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Host&quot;</span>: <span class="string">&quot;music.163.com&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        response = requests.get(url, headers= myheaders)</span><br><span class="line">        html = response.text</span><br><span class="line">        <span class="keyword">return</span> html</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;request error&#x27;</span>)</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">file = <span class="built_in">open</span>(<span class="string">&#x27;/home/cuso4d/Archives/Python/NeteaseCrawler/NeteasePageEx.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">file.write(get_html(<span class="string">&quot;https://music.163.com/#/playlist?id=117012154&quot;</span>))</span><br><span class="line">file.close()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;done&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>But sadly the result html still remains the ${x.id} form. Maybe Netease has updated its code and the tutorial I followed are all outdated.</p>
+<h2 id="Using-cloudmusic-package"><a href="#Using-cloudmusic-package" class="headerlink" title="Using cloudmusic package"></a>Using cloudmusic package</h2><p>[github author &#x3D; “p697” project &#x3D; “cloudmusic”][&#x2F;github]</p>
+<p>Using this package, implementing our goal is just a simple thing.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cloudmusic</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">User = cloudmusic.getUser(<span class="number">415494856</span>) <span class="comment"># 415494856 : Zei_Wai </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">PrettifyLyrics</span>(<span class="params">LyricsWithTimeline</span>):</span><br><span class="line">    <span class="keyword">return</span> re.sub(<span class="string">&quot;[^\u4e00-\u9fa5+]&quot;</span>,<span class="string">&#x27;&#x27;</span>, LyricsWithTimeline)</span><br><span class="line"></span><br><span class="line">file = <span class="built_in">open</span>(<span class="string">&quot;/home/cuso4d/Archives/Python/NeteaseCrawler/Lyrics.txt&quot;</span>, <span class="string">&#x27;a+&#x27;</span>)</span><br><span class="line">Record = User.getRecord(<span class="number">1</span>)   <span class="comment"># Argument 1 means Recent 1 week, 0 means Total history.</span></span><br><span class="line"><span class="keyword">for</span> SingleRecord <span class="keyword">in</span> Record:                   <span class="comment"># SingleRecord is Dict</span></span><br><span class="line">    SingleMusic = SingleRecord[<span class="string">&quot;music&quot;</span>]       <span class="comment"># SingleMusic is MusicObj</span></span><br><span class="line">    SingleLyric = SingleMusic.getLyrics()[<span class="number">1</span>]  <span class="comment"># 1 means Translated lyrics.</span></span><br><span class="line">    file.write(PrettifyLyrics(SingleLyric))</span><br><span class="line">file.close()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;done&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Since we use Chinese translated lyrics to create WordCloud(in case of listening many languages and can’t unify), we use 1 as the argument of getLyrics.</p>
+<p>Cloudmusic package is good, but it hasn’t been maintained for 2 years. When getting data of abstract music, python returns a KeyError. So I have to edit the package file:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    # 获取歌词</span><br><span class="line">    def getLyrics(self):</span><br><span class="line">        lrc =  api.Api().get_lyrics(dict(ID = self.id))</span><br><span class="line">        lyric = &quot;&quot;</span><br><span class="line">        tlyric = &quot;&quot;</span><br><span class="line"></span><br><span class="line">        if &quot;lrc&quot; in lrc:</span><br><span class="line">            lyric = lrc[&quot;lrc&quot;][&quot;lyric&quot;]</span><br><span class="line">            if &quot;tlyric&quot; in lrc:                         # Edited to support Absolute Music</span><br><span class="line">                if &quot;lyric&quot; in lrc[&quot;tlyric&quot;]:</span><br><span class="line">                    tlyric = lrc[&quot;tlyric&quot;][&quot;lyric&quot;]</span><br><span class="line">            else:                                       # Edited to support Absolute Music</span><br><span class="line">                print(self.id, self.name, &#x27;-&#x27;, self.artist)     # Edited to support Absolute Music</span><br><span class="line">        return [lyric, tlyric]</span><br><span class="line"></span><br><span class="line">//music.Obj, Line 114</span><br></pre></td></tr></table></figure>
+
+<p>Then the program can work well, generating a file full of Chinese Lyrics:</p>
+<p><img src="/../images/2022/image-3.png"></p>
+<h2 id="WordCloud"><a href="#WordCloud" class="headerlink" title="WordCloud"></a>WordCloud</h2><p>To be continued…</p>
+<h2 id="Integration"><a href="#Integration" class="headerlink" title="Integration"></a>Integration</h2><h3 id="File-Organization"><a href="#File-Organization" class="headerlink" title="File Organization:"></a>File Organization:</h3><p><img src="/../images/2022/image-5.png"></p>
+<p>After generating process, two files “Lyrics.txt” and “wd-picture.jpg” will appear in output directory.</p>
+<h3 id="Readme-md"><a href="#Readme-md" class="headerlink" title="Readme.md"></a>Readme.md</h3><p>We use package:</p>
+<p>cloudmusic<br>re<br>wordcloud<br>image<br>jieba</p>
+<p>Before starting, please edit the musicObj.py in cloudmusic package <a href="#FixAbstractMusic">like this</a>.</p>
+<p>You can get the id of user from the URL of the personal page in Netease. Please ensure one has enabled “visible to everyone” settings of the Song Ranking.</p>
+<h3 id="start-bash"><a href="#start-bash" class="headerlink" title="start.bash"></a>start.bash</h3><p>Simply running the main program:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">python3 &quot;./input/NeteaseLyricsCloud.py&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Main-program"><a href="#Main-program" class="headerlink" title="Main program:"></a>Main program:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#      Filename: NeteaseLyricsCloud.py</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   Description: Crawl data from Netease Music, make a wordcloud out</span></span><br><span class="line"><span class="comment">#                 of the Record of recent 1 week.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#       Version: 1.0</span></span><br><span class="line"><span class="comment">#       Created: 2022/02/05 20:52:00</span></span><br><span class="line"><span class="comment">#        Author: Zei_Wai &amp; CuSO4_Deposit, CuSO4D@protonmail.com</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Support for Crawler</span></span><br><span class="line"><span class="keyword">import</span> cloudmusic</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="comment"># Support for WordCloud</span></span><br><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"><span class="keyword">import</span> PIL .Image <span class="keyword">as</span> image</span><br><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">jbcut</span>(<span class="params">t</span>):</span><br><span class="line">    result=<span class="string">&#x27; &#x27;</span>.join(jieba.cut(t))</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">PrettifyLyrics</span>(<span class="params">LyricsWithTimeline</span>):</span><br><span class="line">    <span class="keyword">return</span> re.sub(<span class="string">&quot;[^\u4e00-\u9fa5+]&quot;</span>,<span class="string">&#x27;&#x27;</span>, LyricsWithTimeline)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Please input your Netease user id:&quot;</span>)</span><br><span class="line">userid = <span class="built_in">input</span>()</span><br><span class="line">User = cloudmusic.getUser(userid) <span class="comment"># 415494856 : Zei_Wai </span></span><br><span class="line">file = <span class="built_in">open</span>(<span class="string">&quot;./output/Lyrics.txt&quot;</span>, <span class="string">&#x27;a+&#x27;</span>)</span><br><span class="line">Record = User.getRecord(<span class="number">1</span>)   <span class="comment"># Argument 1 means Recent 1 week, 0 means Total history.</span></span><br><span class="line"><span class="keyword">for</span> SingleRecord <span class="keyword">in</span> Record:                   <span class="comment"># SingleRecord is Dict</span></span><br><span class="line">    SingleMusic = SingleRecord[<span class="string">&quot;music&quot;</span>]       <span class="comment"># SingleMusic is MusicObj</span></span><br><span class="line">    SingleLyric = SingleMusic.getLyrics()[<span class="number">1</span>]  <span class="comment"># 1 means Translated lyrics.</span></span><br><span class="line">    file.write(PrettifyLyrics(SingleLyric))</span><br><span class="line">file.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;./output/Lyrics.txt&quot;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">            text = fp.read()</span><br><span class="line">            text = jbcut(text)</span><br><span class="line"></span><br><span class="line">            cn_stpwords = <span class="built_in">set</span>()</span><br><span class="line">            content = [line.strip() <span class="keyword">for</span> line <span class="keyword">in</span> <span class="built_in">open</span>(<span class="string">&#x27;./input/stopwords.txt&#x27;</span>,<span class="string">&#x27;r&#x27;</span>).readlines()]</span><br><span class="line">            cn_stpwords.update(content)</span><br><span class="line"></span><br><span class="line">            WordCloud = WordCloud(stopwords=cn_stpwords,font_path=<span class="string">&#x27;./input/Fonts.TTF&#x27;</span>,width=<span class="number">800</span>,height=<span class="number">800</span>).generate(text)</span><br><span class="line">            image_produce = WordCloud.to_image()</span><br><span class="line">            image_produce.save(<span class="string">&#x27;./output/wd-picture.jpg&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;All done&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Result-Output"><a href="#Result-Output" class="headerlink" title="Result Output"></a>Result Output</h2><p>やっぱり世界（</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/pages/">Pages</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-urllib-package"><span class="toc-number">2.</span> <span class="toc-text">Using urllib package</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-cloudmusic-package"><span class="toc-number">3.</span> <span class="toc-text">Using cloudmusic package</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WordCloud"><span class="toc-number">4.</span> <span class="toc-text">WordCloud</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Integration"><span class="toc-number">5.</span> <span class="toc-text">Integration</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#File-Organization"><span class="toc-number">5.1.</span> <span class="toc-text">File Organization:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Readme-md"><span class="toc-number">5.2.</span> <span class="toc-text">Readme.md</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#start-bash"><span class="toc-number">5.3.</span> <span class="toc-text">start.bash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Main-program"><span class="toc-number">5.4.</span> <span class="toc-text">Main program:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Result-Output"><span class="toc-number">6.</span> <span class="toc-text">Result Output</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/02/crawl-song-lyrics-in-netease/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/02/crawl-song-lyrics-in-netease/&text=Crawl song lyrics in NetEase"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/02/crawl-song-lyrics-in-netease/&title=Crawl song lyrics in NetEase"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/02/crawl-song-lyrics-in-netease/&is_video=false&description=Crawl song lyrics in NetEase"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Crawl song lyrics in NetEase&body=Check out this article: http://example.com/2022/02/crawl-song-lyrics-in-netease/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/02/crawl-song-lyrics-in-netease/&title=Crawl song lyrics in NetEase"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/02/crawl-song-lyrics-in-netease/&title=Crawl song lyrics in NetEase"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/02/crawl-song-lyrics-in-netease/&title=Crawl song lyrics in NetEase"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/02/crawl-song-lyrics-in-netease/&title=Crawl song lyrics in NetEase"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/02/crawl-song-lyrics-in-netease/&name=Crawl song lyrics in NetEase&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/02/crawl-song-lyrics-in-netease/&t=Crawl song lyrics in NetEase"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2023
+    CuSO4_Deposit
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/pages/">Pages</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

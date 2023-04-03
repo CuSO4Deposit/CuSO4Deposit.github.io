@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Move cursorh and l : Left and Right.k and j : Up and Down. Basic Editi: enter insert mode, cursor is before the highlighted character.a: enter insert mode, cursor is after the highlighted character. :">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vim Commands Memo">
+<meta property="og:url" content="http://example.com/2021/10/vim-commands-memo/index.html">
+<meta property="og:site_name" content="CuSO4D&#39;s Electrolytic Cell">
+<meta property="og:description" content="Move cursorh and l : Left and Right.k and j : Up and Down. Basic Editi: enter insert mode, cursor is before the highlighted character.a: enter insert mode, cursor is after the highlighted character. :">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-04T13:30:18.000Z">
+<meta property="article:modified_time" content="2023-04-03T13:47:04.193Z">
+<meta property="article:author" content="CuSO4_Deposit">
+<meta property="article:tag" content="vim">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Vim Commands Memo</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/pages/">Pages</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2021/10/differences-between-vs-and-other-ides/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2021/10/vim-configure-process-recording/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/10/vim-commands-memo/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/10/vim-commands-memo/&text=Vim Commands Memo"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/10/vim-commands-memo/&title=Vim Commands Memo"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/10/vim-commands-memo/&is_video=false&description=Vim Commands Memo"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Vim Commands Memo&body=Check out this article: http://example.com/2021/10/vim-commands-memo/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/10/vim-commands-memo/&title=Vim Commands Memo"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/10/vim-commands-memo/&title=Vim Commands Memo"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/10/vim-commands-memo/&title=Vim Commands Memo"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/10/vim-commands-memo/&title=Vim Commands Memo"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/10/vim-commands-memo/&name=Vim Commands Memo&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/10/vim-commands-memo/&t=Vim Commands Memo"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Move-cursor"><span class="toc-number">1.</span> <span class="toc-text">Move cursor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-Edit"><span class="toc-number">2.</span> <span class="toc-text">Basic Edit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Delete-and-Undo"><span class="toc-number">3.</span> <span class="toc-text">Delete and Undo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Paste-and-Change"><span class="toc-number">4.</span> <span class="toc-text">Paste and Change</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Locate-and-File-status"><span class="toc-number">5.</span> <span class="toc-text">Locate and File status</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Search-and-Replace"><span class="toc-number">6.</span> <span class="toc-text">Search and Replace</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#External-Command"><span class="toc-number">7.</span> <span class="toc-text">External Command</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#File-Operation"><span class="toc-number">8.</span> <span class="toc-text">File Operation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Open-and-Append"><span class="toc-number">9.</span> <span class="toc-text">Open and Append</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set"><span class="toc-number">10.</span> <span class="toc-text">Set</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Vim Commands Memo
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">CuSO4_Deposit</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-10-04T13:30:18.000Z" itemprop="datePublished">2021-10-04</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/vim/" rel="tag">vim</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Move-cursor"><a href="#Move-cursor" class="headerlink" title="Move cursor"></a>Move cursor</h2><p>h and l : Left and Right.<br>k and j : Up and Down.</p>
+<h2 id="Basic-Edit"><a href="#Basic-Edit" class="headerlink" title="Basic Edit"></a>Basic Edit</h2><p>i: enter insert mode, cursor is before the highlighted character.<br>a: enter insert mode, cursor is after the highlighted character.</p>
+<p>:wq: save and quit.<br>:q!: quit and do not save.</p>
+<h2 id="Delete-and-Undo"><a href="#Delete-and-Undo" class="headerlink" title="Delete and Undo"></a>Delete and Undo</h2><p>x: delete the current highlighted character.</p>
+<p>d: delete. Its basic format is d &lt;number&gt; &lt;motion&gt;.</p>
+<p>motion:<br>w: move cursor to the next word’s first letter.<br>e: move cursor to the current word’s last letter.<br>$: move cursor to the end of this line.</p>
+<p>then Delete Operation:<br>dw: delete until cursor get to the first letter of the next character.<br>d2e: do {delete until deleted the end of the current letter} twice.<br>… …<br>dd: delete the whole line (and put it into the register).</p>
+<p>u: undo.<br>U: undo all the operations to this line.<br>&lt;Ctrl&gt;+R: redo.</p>
+<h2 id="Paste-and-Change"><a href="#Paste-and-Change" class="headerlink" title="Paste and Change"></a>Paste and Change</h2><p>p: add things in register after the current cursor.<br>r&lt;char&gt;: keep in normal mode, replace the current character with &lt;char&gt;.</p>
+<p>c: change. It has the same format with d.<br>cw: delete from cursor to the end of this word, and enter insert mode.</p>
+<h2 id="Locate-and-File-status"><a href="#Locate-and-File-status" class="headerlink" title="Locate and File status"></a>Locate and File status</h2><p>&lt;Ctrl&gt;+G: show which line the cursor is at, and file status.<br>G: jump to the last line of this file.<br>&lt;number&gt;G: jump to the &lt;number&gt;th line of the file.<br>gg: jump to the first line of this file.</p>
+<h2 id="Search-and-Replace"><a href="#Search-and-Replace" class="headerlink" title="Search and Replace"></a>Search and Replace</h2><p>&#x2F;&lt;string&gt;: search &lt;string&gt; in this file.<br>?&lt;string&gt;: search &lt;string&gt; in this file, in reverse direction.<br>n: move to the next &lt;string&gt; found.<br>N: move to the previous &lt;string&gt; found.<br>&lt;Ctrl&gt;+O: cursor back to the previous location.<br>&lt;Ctrl&gt;+I: cursor to the newer location.<br>%: when cursor is on a brace&#x2F;bracket, jump to the paired one.<br>:s&#x2F;&lt;old&gt;&#x2F;&lt;new&gt;: replace the first &lt;old&gt; in the cursor’s line with &lt;new&gt;<br>:s&#x2F;&lt;old&gt;&#x2F;&lt;new&gt;&#x2F;g: replace all the &lt;old&gt; in the cursor’s line with &lt;new&gt;<br>:&lt;line&gt;,&lt;line&gt;s&#x2F;&lt;old&gt;&#x2F;&lt;new&gt;&#x2F;g: replace all the &lt;old&gt; from &lt;line&gt; to &lt;line&gt; with &lt;new&gt;<br>:%s&#x2F;&lt;old&gt;&#x2F;&lt;new&gt;&#x2F;g: replace all the &lt;old&gt; in the file with &lt;new&gt;<br>:%s&#x2F;&lt;old&gt;&#x2F;&lt;new&gt;&#x2F;gc: replace all the &lt;old&gt; in the file with &lt;new&gt;, but prompt whether to substitute at each one.</p>
+<h2 id="External-Command"><a href="#External-Command" class="headerlink" title="External Command"></a>External Command</h2><p>:!&lt;Command&gt;: execute command in cmd.</p>
+<h2 id="File-Operation"><a href="#File-Operation" class="headerlink" title="File Operation"></a>File Operation</h2><p>:w &lt;filename&gt;: save a new file &lt;filename&gt; at this dir.<br>v (motion) :w&lt;filename&gt;: save the selected part into &lt;filename&gt;.<br>:r &lt;filename&gt;: insert the content of &lt;filename&gt; to the cursor line.<br>:r !&lt;Command&gt;: read the output of external command &lt;Command&gt; and insert below the cursor line.</p>
+<h2 id="Open-and-Append"><a href="#Open-and-Append" class="headerlink" title="Open and Append"></a>Open and Append</h2><p>o: open a line below the cursor line.<br>O: open a line above the cursor line.<br>R: enter replace mode.<br>y: copy. p: paste.<br>yw: copy a word.</p>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>:set &lt;command&gt;: set some options. e.g. :set ic means (ignore case), works when find and replace.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/pages/">Pages</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Move-cursor"><span class="toc-number">1.</span> <span class="toc-text">Move cursor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-Edit"><span class="toc-number">2.</span> <span class="toc-text">Basic Edit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Delete-and-Undo"><span class="toc-number">3.</span> <span class="toc-text">Delete and Undo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Paste-and-Change"><span class="toc-number">4.</span> <span class="toc-text">Paste and Change</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Locate-and-File-status"><span class="toc-number">5.</span> <span class="toc-text">Locate and File status</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Search-and-Replace"><span class="toc-number">6.</span> <span class="toc-text">Search and Replace</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#External-Command"><span class="toc-number">7.</span> <span class="toc-text">External Command</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#File-Operation"><span class="toc-number">8.</span> <span class="toc-text">File Operation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Open-and-Append"><span class="toc-number">9.</span> <span class="toc-text">Open and Append</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set"><span class="toc-number">10.</span> <span class="toc-text">Set</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/10/vim-commands-memo/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/10/vim-commands-memo/&text=Vim Commands Memo"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/10/vim-commands-memo/&title=Vim Commands Memo"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/10/vim-commands-memo/&is_video=false&description=Vim Commands Memo"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Vim Commands Memo&body=Check out this article: http://example.com/2021/10/vim-commands-memo/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/10/vim-commands-memo/&title=Vim Commands Memo"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/10/vim-commands-memo/&title=Vim Commands Memo"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/10/vim-commands-memo/&title=Vim Commands Memo"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/10/vim-commands-memo/&title=Vim Commands Memo"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/10/vim-commands-memo/&name=Vim Commands Memo&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/10/vim-commands-memo/&t=Vim Commands Memo"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2023
+    CuSO4_Deposit
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/pages/">Pages</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

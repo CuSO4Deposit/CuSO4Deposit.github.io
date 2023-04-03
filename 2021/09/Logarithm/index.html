@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="引言 Introduction给我空间、时间及对数，我就可以创造一个宇宙。 伽利略  对数是一个有用的数学工具，它是指数的逆运算。在数学史上它的出现先于指数，纳皮尔在1614年出版的《奇妙的对数定律说明书》中正式地引入了对数。它的出现，让人们可以更轻松地考虑很大的数字，对天文学的发展起到了很大的作用。它的意义在于可以将指数取下来，将幂运算转化为乘法运算。 The logarithm is a us">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对数(Logarithm)">
+<meta property="og:url" content="http://example.com/2021/09/Logarithm/index.html">
+<meta property="og:site_name" content="CuSO4D&#39;s Electrolytic Cell">
+<meta property="og:description" content="引言 Introduction给我空间、时间及对数，我就可以创造一个宇宙。 伽利略  对数是一个有用的数学工具，它是指数的逆运算。在数学史上它的出现先于指数，纳皮尔在1614年出版的《奇妙的对数定律说明书》中正式地引入了对数。它的出现，让人们可以更轻松地考虑很大的数字，对天文学的发展起到了很大的作用。它的意义在于可以将指数取下来，将幂运算转化为乘法运算。 The logarithm is a us">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/2021/log.jpg">
+<meta property="og:image" content="http://example.com/images/2021/LogGraphics.png">
+<meta property="article:published_time" content="2021-09-20T02:40:32.000Z">
+<meta property="article:modified_time" content="2023-01-22T12:11:11.000Z">
+<meta property="article:author" content="CuSO4_Deposit">
+<meta property="article:tag" content="test">
+<meta property="article:tag" content="Math&amp;Sci">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/2021/log.jpg">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>对数(Logarithm)</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/pages/">Pages</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2021/09/Function-pointer/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2021/09/sequence-list-implement-in-c/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/09/Logarithm/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/09/Logarithm/&text=对数(Logarithm)"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/09/Logarithm/&title=对数(Logarithm)"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/09/Logarithm/&is_video=false&description=对数(Logarithm)"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=对数(Logarithm)&body=Check out this article: http://example.com/2021/09/Logarithm/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/09/Logarithm/&title=对数(Logarithm)"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/09/Logarithm/&title=对数(Logarithm)"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/09/Logarithm/&title=对数(Logarithm)"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/09/Logarithm/&title=对数(Logarithm)"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/09/Logarithm/&name=对数(Logarithm)&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/09/Logarithm/&t=对数(Logarithm)"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80-Introduction"><span class="toc-number">1.</span> <span class="toc-text">引言 Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-Definition"><span class="toc-number">2.</span> <span class="toc-text">定义 Definition</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E5%92%8C%E6%80%A7%E8%B4%A8-Graph-amp-Properties"><span class="toc-number">3.</span> <span class="toc-text">图像和性质 Graph&amp;Properties</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F"><span class="toc-number">3.1.</span> <span class="toc-text">图像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%B4%A8"><span class="toc-number">3.2.</span> <span class="toc-text">性质</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E7%9A%84%E7%BB%93%E8%AE%BA"><span class="toc-number">4.</span> <span class="toc-text">一些基本的结论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E5%87%BD%E6%95%B0%E5%9B%BE%E5%83%8F%E5%88%A4%E6%96%AD%E5%BA%95%E6%95%B0%E5%A4%A7%E5%B0%8F%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">4.1.</span> <span class="toc-text">根据函数图像判断底数大小的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%95%B0%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E5%87%BD%E6%95%B0"><span class="toc-number">4.2.</span> <span class="toc-text">对数函数的导函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8D%A2%E5%BA%95%E5%85%AC%E5%BC%8F%E7%9A%84%E6%8E%A8%E8%AE%BA"><span class="toc-number">4.3.</span> <span class="toc-text">换底公式的推论</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        对数(Logarithm)
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">CuSO4_Deposit</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-09-20T02:40:32.000Z" itemprop="datePublished">2021-09-20</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Math-Sci/" rel="tag">Math&Sci</a>, <a class="tag-link-link" href="/tags/test/" rel="tag">test</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="引言-Introduction"><a href="#引言-Introduction" class="headerlink" title="引言 Introduction"></a>引言 Introduction</h2><blockquote><p>给我空间、时间及对数，我就可以创造一个宇宙。</p>
+<footer><strong>伽利略</strong></footer></blockquote>
+
+<p>对数是一个有用的数学工具，它是指数的逆运算。在数学史上它的出现先于指数，纳皮尔在1614年出版的《奇妙的对数定律说明书》中正式地引入了对数。它的出现，让人们可以更轻松地考虑很大的数字，对天文学的发展起到了很大的作用。它的意义在于可以将指数取下来，将幂运算转化为乘法运算。</p>
+<p>The logarithm is a useful mathematical tool which is the inverse of the exponent. It preceded exponents in the history of mathematics, and was formally introduced by Napier in 1614 in his <em>A Description of the  Wonderful Law of Logarithms</em>. It has been instrumental in the development of astronomy by making it easier to consider very large numbers.Its significance lies in the ability to take down exponents and convert power operations into multiplication operations.</p>
+<h2 id="定义-Definition"><a href="#定义-Definition" class="headerlink" title="定义 Definition"></a>定义 Definition</h2><p>虽然对数的出现先于指数，但我们依然可以依赖指数来定义对数，以便于理解。</p>
+<p>若$a^x &#x3D; y(a&gt;0, a \neq 1)$，则有$$ x &#x3D; \log_a y. $$ 也就是说，$\log_a y$定义为：$a$的多少次幂为 $y$（$a^? &#x3D; y$）.在$\log_a y$中，称$a$为<strong>底数</strong>，$y$为<strong>真数</strong>。</p>
+<p>对数函数，是以x为自变量的函数$f$: $$f(x)&#x3D;\log_a x.$$它的定义域是$(0,+\infty)$，且要求$a&gt;0, a\neq 1.$ 值域为$\mathbb{R}.$ 它将任意一个在定义域内的输入$x$，映射为$a^? &#x3D; x$中?的值，从而我们可以通过函数快速找到$a$的多少次幂等于一个变量。</p>
+<p>$a&gt;0, a\neq 1$ 和 $x\in (0,+\infty)$ 保证了函数的连续性。从指数函数的角度来考虑：</p>
+<p>当$a&lt;0$时，相当于问$$(-c)^? &#x3D;x. $$以负数为底的指数函数还没有很好的定义，仅考虑x取整数时，函数值就会在正负值间反复跳动。</p>
+<p>当$a &#x3D; 0$或$a &#x3D; 1$时，相当于问$$0^? &#x3D; x, 1^? &#x3D; x.$$我们知道这个问题是通常没有解的，因此不进行研究。</p>
+<p>而对$x$的限制就来源于$a^? &#x3D; x$中指数函数的输出一定大于0.</p>
+<h2 id="图像和性质-Graph-amp-Properties"><a href="#图像和性质-Graph-amp-Properties" class="headerlink" title="图像和性质 Graph&amp;Properties"></a>图像和性质 Graph&amp;Properties</h2><h3 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h3><p><img src="/images/2021/log.jpg"></p>
+<p>Show[{Plot[Log[E, x], {x, 0, 4}]}, Plot[Log[1&#x2F;E, x], {x, 0, 4}]]</p>
+<p>对数函数的图像在$a$取在1两侧时有所不同，这是容易理解的。因为一个小于1的数的?次幂等于y，则随着y的减小?应当增大；而大于1的数的?次幂等于y，则随着y的减小?也应当减小。</p>
+<p>对数函数是单调的。递增或递减取决于底数a的范围。</p>
+<p>对数函数图像必过$(1,0)$点，这是因为$a^0 &#x3D; 1\Leftrightarrow \log_a 1 &#x3D; 0.$</p>
+<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><p>对数函数有如下的运算性质：</p>
+<p>定义：</p>
+<p>$$a^{\log_a x} &#x3D; x.$$</p>
+<p>同底数的对数相加，底数不变，真数相乘：</p>
+<p>$$\log_c a+ \log_c b &#x3D; \log_c ab.\Leftrightarrow c^x\cdot c^y &#x3D; c^{xy}.$$</p>
+<p>以同一个数做底，若真数互为倒数，则对数互为相反数：</p>
+<p>$$\log_c a &#x3D; -\log_c {\frac{1}{a}}.\Leftrightarrow c^x \cdot c^{-x} &#x3D; c^0 &#x3D; 1.$$</p>
+<p>真数的次幂可以提到对数外做分子，底数的次幂可以提到对数外做分母：</p>
+<p>$$\log_{c^a} {d^b} &#x3D; \frac{b}{d}\log_c d.$$</p>
+<p>对数可以换底：</p>
+<p>$$\log_a b &#x3D; \dfrac{\log_c b}{\log_c a}.$$</p>
+<p>灵活地运用上述性质即可解决高中范围内的问题。</p>
+<h2 id="一些基本的结论"><a href="#一些基本的结论" class="headerlink" title="一些基本的结论"></a>一些基本的结论</h2><h3 id="根据函数图像判断底数大小的方法"><a href="#根据函数图像判断底数大小的方法" class="headerlink" title="根据函数图像判断底数大小的方法"></a>根据函数图像判断底数大小的方法</h3><p>在第一象限内，图像越靠右，$a$越大。</p>
+<p><img src="/images/2021/LogGraphics.png"></p>
+<p>根据函数图像判断底数大小的方法</p>
+<h3 id="对数函数的导函数"><a href="#对数函数的导函数" class="headerlink" title="对数函数的导函数"></a>对数函数的导函数</h3><p>$$(\ln x)’ &#x3D; \frac{1}{x}.$$</p>
+<p>由此有:</p>
+<p>$$(\log_a x)’ &#x3D; (\dfrac{\ln x}{\ln a})’ &#x3D; \dfrac{1}{x\ln a}.$$</p>
+<p>$$(\ln 2x)’ &#x3D; (\ln 2 + \ln x)’ &#x3D; 0 + (\ln x)’ &#x3D; \frac{1}{x}.$$</p>
+<h3 id="换底公式的推论"><a href="#换底公式的推论" class="headerlink" title="换底公式的推论"></a>换底公式的推论</h3><p>$$\log_a b &#x3D; \dfrac{\log_b b}{\log_ b a}.\Rightarrow \log_a b \cdot \log_b a &#x3D; 1.$$</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/pages/">Pages</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80-Introduction"><span class="toc-number">1.</span> <span class="toc-text">引言 Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-Definition"><span class="toc-number">2.</span> <span class="toc-text">定义 Definition</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E5%92%8C%E6%80%A7%E8%B4%A8-Graph-amp-Properties"><span class="toc-number">3.</span> <span class="toc-text">图像和性质 Graph&amp;Properties</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F"><span class="toc-number">3.1.</span> <span class="toc-text">图像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%B4%A8"><span class="toc-number">3.2.</span> <span class="toc-text">性质</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E7%9A%84%E7%BB%93%E8%AE%BA"><span class="toc-number">4.</span> <span class="toc-text">一些基本的结论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E5%87%BD%E6%95%B0%E5%9B%BE%E5%83%8F%E5%88%A4%E6%96%AD%E5%BA%95%E6%95%B0%E5%A4%A7%E5%B0%8F%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">4.1.</span> <span class="toc-text">根据函数图像判断底数大小的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%95%B0%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%BC%E5%87%BD%E6%95%B0"><span class="toc-number">4.2.</span> <span class="toc-text">对数函数的导函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8D%A2%E5%BA%95%E5%85%AC%E5%BC%8F%E7%9A%84%E6%8E%A8%E8%AE%BA"><span class="toc-number">4.3.</span> <span class="toc-text">换底公式的推论</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/09/Logarithm/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/09/Logarithm/&text=对数(Logarithm)"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/09/Logarithm/&title=对数(Logarithm)"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/09/Logarithm/&is_video=false&description=对数(Logarithm)"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=对数(Logarithm)&body=Check out this article: http://example.com/2021/09/Logarithm/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/09/Logarithm/&title=对数(Logarithm)"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/09/Logarithm/&title=对数(Logarithm)"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/09/Logarithm/&title=对数(Logarithm)"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/09/Logarithm/&title=对数(Logarithm)"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/09/Logarithm/&name=对数(Logarithm)&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/09/Logarithm/&t=对数(Logarithm)"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2023
+    CuSO4_Deposit
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/pages/">Pages</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

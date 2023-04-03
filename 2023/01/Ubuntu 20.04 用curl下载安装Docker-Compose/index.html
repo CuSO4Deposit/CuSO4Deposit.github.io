@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Ubuntu维护的库中docker-compose版本过低，使用时可能会出现错误。在2023-01-08，库中维护的版本是v1.25.0，而官方发布了v2.15.0。 我尝试时的报错： ERROR: Version in “.&#x2F;docker-compose.yml” is unsupported. You might be seeing this error because you’re">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu 20.04 用curl下载安装Docker-Compose">
+<meta property="og:url" content="http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/index.html">
+<meta property="og:site_name" content="CuSO4D&#39;s Electrolytic Cell">
+<meta property="og:description" content="Ubuntu维护的库中docker-compose版本过低，使用时可能会出现错误。在2023-01-08，库中维护的版本是v1.25.0，而官方发布了v2.15.0。 我尝试时的报错： ERROR: Version in “.&#x2F;docker-compose.yml” is unsupported. You might be seeing this error because you’re">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-01-08T16:25:00.000Z">
+<meta property="article:modified_time" content="2023-02-10T18:21:07.000Z">
+<meta property="article:author" content="CuSO4_Deposit">
+<meta property="article:tag" content="Tech">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Ubuntu 20.04 用curl下载安装Docker-Compose</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/pages/">Pages</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2023/01/Pingvin%20Share%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/01/Markdown-Syntax-Test/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/&text=Ubuntu 20.04 用curl下载安装Docker-Compose"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/&title=Ubuntu 20.04 用curl下载安装Docker-Compose"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/&is_video=false&description=Ubuntu 20.04 用curl下载安装Docker-Compose"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Ubuntu 20.04 用curl下载安装Docker-Compose&body=Check out this article: http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/&title=Ubuntu 20.04 用curl下载安装Docker-Compose"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/&title=Ubuntu 20.04 用curl下载安装Docker-Compose"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/&title=Ubuntu 20.04 用curl下载安装Docker-Compose"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/&title=Ubuntu 20.04 用curl下载安装Docker-Compose"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/&name=Ubuntu 20.04 用curl下载安装Docker-Compose&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/&t=Ubuntu 20.04 用curl下载安装Docker-Compose"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Ubuntu 20.04 用curl下载安装Docker-Compose
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">CuSO4_Deposit</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-01-08T16:25:00.000Z" itemprop="datePublished">2023-01-08</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Tech/" rel="tag">Tech</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Ubuntu维护的库中docker-compose版本过低，使用时可能会出现错误。在2023-01-08，库中维护的版本是v1.25.0，而官方发布了v2.15.0。</p>
+<p>我尝试时的报错：</p>
+<p>ERROR: Version in “.&#x2F;docker-compose.yml” is unsupported. You might be seeing this error because you’re using the wrong Compose file version. Either specify a supported version (e.g “2.2” or “3.3”) and place your service definitions under the services key, or omit the version key and place your service definitions at the root of the file to use version 1.</p>
+<p>而在我的docker-compose.yml中第一行是:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.8&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>需要安装更新版本的docker-compose。</p>
+<p>查看本机的指令集架构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ arch</span><br><span class="line">x86_64</span><br></pre></td></tr></table></figure>
+
+<p>使用curl下载：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -L &quot;https://github.com/docker/compose/releases/download/v2.15.0/docker-compose-x86_64&quot; -o /usr/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>-L</code>参数表示接受重定向，<code>-o</code>指示文件名。</p>
+<p>修改文件权限后即可正常使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chmod +x /usr/bin/docker-compose</span><br><span class="line">$ docker-compose --version</span><br><span class="line">Docker Compose version v2.15.0</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/pages/">Pages</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/&text=Ubuntu 20.04 用curl下载安装Docker-Compose"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/&title=Ubuntu 20.04 用curl下载安装Docker-Compose"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/&is_video=false&description=Ubuntu 20.04 用curl下载安装Docker-Compose"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Ubuntu 20.04 用curl下载安装Docker-Compose&body=Check out this article: http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/&title=Ubuntu 20.04 用curl下载安装Docker-Compose"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/&title=Ubuntu 20.04 用curl下载安装Docker-Compose"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/&title=Ubuntu 20.04 用curl下载安装Docker-Compose"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/&title=Ubuntu 20.04 用curl下载安装Docker-Compose"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/&name=Ubuntu 20.04 用curl下载安装Docker-Compose&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/01/Ubuntu%2020.04%20%E7%94%A8curl%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Docker-Compose/&t=Ubuntu 20.04 用curl下载安装Docker-Compose"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2023
+    CuSO4_Deposit
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/pages/">Pages</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

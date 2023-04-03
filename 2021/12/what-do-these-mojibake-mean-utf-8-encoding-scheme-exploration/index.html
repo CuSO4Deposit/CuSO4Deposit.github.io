@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="This article may contain horrific and gory videos. Be careful when clicking on the URLs. If you have any discomfort when browsing, please stop and leave. &#x2F; 本文可能含有恐怖、血腥性质的图片、视频。请谨慎进入文中的链接。如果您在浏览过程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration">
+<meta property="og:url" content="http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/index.html">
+<meta property="og:site_name" content="CuSO4D&#39;s Electrolytic Cell">
+<meta property="og:description" content="This article may contain horrific and gory videos. Be careful when clicking on the URLs. If you have any discomfort when browsing, please stop and leave. &#x2F; 本文可能含有恐怖、血腥性质的图片、视频。请谨慎进入文中的链接。如果您在浏览过程">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://depoze.uden.ai/wp-content/uploads/2021/12/QNNCLUMGRDIEFCQVQCO3-3.jpg">
+<meta property="og:image" content="https://depoze.uden.ai/wp-content/uploads/2021/12/MW1EXEI17N6H89D@JV87UV-1.png">
+<meta property="og:image" content="https://depoze.uden.ai/wp-content/uploads/2021/12/3WXHQK1UQ9J6GA2WB15J-edited.jpg">
+<meta property="og:image" content="https://depoze.uden.ai/wp-content/uploads/2021/12/%E5%9B%BE%E7%89%87.png">
+<meta property="og:image" content="https://depoze.uden.ai/wp-content/uploads/2021/12/6YFC@GRVCAMXP63BGMU.png">
+<meta property="og:image" content="https://depoze.uden.ai/wp-content/uploads/2021/12/I91_KITZUZF_@0MGY.png">
+<meta property="og:image" content="https://depoze.uden.ai/wp-content/uploads/2021/12/9TAHCBU9BBW9F0@B1PH.png">
+<meta property="og:image" content="https://depoze.uden.ai/wp-content/uploads/2021/12/@3VBDHQES_U2ZHX4.png">
+<meta property="og:image" content="https://depoze.uden.ai/wp-content/uploads/2021/12/US8TYJIZMZ9I574H.png">
+<meta property="og:image" content="https://depoze.uden.ai/wp-content/uploads/2021/12/SO_UYH@QETAAEKV9FE.png">
+<meta property="og:image" content="https://depoze.uden.ai/wp-content/uploads/2021/12/GPKX7IW717_DR@V@I3.png">
+<meta property="article:published_time" content="2021-12-08T02:36:00.000Z">
+<meta property="article:modified_time" content="2023-04-03T13:58:59.529Z">
+<meta property="article:author" content="CuSO4_Deposit">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="Encoding">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://depoze.uden.ai/wp-content/uploads/2021/12/QNNCLUMGRDIEFCQVQCO3-3.jpg">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/pages/">Pages</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2022/01/dual-boot-win10-and-linux-mint/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2021/11/expression-tree-bitrees-application/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/&text=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/&title=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/&is_video=false&description=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration&body=Check out this article: http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/&title=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/&title=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/&title=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/&title=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/&name=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/&t=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exploration"><span class="toc-number">2.</span> <span class="toc-text">Exploration</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Association-with-encoding"><span class="toc-number">2.0.1.</span> <span class="toc-text">Association with encoding</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Organize-known-information"><span class="toc-number">2.0.2.</span> <span class="toc-text">Organize known information</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Directly-converting-New-Mojibake-found"><span class="toc-number">2.0.3.</span> <span class="toc-text">Directly converting - New Mojibake found</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Dig-Deeper-UTF-8-scheme"><span class="toc-number">2.0.4.</span> <span class="toc-text">Dig Deeper - UTF-8 scheme</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Other-mojibake"><span class="toc-number">2.0.5.</span> <span class="toc-text">Other mojibake</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">CuSO4_Deposit</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-12-08T02:36:00.000Z" itemprop="datePublished">2021-12-08</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/C/" rel="tag">C</a>, <a class="tag-link-link" href="/tags/Encoding/" rel="tag">Encoding</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>This article may contain horrific and gory videos. Be careful when clicking on the URLs. If you have any discomfort when browsing, please stop and leave. &#x2F; 本文可能含有恐怖、血腥性质的图片、视频。请谨慎进入文中的链接。如果您在浏览过程中产生任何不适，请停止浏览并离开。</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>We often meet mojibake, in games, web pages, or somewhere else. UTF-8 is the most widespread encoding scheme. These days my friends @叉叉 and @北嘲 find some weird videos on YouTube, with obscure titles and terrifying cover. We are curious about the origin of these creepy videos. This article is to record our exploration process.</p>
+<p> Some Example Videos</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=6fAE1VxKbOQ">…. ø·ø ̈ùšù„ø© … ø£øoù†ùšø© ù„ù„ø£ø·ù ø§ù„ … ù„ùšø ̈ùšø§</a><br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Fxd_bUi3cog">.. آمراة تدعى أنها السيدة مريم العذراء بأنها متزوجة من المسيح</a></p>
+<h2 id="Exploration"><a href="#Exploration" class="headerlink" title="Exploration"></a>Exploration</h2><h4 id="Association-with-encoding"><a href="#Association-with-encoding" class="headerlink" title="Association with encoding"></a>Association with encoding</h4><p>When @叉叉 first send me the video title (…. ø·ø ̈ùšù„ø© … ø£øoù†ùšø© ù„ù„ø£ø·ù ø§ù„ … ù„ùšø ̈ùšø§), it reminds me of what my misconfigured C-language IDE returns me as console error info:</p>
+<ul>
+<li><p><img src="https://depoze.uden.ai/wp-content/uploads/2021/12/QNNCLUMGRDIEFCQVQCO3-3.jpg"></p>
+</li>
+<li><p><img src="https://depoze.uden.ai/wp-content/uploads/2021/12/MW1EXEI17N6H89D@JV87UV-1.png"></p>
+</li>
+</ul>
+<p>What the IDE returns: “²»ÊÇÄڲ¿»òÍⲿÃüÁҲ²»ÊǿÉÔËÐеĳÌÐò<br>»òÅú´¦ÀíÎļþ¡£”</p>
+<p>This is apparently a decoding error. Characters are all Latin Characters. Remind me of some schemes like ISO 8859-1. @叉叉 found that of these titles, some are mojibake and the other are Arabic. So I put my attention on Arabic Encoding.</p>
+<h4 id="Organize-known-information"><a href="#Organize-known-information" class="headerlink" title="Organize known information"></a>Organize known information</h4><p>@北嘲 and @刺刺 provide the following conclusion: we have many videos, with similar, creepy contents. The titles are 2 kinds: mojibake and Arabic. But all the Arabic-titled videos nearly have the same title: “.. آمراة تدعى أنها السيدة مريم العذراء بأنها متزوجة من المسيح” which means “yes A woman who claimed to be the Virgin Mary married Jesus.”</p>
+<p>All these videos have one or more “.”(full stop punctuation) in there title. And there are some “Don’t search full stop punctualation on Youtube”, “YouTube’s dark side” trends on YouTube. Guess this “.” may be an “Entrance” the authors left for the viewers.</p>
+<p>@北嘲 also found a Youtuber updated a video with an introduction full of 0-1 strings. It attracts my attention. The mojibake may be the real garbled mojibake, but in 0-1 strings must hides some infomation, this must be a useful infomation. So I went on to find the meaning of this 0-1 string.</p>
+<p><img src="https://depoze.uden.ai/wp-content/uploads/2021/12/3WXHQK1UQ9J6GA2WB15J-edited.jpg"></p>
+<p>what @北嘲 found</p>
+<p>The content of the 0-1 string:</p>
+<p>001011100010000011011000101000101101100110000101110110001011000111011000101001111101100010101001001000001101100010101010110110001010111111011000101110011101100110001001001000001101100010100011110110011000011011011001100001111101100010100111001000001101100010100111110110011000010011011000101100111101100110001010110110001010111111011000101010010010000011011001100001011101100010110001110110011000101011011001100001010010000011011000101001111101100110000100110110001011100111011000101100001101100010110001110110001010011111011000101000010010000011011000101010001101100010100011110110011000011011011001100001111101100010100111001000001101100110000101110110001010101011011000101100101101100110001000110110001010110011011000101010010010000011011001100001011101100110000110001000001101100010100111110110011000010011011001100001011101100010110011110110011000101011011000101011010010000011011000</p>
+<h4 id="Directly-converting-New-Mojibake-found"><a href="#Directly-converting-New-Mojibake-found" class="headerlink" title="Directly converting - New Mojibake found"></a>Directly converting - New Mojibake found</h4><p>A simple thought is to directly read these bits, and each 8 bit I output an ASCII character. This is the first version of this program.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * =====================================================================================</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *       Filename:  01-to-ASCII.cpp</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *    Description:  An converter, input 0-1 string and output ASCII.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *        Version:  1.0</span></span><br><span class="line"><span class="comment"> *        Created:  2021/12/6 11:52:42</span></span><br><span class="line"><span class="comment"> *       Revision:  none</span></span><br><span class="line"><span class="comment"> *       Compiler:  gcc</span></span><br><span class="line"><span class="comment"> *         Author:  CuSO4_Deposit (depoze.xyz), CuSO4D@protonmail.com</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * =====================================================================================</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INPUT_PATH <span class="string">&quot;.\\input.txt&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> OUTPUT_PATH <span class="string">&quot;.\\output.txt&quot;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    FILE* fpi;</span><br><span class="line">    FILE* fpo;</span><br><span class="line">    <span class="keyword">if</span> ((<span class="built_in">fopen_s</span>(&amp;fpi, INPUT_PATH, <span class="string">&quot;r&quot;</span>)))&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Cannot open the input file.\n&quot;</span>);    </span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">if</span> ((<span class="built_in">fopen_s</span>(&amp;fpo, OUTPUT_PATH, <span class="string">&quot;w&quot;</span>)))&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Cannot open the output file.\n&quot;</span>);    </span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">char</span> Word = <span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> temp;</span><br><span class="line"><span class="comment">//  int counter = 100;  // At first I don&#x27;t know why feof() doesn&#x27;t work, so I have to</span></span><br><span class="line"><span class="comment">//                      //   manually specify the loop counter.</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line"><span class="comment">//      if (counter-- == 0)    break;</span></span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> mask = <span class="number">0x80</span>;</span><br><span class="line">        Word = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">feof</span>(fpi)) <span class="keyword">break</span>;</span><br><span class="line">            temp = <span class="built_in">fgetc</span>(fpi);</span><br><span class="line">            <span class="keyword">switch</span>(temp)&#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;0&#x27;</span>:   <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&#x27;1&#x27;</span>:   Word = Word  mask;    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:    </span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">&quot;\n Unexpected character: %c, 0x%x&quot;</span>, temp, temp);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            mask = mask &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">feof</span>(fpi))   <span class="keyword">break</span>;</span><br><span class="line">        <span class="built_in">fputc</span>(Word, fpo);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%c, 0x%x\n&quot;</span>, Word, Word);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>This program’s output file:</p>
+<p>. 丌賲乇丕丞 鬲丿毓賶 兀賳賴丕 丕賱爻賷丿丞 賲乇賷賲 丕賱毓匕乇丕亍 亘兀賳賴丕 賲鬲夭賵噩丞 賲賳 丕賱賲爻賷丨 ?</p>
+<p>When I thought I got something wrong, I find this new kind of mojibake has some relationship with Arabic: When I type them into Bing, the seraching result(containg these mojibake) all contains Arabic. Here are some examples of the searching results:</p>
+<p><a target="_blank" rel="noopener" href="http://stg-learn.sketchup.com/u-23497.php">http://stg-learn.sketchup.com/u-23497.php</a><br><a target="_blank" rel="noopener" href="https://www.docin.com/p-2280050009.html">https://www.docin.com/p-2280050009.html</a><br><a target="_blank" rel="noopener" href="https://xueshu.baidu.com/usercenter/paper/show?paperid=10668a70e990c9fd526b3e0382dfaf16">https://xueshu.baidu.com/usercenter/paper/show?paperid=10668a70e990c9fd526b3e0382dfaf16</a>  </p>
+<ul>
+<li><p><img src="https://depoze.uden.ai/wp-content/uploads/2021/12/%E5%9B%BE%E7%89%87.png"></p>
+</li>
+<li><p><img src="https://depoze.uden.ai/wp-content/uploads/2021/12/6YFC@GRVCAMXP63BGMU.png"></p>
+</li>
+<li><p><img src="https://depoze.uden.ai/wp-content/uploads/2021/12/I91_KITZUZF_@0MGY.png"></p>
+</li>
+</ul>
+<p>Screenshots</p>
+<p>That’s to say, what I decode is not completely wrong. At least it has something to do with Arabic.</p>
+<h4 id="Dig-Deeper-UTF-8-scheme"><a href="#Dig-Deeper-UTF-8-scheme" class="headerlink" title="Dig Deeper - UTF-8 scheme"></a>Dig Deeper - UTF-8 scheme</h4><p>As mentioned in the code comment, when debugging, I use a manual loop counter. By accident I find that, sometimes in the output file there is a complete Arabic sentence, not garmbled words:</p>
+<p>. آمراة تدعى أنها السيدة مريم  </p>
+<p>This is when the loopcounter is set to 50. But when I reset to 100, it will becomes garbled again. But 101 was OK. Then I printed it out byte by byte:</p>
+<p>., 0x2e<br> , 0x20<br>? 0xffffffd8<br>? 0xffffffa2<br>? 0xffffffd94<br>? 0xffffff85<br>? 0xffffffd8<br>? 0xffffffb1<br>? 0xffffffd8<br>? 0xffffffa7<br>? 0xffffffd8<br>? 0xffffffa9<br> , 0x20<br>? 0xffffffd8<br>? 0xffffffaa<br>? 0xffffffd8<br>? 0xffffffaf<br>? 0xffffffd8<br>? 0xffffffb9<br>? 0xffffffd9<br>? 0xffffff89<br> , 0x20<br>? 0xffffffd8<br>? 0xffffffa3<br>? 0xffffffd9<br>? 0xffffff86<br>? 0xffffffd9<br>? 0xffffff87<br>? 0xffffffd8<br>? 0xffffffa7<br> , 0x20<br>? 0xffffffd8<br>? 0xffffffa7<br>? 0xffffffd9<br>? 0xffffff84<br>? 0xffffffd8<br>? 0xffffffb3<br>? 0xffffffd9<br>? 0xffffff8a<br>? 0xffffffd8<br>? 0xffffffaf<br>? 0xffffffd8<br>? 0xffffffa9<br> , 0x20<br>? 0xffffffd9<br>? 0xffffff85<br>? 0xffffffd8<br>? 0xffffffb1<br>? 0xffffffd9<br>? 0xffffff8a<br>? 0xffffffd9<br>? 0xffffff85<br> , 0x20<br>? 0xffffffd8<br>? 0xffffffa7<br>? 0xffffffd9<br>? 0xffffff84<br>? 0xffffffd8<br>? 0xffffffb9<br>? 0xffffffd8<br>? 0xffffffb0<br>? 0xffffffd8<br>? 0xffffffb1<br>? 0xffffffd8<br>? 0xffffffa7<br>? 0xffffffd8<br>? 0xffffffa1<br> , 0x20<br>? 0xffffffd8<br>? 0xffffffa8<br>? 0xffffffd8<br>? 0xffffffa3<br>? 0xffffffd9<br>? 0xffffff86<br>? 0xffffffd9<br>? 0xffffff87<br>? 0xffffffd8<br>? 0xffffffa7<br> , 0x20<br>? 0xffffffd9<br>? 0xffffff85<br>? 0xffffffd8<br>? 0xffffffaa<br>? 0xffffffd8<br>? 0xffffffb2<br>? 0xffffffd9<br>? 0xffffff88<br>? 0xffffffd8<br>? 0xffffffac<br>? 0xffffffd8<br>? 0xffffffa9<br> , 0x20<br>? 0xffffffd9<br>? 0xffffff85<br>? 0xffffffd9<br>? 0xffffff86<br> , 0x20<br>? 0xffffffd8<br>? 0xffffffa7<br>? 0xffffffd9</p>
+<p>It’s clear that the single-byte character 0x20 interrupted the decoding process, maybe made a double-byte character separated then caused the garmbled. So I should learn how UTF-8 is encoded.</p>
+<p><strong>UTF-8</strong> is a <strong>variable-width</strong> character encoding used for electronic communication. Defined by the Unicode Standard, the name is derived from <em>Unicode</em> (or <em>Universal Coded Character Set</em>) <em>Transformation Format – 8-bit</em>. While Unicode is a character set.<br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/UTF-8">UTF-8 - From Wikipedia, the free encyclopedia</a></p>
+<p>First code point</p>
+<p>Last code point</p>
+<p>Byte 1</p>
+<p>Byte 2</p>
+<p>Byte 3</p>
+<p>Byte 4</p>
+<p>U+0000</p>
+<p>U+007F</p>
+<p>0xxxxxxx</p>
+<p>U+0080</p>
+<p>U+07FF</p>
+<p>110xxxxx</p>
+<p>10xxxxxx</p>
+<p>U+0800</p>
+<p>U+FFFF</p>
+<p>1110xxxx</p>
+<p>10xxxxxx</p>
+<p>10xxxxxx</p>
+<p>U+10000</p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/UTF-8#cite_note-16">[nb 2]</a>U+10FFFF</p>
+<p>11110xxx</p>
+<p>10xxxxxx</p>
+<p>10xxxxxx</p>
+<p>10xxxxxx</p>
+<p>Unicode &lt;-&gt; UTF-8</p>
+<p>Example:</p>
+<p>D (U+0044) -&gt; 01000100 (same with its ASCII: 0x44), that’s to say UTF-8 is downward compatible with ASCII.</p>
+<p>沉 (U+6C89) -&gt; (1110)0110 (10)110010 (10)001001. (0x6C89 -&gt; 0110 1100 1000 1001)</p>
+<p>A Chinese character takes 3 bytes to save. While an Arabic character takes 2 bytes.</p>
+<p>But as a variable-width character, UTF-8 is a prefix code, won’t create this kind of error(separating 2 bytes, making the whole seentence error).</p>
+<p>To solve this puzzle, I add bit-by-bit printing code to the decoding program:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">switch</span>(temp)&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;0&#x27;</span>:   <span class="built_in">printf</span>(<span class="string">&quot;0&quot;</span>); <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;1&#x27;</span>:   <span class="built_in">printf</span>(<span class="string">&quot;1&quot;</span>);    Word = Word  mask;    <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:    </span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;\n Unexpected character: %c, 0x%x&quot;</span>, temp, temp);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    mask = mask &gt;&gt; <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>When loopcounter is set to 100 or 101, these are what they ouput:</p>
+<p>100:<br>00101110<br>00100000<br>11011000<br>10100010<br>11011001<br>10000101<br>11011000<br>10110001<br>11011000<br>10100111<br>11011000<br>10101001<br>00100000<br>11011000<br>10101010<br>11011000<br>10101111<br>11011000<br>10111001<br>11011001<br>10001001<br>00100000<br>11011000<br>10100011<br>11011001<br>10000110<br>11011001<br>10000111<br>11011000<br>10100111<br>00100000<br>11011000<br>10100111<br>11011001<br>10000100<br>11011000<br>10110011<br>11011001<br>10001010<br>11011000<br>10101111<br>11011000<br>10101001<br>00100000<br>11011001<br>10000101<br>11011000<br>10110001<br>11011001<br>10001010<br>11011001<br>10000101<br>00100000<br>11011000<br>10100111<br>11011001<br>10000100<br>11011000<br>10111001<br>11011000<br>10110000<br>11011000<br>10110001<br>11011000<br>10100111<br>11011000<br>10100001<br>00100000<br>11011000<br>10101000<br>11011000<br>10100011<br>11011001<br>10000110<br>11011001<br>10000111<br>11011000<br>10100111<br>00100000<br>11011001<br>10000101<br>11011000<br>10101010<br>11011000<br>10110010<br>11011001<br>10001000<br>11011000<br>10101100<br>11011000<br>10101001<br>00100000<br>11011001<br>10000101<br>11011001<br>10000110<br>00100000<br>11011000<br>10100111<br>11011001</p>
+<p>110:<br>00101110<br>00100000<br>11011000<br>10100010<br>11011001<br>10000101<br>11011000<br>10110001<br>11011000<br>10100111<br>11011000<br>10101001<br>00100000<br>11011000<br>10101010<br>11011000<br>10101111<br>11011000<br>10111001<br>11011001<br>10001001<br>00100000<br>11011000<br>10100011<br>11011001<br>10000110<br>11011001<br>10000111<br>11011000<br>10100111<br>00100000<br>11011000<br>10100111<br>11011001<br>10000100<br>11011000<br>10110011<br>11011001<br>10001010<br>11011000<br>10101111<br>11011000<br>10101001<br>00100000<br>11011001<br>10000101<br>11011000<br>10110001<br>11011001<br>10001010<br>11011001<br>10000101<br>00100000<br>11011000<br>10100111<br>11011001<br>10000100<br>11011000<br>10111001<br>11011000<br>10110000<br>11011000<br>10110001<br>11011000<br>10100111<br>11011000<br>10100001<br>00100000<br>11011000<br>10101000<br>11011000<br>10100011<br>11011001<br>10000110<br>11011001<br>10000111<br>11011000<br>10100111<br>00100000<br>11011001<br>10000101<br>11011000<br>10101010<br>11011000<br>10110010<br>11011001<br>10001000<br>11011000<br>10101100<br>11011000<br>10101001<br>00100000<br>11011001<br>10000101<br>11011001<br>10000110<br>00100000<br>11011000<br>10100111<br>11011001<br>10000100</p>
+<p>It’s clear that loopcounter &#x3D;&#x3D; 100 split the last double-byte character. (“11011001 10000100” -&gt; “11011001”), and loopcounter &#x3D;&#x3D; 101 solves this problem. But this will only cause the last character’s decoding error, why does the entire sentence falls into garbled words? The lower right corner of the Notepad draws my attention:</p>
+<ul>
+<li><p><img src="https://depoze.uden.ai/wp-content/uploads/2021/12/9TAHCBU9BBW9F0@B1PH.png"></p>
+</li>
+<li><p><img src="https://depoze.uden.ai/wp-content/uploads/2021/12/@3VBDHQES_U2ZHX4.png"></p>
+</li>
+</ul>
+<p>The status bar shows that they are now decoded in different schemes(ANSI, UTF-8).</p>
+<p>Windows runs in UTF-8. The last character was cut up, which caused the notepad think it is ANSI(GBK, in China)-encoded. At the time I copy these words into clipboard, Windows automatically converts the encoding scheme of contents to UTF-8, keeping the characters unchanged. This process entirely damaged the original 0-1 code of the string.</p>
+<p><img src="https://depoze.uden.ai/wp-content/uploads/2021/12/US8TYJIZMZ9I574H.png"></p>
+<p>A guessing</p>
+<p>To verify this guessing, I read the Arabic’s code byte-by-byte, and it’s first 2 Arabic bytes are: “11011000 10100010 11011001 10000101”(a.k.a. 0xD8A2 0xD985). And I find a GBK encoding chart:<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/findumars/p/4541421.html">对GBK的理解（内附全部字符编码列表）：扩充的2万汉字低字节的高位不等于1，而且还剩许多编码空间没有利用</a>(Already known that GBK is a 2-byte character encoding scheme), go find the 0xD8A2 and the 0xD985, corresponding to “丌” and “賲”, this verifies my guessing.</p>
+<ul>
+<li><p><img src="https://depoze.uden.ai/wp-content/uploads/2021/12/SO_UYH@QETAAEKV9FE.png"></p>
+</li>
+<li><p><img src="https://depoze.uden.ai/wp-content/uploads/2021/12/GPKX7IW717_DR@V@I3.png"></p>
+</li>
+</ul>
+<p>Knowing this, I can specify the loopcounter, not separating a character to 2 parts. Then I can get the complete original sentence:</p>
+<p>.. آمراة تدعى أنها السيدة مريم العذراء بأنها متزوجة من المسيح</p>
+<p>This Arabic sentence(decoded from an introduction of a video) and the Arabic titles we first found, are identical.</p>
+<h4 id="Other-mojibake"><a href="#Other-mojibake" class="headerlink" title="Other mojibake"></a>Other mojibake</h4><p>Knowing the process of decoding this kind of mojibake, it’s then possible to decode the another:</p>
+<p>…. ø·ø ̈ùšù„ø© … ø£øoù†ùšø© ù„ù„ø£ø·ù ø§ù„ … ù„ùšø ̈ùšø</p>
+<p>It looks like some latin characters. So I should find how latin characters are encoded in Europe if we don’t use UTF-8. I asked this question to @Erik, and his answer is Windows-1252.</p>
+<p>Windows 1252 is a single-byte character encoding of the Latin Alphabet.<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Windows-1252">Windows-1252 - From Wikipedia, the free encyclopedia</a>When keeping the character identical, the binary code has to convert like this:</p>
+<p>Windows-1252(Hex)    Windows-1252(Bin)  -&gt;   UTF-8(bin)<br>0x00 - 0x7f          0xxxxxxx           -&gt;   0xxxxxxx<br>0x80 - 0xff          1xxxxxxx           -&gt;   1100001x 10xxxxxx </p>
+<p>Code:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * =====================================================================================</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *       Filename:  Windows1252-to-UTF8.cpp</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *    Description:  convert input Windows1252 encoded characters to UTF8 encoded char.</span></span><br><span class="line"><span class="comment"> *                      Keeping the char identical, the code changes.</span></span><br><span class="line"><span class="comment"> *        Version:  1.0</span></span><br><span class="line"><span class="comment"> *        Created:  2021/12/8 18:20:44</span></span><br><span class="line"><span class="comment"> *       Revision:  none</span></span><br><span class="line"><span class="comment"> *       Compiler:  gcc</span></span><br><span class="line"><span class="comment"> *         Author:  CuSO4_Deposit (depoze.xyz), CuSO4D@protonmail.com</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * =====================================================================================</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INPUT_PATH <span class="string">&quot;.\\input.txt&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> OUTPUT_PATH <span class="string">&quot;.\\output.txt&quot;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    FILE* fpi;</span><br><span class="line">    FILE* fpo;</span><br><span class="line">    <span class="keyword">if</span> ((<span class="built_in">fopen_s</span>(&amp;fpi, INPUT_PATH, <span class="string">&quot;r&quot;</span>)))&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Cannot open the input file.\n&quot;</span>);    </span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">if</span> ((<span class="built_in">fopen_s</span>(&amp;fpo, OUTPUT_PATH, <span class="string">&quot;w&quot;</span>)))&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Cannot open the output file.\n&quot;</span>);    </span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> Word1 = <span class="number">0</span>;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> Word2 = <span class="number">0x80</span>; <span class="comment">// Word2 = 10000000b </span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> temp;</span><br><span class="line">    <span class="type">int</span> counter = <span class="number">50</span>;   <span class="comment">//   manually specify the loop counter.</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span> (counter-- == <span class="number">0</span>)    <span class="keyword">break</span>;</span><br><span class="line">        Word1 = <span class="number">0</span>; </span><br><span class="line">        temp = <span class="built_in">fgetc</span>(fpi);</span><br><span class="line">        <span class="keyword">if</span>(temp &gt;= <span class="number">0x00</span> &amp;&amp; temp &lt;= <span class="number">0x7f</span>)&#123;   <span class="comment">//temp = 0xxxxxxxb</span></span><br><span class="line">            Word1 = Word1  temp;   <span class="comment">//Word1 initially == 0x00</span></span><br><span class="line">            <span class="built_in">fputc</span>(Word1, fpo);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;0x%x\n&quot;</span>, Word1);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;   <span class="comment">// temp = 1xxxxxxxb</span></span><br><span class="line">            <span class="keyword">if</span>(<span class="number">0x40</span> &amp; temp) <span class="comment">//temp = 11xxxxxxb</span></span><br><span class="line">                Word1 = <span class="number">0xc3</span>;   <span class="comment">//Word1 = 11000011b</span></span><br><span class="line">            <span class="keyword">else</span>    <span class="comment">//temp = 10xxxxxb</span></span><br><span class="line">                Word1 = <span class="number">0xc2</span>;   <span class="comment">//Word1 = 11000010b</span></span><br><span class="line">            <span class="built_in">fputc</span>(Word1, fpo);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;0x%x\t&quot;</span>, Word1);</span><br><span class="line">            Word2 = temp;   <span class="comment">//Word2 = 1yxxxxxxb</span></span><br><span class="line">            Word2 = Word2 &amp; <span class="number">0xbf</span>; <span class="comment">// Word2 = 10xxxxxxb</span></span><br><span class="line">            <span class="built_in">fputc</span>(Word2, fpo);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;0x%x\n&quot;</span>, Word2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Sadly, the output doesn’t make any sense:</p>
+<p>…. Ã¸Â·Ã¸ ÌÃ¹Å¡Ã¹âÃ¸Â© … Ã¸Â£Ã¸oÃ¹â Ã¹Å¡Ã¸</p>
+<p>After checking each character, it turns out the program works well. The reason may be the followings:</p>
+<ol>
+<li>This mojibake isn’t generated by this kind of decoding error, maybe just garbled words;</li>
+<li>This is generated by decoding error, but the origin language isn’t Latin(not using Windows-1252)</li>
+</ol>
+<p>To be continued…</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/pages/">Pages</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exploration"><span class="toc-number">2.</span> <span class="toc-text">Exploration</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Association-with-encoding"><span class="toc-number">2.0.1.</span> <span class="toc-text">Association with encoding</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Organize-known-information"><span class="toc-number">2.0.2.</span> <span class="toc-text">Organize known information</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Directly-converting-New-Mojibake-found"><span class="toc-number">2.0.3.</span> <span class="toc-text">Directly converting - New Mojibake found</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Dig-Deeper-UTF-8-scheme"><span class="toc-number">2.0.4.</span> <span class="toc-text">Dig Deeper - UTF-8 scheme</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Other-mojibake"><span class="toc-number">2.0.5.</span> <span class="toc-text">Other mojibake</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/&text=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/&title=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/&is_video=false&description=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration&body=Check out this article: http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/&title=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/&title=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/&title=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/&title=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/&name=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/12/what-do-these-mojibake-mean-utf-8-encoding-scheme-exploration/&t=What do these Mojibake mean? - UTF-8 Encoding Scheme Exploration"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2023
+    CuSO4_Deposit
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/pages/">Pages</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
