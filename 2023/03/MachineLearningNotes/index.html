@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="MatplotlibRecommend using OO-style: 1234567891011121314151617181920def draw_image(data: dict):    &quot;&quot;&quot;    data &#x3D; &amp;#123;&quot;data1&quot;: [x0, y00, y01], &quot;data2&quot;: [x1, y10, y11">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Machine Learning Quickref">
+<meta property="og:url" content="https://blog.depoze.xyz/2023/03/MachineLearningNotes/index.html">
+<meta property="og:site_name" content="CuSO4D&#39;s Electrolytic Cell">
+<meta property="og:description" content="MatplotlibRecommend using OO-style: 1234567891011121314151617181920def draw_image(data: dict):    &quot;&quot;&quot;    data &#x3D; &amp;#123;&quot;data1&quot;: [x0, y00, y01], &quot;data2&quot;: [x1, y10, y11">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-27T09:41:13.000Z">
+<meta property="article:modified_time" content="2023-04-03T08:20:07.000Z">
+<meta property="article:author" content="CuSO4_Deposit">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="NumPy">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Machine Learning Quickref</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="CuSO4D&#39;s Electrolytic Cell" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/03/%E4%BF%AE%E6%94%B9cactus%E4%B8%BB%E9%A2%98%E4%B8%8B%E7%9A%84%E5%AD%97%E4%BD%93/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.depoze.xyz/2023/03/MachineLearningNotes/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.depoze.xyz/2023/03/MachineLearningNotes/&text=Machine Learning Quickref"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.depoze.xyz/2023/03/MachineLearningNotes/&title=Machine Learning Quickref"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.depoze.xyz/2023/03/MachineLearningNotes/&is_video=false&description=Machine Learning Quickref"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Machine Learning Quickref&body=Check out this article: https://blog.depoze.xyz/2023/03/MachineLearningNotes/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.depoze.xyz/2023/03/MachineLearningNotes/&title=Machine Learning Quickref"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.depoze.xyz/2023/03/MachineLearningNotes/&title=Machine Learning Quickref"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.depoze.xyz/2023/03/MachineLearningNotes/&title=Machine Learning Quickref"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.depoze.xyz/2023/03/MachineLearningNotes/&title=Machine Learning Quickref"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.depoze.xyz/2023/03/MachineLearningNotes/&name=Machine Learning Quickref&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.depoze.xyz/2023/03/MachineLearningNotes/&t=Machine Learning Quickref"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Matplotlib"><span class="toc-number">1.</span> <span class="toc-text">Matplotlib</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PyTorch"><span class="toc-number">2.</span> <span class="toc-text">PyTorch</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Device"><span class="toc-number">2.1.</span> <span class="toc-text">Device</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensors"><span class="toc-number">2.2.</span> <span class="toc-text">Tensors</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-tensors"><span class="toc-number">2.2.1.</span> <span class="toc-text">Create tensors</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Attributes"><span class="toc-number">2.2.2.</span> <span class="toc-text">Attributes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Methods"><span class="toc-number">2.2.3.</span> <span class="toc-text">Methods</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Datasets-amp-DataLoaders"><span class="toc-number">2.3.</span> <span class="toc-text">Datasets &amp; DataLoaders</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Load-FashionMNIST"><span class="toc-number">2.3.1.</span> <span class="toc-text">Load FashionMNIST</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Wrap-my-data-to-dataset"><span class="toc-number">2.3.2.</span> <span class="toc-text">Wrap my data to dataset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Useful-APIs"><span class="toc-number">2.3.3.</span> <span class="toc-text">Useful APIs</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Machine Learning Quickref
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">CuSO4_Deposit</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-03-27T09:41:13.000Z" itemprop="datePublished">2023-03-27</time>
+        
+        (Updated: <time datetime="2023-04-03T08:20:07.000Z" itemprop="dateModified">2023-04-03</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/AI/" rel="tag">AI</a>, <a class="tag-link-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a>, <a class="tag-link-link" href="/tags/NumPy/" rel="tag">NumPy</a>, <a class="tag-link-link" href="/tags/Python/" rel="tag">Python</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h1><p>Recommend using OO-style:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">draw_image</span>(<span class="params">data: <span class="built_in">dict</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    data = &#123;&quot;data1&quot;: [x0, y00, y01], &quot;data2&quot;: [x1, y10, y11],</span></span><br><span class="line"><span class="string">            &quot;param&quot;: &#123;&quot;structure&quot;, &quot;lr&quot;, &quot;activation&quot;&#125;</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    fig, axs = plt.subplots(nrows=<span class="number">1</span>, ncols=<span class="number">3</span>, layout=<span class="string">&quot;tight&quot;</span>, figsize=[<span class="number">9.6</span>, <span class="number">4.8</span>])</span><br><span class="line">    axs[<span class="number">0</span>].plot(data[<span class="string">&quot;data1&quot;</span>][<span class="number">0</span>], data[<span class="string">&quot;data1&quot;</span>][<span class="number">1</span>], label=<span class="string">&quot;target&quot;</span>)</span><br><span class="line">    axs[<span class="number">0</span>].plot(data[<span class="string">&quot;data1&quot;</span>][<span class="number">0</span>], data[<span class="string">&quot;data1&quot;</span>][<span class="number">2</span>], label=<span class="string">&quot;model&quot;</span>)</span><br><span class="line">    axs[<span class="number">0</span>].set_xlabel(<span class="string">&quot;x&quot;</span>)</span><br><span class="line">    axs[<span class="number">0</span>].set_ylabel(<span class="string">&quot;y = f(x)&quot;</span>)</span><br><span class="line">    axs[<span class="number">0</span>].set_title(<span class="string">&quot;Fitting&quot;</span>)</span><br><span class="line">    axs[<span class="number">0</span>].legend()</span><br><span class="line">    ...</span><br><span class="line">    fig.suptitle(<span class="string">f&#x27;structure: <span class="subst">&#123;data[<span class="string">&quot;param&quot;</span>][<span class="string">&quot;structure&quot;</span>]&#125;</span>\</span></span><br><span class="line"><span class="string">            lr: <span class="subst">&#123;data[<span class="string">&quot;param&quot;</span>][<span class="string">&quot;lr&quot;</span>]&#125;</span>\</span></span><br><span class="line"><span class="string">            activation: <span class="subst">&#123;data[<span class="string">&quot;param&quot;</span>][<span class="string">&quot;activation&quot;</span>]&#125;</span>&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    fig.savefig(<span class="string">&#x27;./figure/figure.png&#x27;</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+
+<h1 id="PyTorch"><a href="#PyTorch" class="headerlink" title="PyTorch"></a>PyTorch</h1><p><a target="_blank" rel="noopener" href="https://pytorch.org/tutorials/beginner/basics/">Learn the Basics — PyTorch Tutorials 2.0.0+cu117 documentation</a></p>
+<h2 id="Device"><a href="#Device" class="headerlink" title="Device"></a>Device</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">device = <span class="string">&quot;cuda&quot;</span> <span class="keyword">if</span> torch.cude.is_available() <span class="keyword">else</span> <span class="string">&quot;cpu&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Device: <span class="subst">&#123;device&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">tensor = tensor.to(device)</span><br><span class="line">model = model.to(device)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Tensors"><a href="#Tensors" class="headerlink" title="Tensors"></a>Tensors</h2><p><a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/tensors.html">torch.Tensor - PyTorch 2.0 documentation</a></p>
+<h3 id="Create-tensors"><a href="#Create-tensors" class="headerlink" title="Create tensors"></a>Create tensors</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">shape = (<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">tensorr = torch.rand(shape)</span><br><span class="line">tensor0 = torch.zeros(shape)</span><br><span class="line">tensor1 = torch.ones(shape)</span><br><span class="line">tensorn = torch.from_numpy(np.array([...]))</span><br></pre></td></tr></table></figure>
+
+<h3 id="Attributes"><a href="#Attributes" class="headerlink" title="Attributes"></a>Attributes</h3><p><code>tensor.shape</code></p>
+<p><code>tensor.dtype</code></p>
+<p><code>tensor.device</code></p>
+<p><code>tensor.require_grad</code></p>
+<h3 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h3><p><a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/generated/torch.Tensor.detach.html?highlight=detach#torch.Tensor.detach">torch.Tensor.detach()</a>: returns a tensor sharing same storage with original tensor but never requiring grad (so that can be convert to normal datatypes if on cpu)</p>
+<p><a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/generated/torch.Tensor.item.html?highlight=item#torch.Tensor.item">torch.Tensor.item()</a>: works when only one element in tensor</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tensor = Tensor([<span class="number">12.0</span>])</span><br><span class="line"><span class="built_in">print</span>(tensort.item(), <span class="built_in">type</span>(tensor.item())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 12.0 &lt;class &#x27;float&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/generated/torch.Tensor.tolist.html#torch.Tensor.tolist">torch.Tensor.tolist()</a></p>
+<p>Add “_“ suffix to operations means inplace operations. Example: <code>tensor.add_()</code>.</p>
+<h2 id="Datasets-amp-DataLoaders"><a href="#Datasets-amp-DataLoaders" class="headerlink" title="Datasets &amp; DataLoaders"></a>Datasets &amp; DataLoaders</h2><p>primitives: </p>
+<p><code>torch.utils.data.DataLoader</code>: wraps an iterable around <code>Dataset</code></p>
+<p><code>torch.utils.data.Dataset</code>: samples and labels</p>
+<h3 id="Load-FashionMNIST"><a href="#Load-FashionMNIST" class="headerlink" title="Load FashionMNIST"></a>Load FashionMNIST</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> Dataset</span><br><span class="line"><span class="keyword">from</span> torchvision <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> torchvision.transforms <span class="keyword">import</span> ToTensor</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">training_data = datasets.FashionMNIST(</span><br><span class="line">    root=<span class="string">&quot;data&quot;</span>,    <span class="comment"># path to data</span></span><br><span class="line">    train=<span class="literal">True</span>,    <span class="comment"># specify training/test dataset </span></span><br><span class="line">    download=<span class="literal">True</span>,    <span class="comment"># if not available at root, whether download from internet</span></span><br><span class="line">    transform=ToTensor()</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">test_data = datasets.FashionMNIST(</span><br><span class="line">    root=<span class="string">&quot;data&quot;</span>,</span><br><span class="line">    train=<span class="literal">False</span>,</span><br><span class="line">    download=<span class="literal">True</span>,</span><br><span class="line">    transform=ToTensor()</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>We can index <code>Datasets</code> manually like a list: <code>training_data[index]</code>.<br>We use <code>matplotlib</code> to visualize some samples in our training data.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">labels_map = &#123;</span><br><span class="line">    <span class="number">0</span>: <span class="string">&quot;T-Shirt&quot;</span>,</span><br><span class="line">    <span class="number">1</span>: <span class="string">&quot;Trouser&quot;</span>,</span><br><span class="line">    <span class="number">2</span>: <span class="string">&quot;Pullover&quot;</span>,</span><br><span class="line">    <span class="number">3</span>: <span class="string">&quot;Dress&quot;</span>,</span><br><span class="line">    <span class="number">4</span>: <span class="string">&quot;Coat&quot;</span>,</span><br><span class="line">    <span class="number">5</span>: <span class="string">&quot;Sandal&quot;</span>,</span><br><span class="line">    <span class="number">6</span>: <span class="string">&quot;Shirt&quot;</span>,</span><br><span class="line">    <span class="number">7</span>: <span class="string">&quot;Sneaker&quot;</span>,</span><br><span class="line">    <span class="number">8</span>: <span class="string">&quot;Bag&quot;</span>,</span><br><span class="line">    <span class="number">9</span>: <span class="string">&quot;Ankle Boot&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line">sample_idx = torch.randint(<span class="built_in">len</span>(training_data), size=(<span class="number">1</span>,)).item()</span><br><span class="line">img, label = training_data[sample_idx]</span><br><span class="line">plt.title(labels_map[label])</span><br></pre></td></tr></table></figure>
+
+<h3 id="Wrap-my-data-to-dataset"><a href="#Wrap-my-data-to-dataset" class="headerlink" title="Wrap my data to dataset"></a>Wrap my data to dataset</h3><p>PyTorch has 2 kinds of dataset: <code>map</code> and <code>iterate</code>. We focus on the first kind.</p>
+<p>All datasets should subclass <code>torch.utils.data.Dataset</code>.</p>
+<p>All datasets should overwrite <code>__getitem()__</code>, and optionally overwrite <code>__len__()</code>.</p>
+<p>My data should have: a file containing the map each data’s filename to its label; a data directory.</p>
+<p>A sample dataset:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.utils.data.Dataset <span class="keyword">as</span> Dataset</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyDataset</span>(<span class="title class_ inherited__">Dataset</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, annotation_file=<span class="string">&quot;./dataset/label.csv&quot;</span>,\</span></span><br><span class="line"><span class="params">            data_dir=<span class="string">&quot;./dataset/data/&quot;</span>, transform=<span class="literal">None</span>, target_transform=<span class="literal">None</span></span>):</span><br><span class="line">        self.labels = pd.read_csv(annotation_file)</span><br><span class="line">        self.data_dir = data_dir</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__getitem__</span>(<span class="params">self, index</span>):</span><br><span class="line">        path = Path(self.<span class="built_in">dir</span>) + Path(self.labels.iloc[index, <span class="number">0</span>])</span><br><span class="line">        item = read_item(path)  <span class="comment"># read_item() TODO</span></span><br><span class="line">        label = self.labels.iloc[index, <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> self.transform:</span><br><span class="line">            item = self.transform(item)</span><br><span class="line">        <span class="keyword">if</span> self.target_transform:</span><br><span class="line">            label = self.target_transform(label)</span><br><span class="line">        <span class="keyword">return</span> item, label</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__len__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.labels)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Useful-APIs"><a href="#Useful-APIs" class="headerlink" title="Useful APIs"></a>Useful APIs</h3><p><a target="_blank" rel="noopener" href="https://pytorch.org/vision/stable/generated/torchvision.datasets.ImageFolder.html?highlight=imagefolder#torchvision.datasets.ImageFolder">torch.utils.data.ImageFolder</a></p>
+<p><a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/data.html?highlight=random_split#torch.utils.data.random_split">torch.utils.data.random_split()</a></p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Matplotlib"><span class="toc-number">1.</span> <span class="toc-text">Matplotlib</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PyTorch"><span class="toc-number">2.</span> <span class="toc-text">PyTorch</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Device"><span class="toc-number">2.1.</span> <span class="toc-text">Device</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensors"><span class="toc-number">2.2.</span> <span class="toc-text">Tensors</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-tensors"><span class="toc-number">2.2.1.</span> <span class="toc-text">Create tensors</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Attributes"><span class="toc-number">2.2.2.</span> <span class="toc-text">Attributes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Methods"><span class="toc-number">2.2.3.</span> <span class="toc-text">Methods</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Datasets-amp-DataLoaders"><span class="toc-number">2.3.</span> <span class="toc-text">Datasets &amp; DataLoaders</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Load-FashionMNIST"><span class="toc-number">2.3.1.</span> <span class="toc-text">Load FashionMNIST</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Wrap-my-data-to-dataset"><span class="toc-number">2.3.2.</span> <span class="toc-text">Wrap my data to dataset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Useful-APIs"><span class="toc-number">2.3.3.</span> <span class="toc-text">Useful APIs</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.depoze.xyz/2023/03/MachineLearningNotes/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.depoze.xyz/2023/03/MachineLearningNotes/&text=Machine Learning Quickref"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.depoze.xyz/2023/03/MachineLearningNotes/&title=Machine Learning Quickref"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.depoze.xyz/2023/03/MachineLearningNotes/&is_video=false&description=Machine Learning Quickref"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Machine Learning Quickref&body=Check out this article: https://blog.depoze.xyz/2023/03/MachineLearningNotes/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.depoze.xyz/2023/03/MachineLearningNotes/&title=Machine Learning Quickref"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.depoze.xyz/2023/03/MachineLearningNotes/&title=Machine Learning Quickref"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.depoze.xyz/2023/03/MachineLearningNotes/&title=Machine Learning Quickref"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.depoze.xyz/2023/03/MachineLearningNotes/&title=Machine Learning Quickref"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.depoze.xyz/2023/03/MachineLearningNotes/&name=Machine Learning Quickref&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.depoze.xyz/2023/03/MachineLearningNotes/&t=Machine Learning Quickref"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2023
+    CuSO4_Deposit
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'CuSO4Deposit/CuSO4Deposit.github.io';
+      var utterances_issue_term = 'url';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>

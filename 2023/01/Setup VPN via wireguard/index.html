@@ -9,7 +9,7 @@
     <meta name="description" content="Reference How To Set Up WireGuard on Ubuntu 20.04 | DigitalOcean  https:&#x2F;&#x2F;www.wireguardconfig.com&#x2F;  Secure Communication with a WireGuard VPN &amp;middot; Ultimate Security Professional Blog   TL;DR12">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Setup VPN via WireGuard">
-<meta property="og:url" content="http://example.com/2023/01/Setup%20VPN%20via%20wireguard/index.html">
+<meta property="og:url" content="https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/index.html">
 <meta property="og:site_name" content="CuSO4D&#39;s Electrolytic Cell">
 <meta property="og:description" content="Reference How To Set Up WireGuard on Ubuntu 20.04 | DigitalOcean  https:&#x2F;&#x2F;www.wireguardconfig.com&#x2F;  Secure Communication with a WireGuard VPN &amp;middot; Ultimate Security Professional Blog   TL;DR12">
 <meta property="og:locale" content="en_US">
@@ -48,6 +48,8 @@
     <!-- rss -->
     
     
+      <link rel="alternate" href="/atom.xml" title="CuSO4D&#39;s Electrolytic Cell" type="application/atom+xml" />
+    
 	<!-- mathjax -->
 	
 		<script type="text/x-mathjax-config">
@@ -78,8 +80,6 @@
      --><!--
        --><li><a href="/archives/">Articles</a></li><!--
      --><!--
-       --><li><a href="/pages/">Pages</a></li><!--
-     --><!--
        --><li><a href="/friends/">Friends</a></li><!--
      -->
       </ul>
@@ -88,8 +88,10 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" aria-label="Previous post" href="/2023/03/%E4%BF%AE%E6%94%B9cactus%E4%B8%BB%E9%A2%98%E4%B8%8B%E7%9A%84%E5%AD%97%E4%BD%93/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        <li><a class="icon" aria-label="Next post" href="/2023/01/Gadgetbridge/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/01/Initial%20Server%20Setup/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -102,17 +104,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/&text=Setup VPN via WireGuard"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/&is_video=false&description=Setup VPN via WireGuard"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Setup VPN via WireGuard&body=Check out this article: http://example.com/2023/01/Setup%20VPN%20via%20wireguard/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/&name=Setup VPN via WireGuard&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/&t=Setup VPN via WireGuard"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/&text=Setup VPN via WireGuard"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/&is_video=false&description=Setup VPN via WireGuard"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Setup VPN via WireGuard&body=Check out this article: https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/&name=Setup VPN via WireGuard&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/&t=Setup VPN via WireGuard"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -142,6 +144,8 @@
     <div class="postdate">
       
         <time datetime="2023-01-31T18:05:00.000Z" itemprop="datePublished">2023-01-31</time>
+        
+        (Updated: <time datetime="2023-02-10T18:21:48.000Z" itemprop="dateModified">2023-02-10</time>)
         
       
     </div>
@@ -384,6 +388,12 @@
 </article>
 
 
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
 
         
           <div id="footer-post-container">
@@ -398,8 +408,6 @@
          
           <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="/pages/">Pages</a></li>
-         
           <li><a href="/friends/">Friends</a></li>
         
       </ul>
@@ -411,17 +419,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/&text=Setup VPN via WireGuard"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/&is_video=false&description=Setup VPN via WireGuard"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Setup VPN via WireGuard&body=Check out this article: http://example.com/2023/01/Setup%20VPN%20via%20wireguard/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/&name=Setup VPN via WireGuard&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/01/Setup%20VPN%20via%20wireguard/&t=Setup VPN via WireGuard"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/&text=Setup VPN via WireGuard"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/&is_video=false&description=Setup VPN via WireGuard"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Setup VPN via WireGuard&body=Check out this article: https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/&title=Setup VPN via WireGuard"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/&name=Setup VPN via WireGuard&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.depoze.xyz/2023/01/Setup%20VPN%20via%20wireguard/&t=Setup VPN via WireGuard"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -454,8 +462,6 @@
        --><li><a href="/about/">About</a></li><!--
      --><!--
        --><li><a href="/archives/">Articles</a></li><!--
-     --><!--
-       --><li><a href="/pages/">Pages</a></li><!--
      --><!--
        --><li><a href="/friends/">Friends</a></li><!--
      -->
@@ -520,6 +526,26 @@
 <!-- Disqus Comments -->
 
 <!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'CuSO4Deposit/CuSO4Deposit.github.io';
+      var utterances_issue_term = 'url';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
 
 </body>
 </html>
