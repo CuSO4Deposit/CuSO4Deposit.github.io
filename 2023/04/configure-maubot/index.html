@@ -14,7 +14,7 @@
 <meta property="og:description" content="Maubot 是一款基于插件的Matrix-Bot SDK。 它的说明文档写得并不是很好，也没有给出一个合理的顺序安装过程，事实上在我安装时需要在文档的各节反复跳跃，因此我在此记录一个合理的配置流程。 配置环境通过pip安装maubot。 123$ python3 -m venv maubotVenv$ source .&#x2F;maubotVenv&#x2F;bin&#x2F;activate$ pip install -">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-04-06T08:50:06.000Z">
-<meta property="article:modified_time" content="2023-04-06T15:07:56.973Z">
+<meta property="article:modified_time" content="2023-05-18T06:48:53.311Z">
 <meta property="article:author" content="CuSO4_Deposit">
 <meta property="article:tag" content="Bot">
 <meta property="article:tag" content="MatrixChat">
@@ -150,7 +150,7 @@
       
         <time datetime="2023-04-06T08:50:06.000Z" itemprop="datePublished">2023-04-06</time>
         
-        (Updated: <time datetime="2023-04-06T15:07:56.973Z" itemprop="dateModified">2023-04-06</time>)
+        (Updated: <time datetime="2023-05-18T06:48:53.311Z" itemprop="dateModified">2023-05-18</time>)
         
       
     </div>
@@ -197,13 +197,15 @@
 <p><code>mbc auth</code>是获取这两项的命令，但在这之前需要先<code>mbc login</code>登录maubot的管理账户。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mbc login</span><br><span class="line">&lt;interactively login with credenricals in config.yaml...&gt;</span><br></pre></td></tr></table></figure>
 
-<p>在<code>mbc auth</code>之前，还需要在config.yaml添加homeserver：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># config.yaml</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#...</span></span><br><span class="line"><span class="attr">homeserver:</span></span><br><span class="line">    <span class="comment">#...</span></span><br><span class="line">    <span class="string">&lt;your</span> <span class="string">homeserver&gt;:</span></span><br><span class="line">        <span class="attr">url:</span> <span class="string">...</span></span><br><span class="line">        <span class="attr">secret:</span> <span class="string">...</span> <span class="comment"># can left empty if you don&#x27;t have</span></span><br></pre></td></tr></table></figure>
+<p>在<code>mbc auth</code>之前，还需要在config.yaml添加homeserver，这里的<code>&lt;your homeserver&gt;</code>是字典的键，可以任意取名，<code>url</code> 是register页面光标悬停在host server项上时显示的url。</p>
+<p><strong>更新config.yaml后需要重启maubot才会生效。</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># config.yaml</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#...</span></span><br><span class="line"><span class="attr">homeservers:</span></span><br><span class="line">    <span class="comment">#...</span></span><br><span class="line">    <span class="string">&lt;your</span> <span class="string">homeserver&gt;:</span></span><br><span class="line">        <span class="attr">url:</span> <span class="string">...</span></span><br><span class="line">        <span class="attr">secret:</span> <span class="string">...</span> <span class="comment"># can left empty if you don&#x27;t have</span></span><br></pre></td></tr></table></figure>
 
-<p>然后执行<code>mbc auth</code>，又是交互式登录</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mbc auth</span><br><span class="line">&lt;interactively login with matrix account&gt;</span><br></pre></td></tr></table></figure>
+<p>然后执行<code>mbc auth</code>，又是交互式登录。这里需要注意的是，homeserver项填写的是在<code>config.yaml</code>中配置的字典键而不是字典值。username使用全称和用户名都可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mbc auth --update-client</span><br><span class="line">&lt;interactively login with matrix account&gt;</span><br></pre></td></tr></table></figure>
 
-<p>登录后屏幕上就会打印access_token和device。接下来就可以回到web页面操作啦。</p>
+<p>如果不带<code>--update-client</code>，登录后屏幕上就会打印access_token和device。接下来就可以回到web页面操作手动登录。如果带了上面的参数，则web端已经配置好这个client，可以直接配置插件。</p>
+<p>登录失败时，可以在maubot运行的窗口查看log来debug。</p>
 <h2 id="创建client和instance-Verify-session"><a href="#创建client和instance-Verify-session" class="headerlink" title="创建client和instance. Verify session"></a>创建client和instance. Verify session</h2><p>在GUI先创建client，再指定插件和client运行instance。创建client时，display_name和avatar字段都可以设为<code>disable</code>表示不覆盖，<strong>如果留空则会使用空值覆盖原有的</strong>。</p>
 <p>创建过client后，应当用已经登录的设备对maubot对应的session作验证。这样才能确保它可以解密端对端加密的消息。</p>
 
