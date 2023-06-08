@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="source: www.ddsofts.com (已无法访问) [转载]使用RoboCopy 命令  [转载]使用Robocopy命令经常进行文件管理操作的朋友们，不满意于Windows系统内置的复制功能，因为它太龟速了。于是大家就使用FastCopy、TeraCopy之类的软件来加速复制，但是你是否知道Windows 7已经内置快速复制的功能？ 这项功能就是RoboCopy，它是一个命令行的目录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[转载]使用Robocopy命令">
+<meta property="og:url" content="https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/index.html">
+<meta property="og:site_name" content="CuSO4D&#39;s Electrolytic Cell">
+<meta property="og:description" content="source: www.ddsofts.com (已无法访问) [转载]使用RoboCopy 命令  [转载]使用Robocopy命令经常进行文件管理操作的朋友们，不满意于Windows系统内置的复制功能，因为它太龟速了。于是大家就使用FastCopy、TeraCopy之类的软件来加速复制，但是你是否知道Windows 7已经内置快速复制的功能？ 这项功能就是RoboCopy，它是一个命令行的目录">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-05-31T02:14:39.000Z">
+<meta property="article:modified_time" content="2023-06-08T15:35:50.088Z">
+<meta property="article:author" content="CuSO4_Deposit">
+<meta property="article:tag" content="Windows">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/GIMP_128.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/GIMP_128.ico" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/GIMP_128.ico">
+        
+      
+    
+    <!-- title -->
+    <title>[转载]使用Robocopy命令</title>
+    <!-- styles -->
+	<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-webfont/1.6.0/style.min.css" />
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="CuSO4D&#39;s Electrolytic Cell" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+	<!-- typesetting -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js"></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/atom.xml">RSS</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2023/06/Pro-Git-Notes/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/05/Terraria-text-color/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/&text=[转载]使用Robocopy命令"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/&title=[转载]使用Robocopy命令"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/&is_video=false&description=[转载]使用Robocopy命令"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=[转载]使用Robocopy命令&body=Check out this article: https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/&title=[转载]使用Robocopy命令"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/&title=[转载]使用Robocopy命令"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/&title=[转载]使用Robocopy命令"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/&title=[转载]使用Robocopy命令"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/&name=[转载]使用Robocopy命令&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/&t=[转载]使用Robocopy命令"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E8%BD%BD-%E4%BD%BF%E7%94%A8Robocopy%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">[转载]使用Robocopy命令</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        [转载]使用Robocopy命令
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">CuSO4_Deposit</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-05-31T02:14:39.000Z" itemprop="datePublished">2023-05-31</time>
+        
+        (Updated: <time datetime="2023-06-08T15:35:50.088Z" itemprop="dateModified">2023-06-08</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Windows/" rel="tag">Windows</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>source: <a target="_blank" rel="noopener" href="http://www.ddsofts.com/">www.ddsofts.com</a> (已无法访问)</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xinyuxin912/p/3181564.html">[转载]使用RoboCopy 命令</a> </p>
+<h2 id="转载-使用Robocopy命令"><a href="#转载-使用Robocopy命令" class="headerlink" title="[转载]使用Robocopy命令"></a>[转载]使用Robocopy命令</h2><p>经常进行文件管理操作的朋友们，不满意于Windows系统内置的复制功能，因为它太龟速了。于是大家就使用FastCopy、TeraCopy之类的软件来加速复制，但是你是否知道Windows 7已经内置快速复制的功能？</p>
+<p>这项功能就是RoboCopy，它是一个命令行的目录复制命令，自从Windows NT 4.0 开始就成为windows<br>资源工具包的一部分，然后在Windows Vista、Windows 7和 Windows Server<br>2008采用作为标准的功能。Windows<br>7的此项功能也得到升级——已经可以支持多线程了，这就意味着可以大大提升复制速度。而且该功能可以创建两个文件结构完全的镜像副本而不复制任何不需要的重复文件，同时还允许您保留所有相关文件信息，包括日期和时间戳、安全访问控制列表（ACL)）等等。下面先看看这条命令的用法吧：</p>
+<p><strong>命令语法</strong>  <code>ROBOCOPY source destination [file [file]…] [options]</code></p>
+<p>源：源目录(驱动器:\路径或\服务器\共享\路径)<br>目标：目标目录(驱动器:\路径或\服务器\共享\路径)<br>文件：要复制的文件(名称&#x2F;通配符: 默认为 “<em>.</em>“)</p>
+<p><strong>复制选项</strong></p>
+<p>&#x2F;S：复制子目录，但不复制空的子目录。<br>&#x2F;E：复制子目录，包括空的子目录。<br>&#x2F;LEV:n：仅复制源目录树的前 n 层。<br>&#x2F;Z：在可重新启动模式下复制文件。<br>&#x2F;B：在备份模式下复制文件。<br>&#x2F;ZB：使用可重新启动模式；如果拒绝访问，请使用备份模式。<br>&#x2F;EFSRAW：在 EFS RAW 模式下复制所有加密的文件。<br>&#x2F;COPY:复制标记:: 要复制的文件内容(默认为 &#x2F;COPY:DAT)。(复制标记: D&#x3D;数据，A&#x3D;属性，T&#x3D;时间戳)。(S&#x3D;安全&#x3D;NTFS ACL，O&#x3D;所有者信息，U&#x3D;审核信息)。<br>&#x2F;DCOPY:T：复制目录时间戳。<br>&#x2F;SEC：复制具有安全性的文件(等同于 &#x2F;COPY:DATS)。<br>&#x2F;COPYALL：复制所有文件信息(等同于 &#x2F;COPY:DATSOU)。<br>&#x2F;NOCOPY：不复制任何文件信息(与 &#x2F;PURGE 一起使用生效)。<br>&#x2F;SECFIX：修复所有文件的文件安全性，即使是跳过的文件。<br>&#x2F;TIMFIX：修复所有文件的文件时间，即使是跳过的文件。<br>&#x2F;PURGE：删除源中不再存在的目标文件&#x2F;目录。<br>&#x2F;MIR：镜像目录树(等同于 &#x2F;E 和 &#x2F;PURGE)。<br>&#x2F;MOV：移动文件(复制后从源中删除)。<br>&#x2F;MOVE：移动文件和目录(复制后从源中删除)。<br>&#x2F;A+:[RASHCNET]：将给定的属性添加到复制文件。<br>&#x2F;A-:[RASHCNET]：从复制文件中删除给定的属性。<br>&#x2F;CREATE：仅创建目录树和长度为零的文件。<br>&#x2F;FAT：仅使用 8.3 FAT 文件名创建目标文件。<br>&#x2F;256：关闭超长路径(&gt; 256 字符)支持。<br>&#x2F;MON:n：监视源；发现多于 n 个更改时再次运行。<br>&#x2F;MOT:m：监视源；如果更改，在 m 分钟时间内再次运行。<br>&#x2F;RH:hhmm-hhmm：运行小时数 – 可以启动新副本的时间。<br>&#x2F;PF：以每个文件(而不是每个步骤)为基础检查运行小时数。<br>&#x2F;IPG:n：程序包间的间距(ms)，以释放低速线路上的带宽。<br>&#x2F;SL：对照目标复制符号链接。<br>&#x2F;MT[:n]：使用 n 个线程进行多线程复制(默认值为 8)。n 必须至少为 1，但不得大于 128。该选项与 &#x2F;IPG 和 &#x2F;EFSRAW 选项不兼容。使用 &#x2F;LOG 选项重定向输出以便获得最佳性能。</p>
+<p><strong>文件选择选项</strong></p>
+<p>&#x2F;A：仅复制具有存档属性集的文件。<br>&#x2F;M：仅复制具有存档属性的文件并重置存档属性。<br>&#x2F;IA:[RASHCNETO]：仅包含具有任意给定属性集的文件。<br>&#x2F;XA:[RASHCNETO]：排除具有任意给定属性集的文件。<br>&#x2F;XF 文件[文件]…：排除与给定名称&#x2F;路径&#x2F;通配符匹配的文件。<br>&#x2F;XD 目录[目录]…：排除与给定名称&#x2F;路径匹配的目录。<br>&#x2F;XC：排除已更改的文件。<br>&#x2F;XN：排除较新的文件。<br>&#x2F;XO：排除较旧的文件。<br>&#x2F;XX：排除多余的文件和目录。<br>&#x2F;XL：排除孤立的文件和目录。<br>&#x2F;IS：包含相同文件。<br>&#x2F;IT：包含已调整的文件。<br>&#x2F;MAX:n：最大的文件大小 – 排除大于 n 字节的文件。<br>&#x2F;MIN:n：最小的文件大小 – 排除小于 n 字节的文件。<br>&#x2F;MAXAGE:n：最长的文件存在时间 – 排除早于 n 天&#x2F;日期的文件。<br>&#x2F;MINAGE:n：最短的文件存在时间 – 排除晚于 n 天&#x2F;日期的文件。<br>&#x2F;MAXLAD:n：最大的最后访问日期 – 排除自 n 以来未使用的文件。<br>&#x2F;MINLAD:n：最小的最后访问日期 – 排除自 n 以来使用的文件。(If n &lt; 1900 then n &#x3D; n days, else n &#x3D; YYYYMMDD date)。<br>&#x2F;XJ：排除接合点。(默认情况下通常包括)。<br>&#x2F;FFT：假设 FAT 文件时间(2 秒粒度)。<br>&#x2F;DST：弥补 1 小时的 DST 时间差。<br>&#x2F;XJD：排除目录的接合点。<br>&#x2F;XJF：排除文件的接合点。</p>
+<p><strong>重试选项</strong></p>
+<p>&#x2F;R:n：失败副本的重试次数: 默认为 1 百万。<br>&#x2F;W:n：两次重试间的等待时间: 默认为 30 秒。<br>&#x2F;REG：将注册表中的 &#x2F;R:n 和 &#x2F;W:n 保存为默认设置。<br>&#x2F;TBD：等待定义共享名称(重试错误 67)。</p>
+<p><strong>日志记录选项</strong></p>
+<p>&#x2F;L：仅列出 – 不复制、添加时间戳或删除任何文件。<br>&#x2F;X：报告所有多余的文件，而不只是选中的文件。<br>&#x2F;V：生成详细输出，同时显示跳过的文件。<br>&#x2F;TS：在输出中包含源文件的时间戳。<br>&#x2F;FP：在输出中包含文件的完整路径名称。<br>&#x2F;BYTES：以字节打印大小。<br>&#x2F;NS：无大小 – 不记录文件大小。<br>&#x2F;NC：无类别 – 不记录文件类别。<br>&#x2F;NFL：无文件列表 – 不记录文件名。<br>&#x2F;NDL：无目录列表 – 不记录目录名称。<br>&#x2F;NP：无进度 – 不显示已复制的百分比。<br>&#x2F;ETA：显示复制文件的预期到达时间。<br>&#x2F;LOG:文件：将状态输出到日志文件(覆盖现有日志)。<br>&#x2F;LOG+:文件：将状态输出到日志文件(附加到现有日志中)。<br>&#x2F;UNILOG:文件：以 UNICODE 方式将状态输出到日志文件(覆盖现有日志)。<br>&#x2F;UNILOG+:文件：以 UNICODE 方式将状态输出到日志文件(附加到现有日志中)。<br>&#x2F;TEE：输出到控制台窗口和日志文件。<br>&#x2F;NJH：没有作业标头。<br>&#x2F;NJS：没有作业摘要。<br>&#x2F;UNICODE：以 UNICODE 方式输出状态。</p>
+<p><strong>作业选项</strong></p>
+<p>&#x2F;JOB:作业名称：从命名的作业文件中提取参数。<br>&#x2F;SAVE:作业名称：将参数保存到命名的作业文件<br>&#x2F;QUIT：处理命令行后退出(以查看参数)。<br>&#x2F;NOSD：未指定源目录。<br>&#x2F;NODD：未指定目标目录。<br>&#x2F;IF：包含以下文件。</p>
+<p>这么多的命令我不会用怎么办？你可以到官网下载GUI，它提供交互界面使得使用简化不少.</p>
+<p>【复制测试】</p>
+<p>我将一共达7.9G的《阿凡达》高清电影文件，通过Robocopy、系统内置的复制功能和Terecopy三项分别复制到相同的目的地，复制过程中基本没有进行其他系统操作，得出复制完成所需要的时间并比较</p>
+<p>1、通过Robocopy命令复制文件，使用最大线程128，花费的时间为6分02秒</p>
+<p>2、使用系统内置的文件复制功能，使用秒表计时显示时间为6分22秒</p>
+<p>3、使用Terecopy复制，显示使用5分32秒</p>
+<p><strong>测试速度大小结果</strong>：Terecopy &gt; Robocopy命令 &gt; 内置复制功能，可见Robocopy与专业的复制软件在速度上有一定的差距，而且易用性比较差。但是在没有安装其他复制软件的情况下，要想快速复制大量的文件，Robocopy命令还是一个不错的选择。</p>
+<hr>
+<p>—————-【例子】——————-<br><strong>实例一：文件，想怎么复制就怎么复制</strong><br>　　<strong>[实现效果]</strong><br>　　随时将源文件夹中的纯文本（TXT）、Word文档（DOC）还有BMP、TIF图像文件复制到目标文件夹中  ，这是在“资源管理器”中直接拖放所做不到的。</p>
+<p>        <strong>[简单命令]</strong>  </p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work e:\back *.txt *.doc *.bmp *.tif /s</span><br></pre></td></tr></table></figure>
+
+<p>        <strong>[参数讲解]</strong><br>　　将d:\work文件下的TXT、DOC、BMP、TIF复制到e:\back文件夹，其他文件则不复制。&#x2F;s是表示包括<br>除空文件下的所有子目录，如果没有则仅复制d:\work下的文件而不包括子目录。<br>　　<strong>[举一反三]</strong><br>　　（1）如果要将文件夹下的所有文件包括空文件夹全部复制到目标文件夹，命令为：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work e:\back /e</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;e表示复制所有子目录包括空文件夹。<br>　　（2）如果只想复制两个层级内的文件（再下的层级里的文件则不拷贝），输入命令：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work e:\back /e /lev:<span class="number">2</span>  </span><br></pre></td></tr></table></figure>
+
+<p>        &#x2F;lev:2表示复制的层级，比如指定层级后d:\work\soft（二级）下的文件会被复制，而<br>d:\work\soft\office（***）下的文件则不被复制。<br><strong>实例二：垃圾文件不复制</strong><br>　　<strong>[实现效果]</strong></p>
+<p>        在备份数据时，不可避免会将类似于*.bak、*.tmp的垃圾文件也复制到目标文件夹，用Robocopy可以将我们经常碰到的垃圾文件在拷贝时就清理出家门，从而生成一个干干净净的文件夹。<br>　　<strong>[简单命令]</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work e:\back /e /xf *.tmp *.bak  　　</span><br></pre></td></tr></table></figure>
+
+<p><strong>[参数讲解]</strong><br>　　&#x2F;xf为指定不执行复制操作的文件类型，后面的文件名支持通配符。如果参数为&#x2F;xd，则表示排除后  面指定的文件夹。<br><strong>实例三：大文件 我不要</strong><br>　　<strong>[实现效果]</strong><br>　　复制的时候，为了节省时间，需要将一些大文件暂时不拷贝，等有空闲时间时，再执行复制操作不迟。<br>　　<strong>[简单命令]</strong>  </p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work e:\back /e /max:<span class="number">6000000</span>  </span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>[参数讲解]</strong><br>　　仅复制不大于6000000bytes的文件，&#x2F;max:后直接接数值，数值单位为byte。如果是&#x2F;min:1000，则  复制不小于1000bytes的文件。两个参数可以同时使用，界定复制文件大小的范围。<br><strong>实例四：只要这一周修改的文件</strong><br>　　<strong>[实现效果]</strong><br>　　这一周处理了哪些文档？编辑了那些文件？将这些修改了的文档复制到一个文件夹下，再好好回味一下。本例就是要将d:\work中最近七天内新建或修改了的TXT、DOC、XLS、PPT等文档，复制到e:\look  目录下。<br>　　<strong>[简单命令]</strong>  </p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work e:\look /s *.txt *.doc *.xls *.ppt /maxage:<span class="number">7</span>  </span><br></pre></td></tr></table></figure>
+
+<p><strong>[参数讲解]</strong><br>　　&#x2F;maxage:表示最远修改时间的，修改时间比这个还要旧的文件将不会被复制。&#x2F;maxage:后可接数字  ，也可以接日期，数字小于1900时表示天数，否则就得用YYYYMMDD来表示具体的日期，如&#x2F;maxage:20040210表示2004年2月10日后被修改的文件才允许复制。与之相对应的参数是&#x2F;minage，表示最近修改时间，比这个时间新的文件将不被复制。<br>　　<strong>[举一反三]</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work e:\look /s *.txt *.doc *.xls *.ppt /maxage:<span class="number">7</span> /minage:<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>　　则表示近七天内除今天外修改的文件才允许被复制。<br>　　与修改时间相对的还有最近访问时间，&#x2F;maxage指最远访问时间，比这个时间老的文件将不被复制。  &#x2F;minage是指最近访问时间，比这个时间新的文件将不被复制。<br><strong>实例五：我的文档排排站</strong><br>　　<strong>[实现效果]</strong><br>　　上例中复制时，所有的文档都会带来本身的路径信息，文档是会将其所存放的文件夹也复制过来。  这给我们的翻阅查看带来很多不便，得单击多层文件夹才能看到文件，能不能将所有的文档直接复制到  一个文件夹下呢？这个需要用XXCOPY来实现。<br>   　<strong>[简单命令]</strong>　 </p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxcopy d:\work e:\look /s /<span class="keyword">in</span>*.txt /<span class="keyword">in</span>*.doc /sg /yy /da:<span class="number">2004</span><span class="literal">-02-02</span> /DB:<span class="number">2004</span><span class="literal">-02-10</span>/DA:<span class="number">1997</span><span class="literal">-01-01</span>  </span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>[参数讲解]</strong><br>　　此命令将d:\work中从2004年2月2日到2月10生成的 TXT、DOC文件全部直接复制到e:\look目录下，不新建子文件夹，打开e:\look就能看到所有文件。XXCOPY和Robocopy的语法参数还是有较大差异的，表示指定文件类型时，XXCOPY会用&#x2F;in*.*，表示日期时&#x2F;da为在指定时间后，&#x2F;db为在指定时间前，日期的表示为YYYY-MM-DD。<br>　　另外，&#x2F;sg表示复制文件到同一文件夹，&#x2F;yy表示在所有要求用户应答的地方都自动认为是Yes，在执行过程中不需要用户干预。<br><strong>实例六：完全克隆</strong><br>　　<strong>[实现效果]</strong><br>　　我们一般采取的复制方式默认是增量复制，即根据文件的大小、修改时间将源文件夹里的内容向目标文件夹复制，久而久之，目标文件夹里就可能存在大量源件夹里早已经删除且无用的文件和文件夹。如果要让备份完全相同，即拷贝时删除在目标文件夹里存在但源文件夹里并没有的文件。<br>　　<strong>[简单命令]</strong>  </p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work e:\look /mir  </span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>[参数讲解]</strong><br>　　&#x2F;mir的作用等同于&#x2F;purge &#x2F;e，&#x2F;purge表示清理目标文件夹有而源文件夹里没有的文件（夹）。通过这个命令，能保证源文件夹和目标文件夹结构与文件完全相同。这在创建镜像备份时，非常有用。<br><strong>实例七：移动文件</strong><br>　　<strong>[实现效果]</strong><br>　　我们前面讲的都是复制，如果我们要将文件夹移动到目标文件夹，如何操作呢？<br>　　<strong>[简单命令]</strong>  </p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work e:\look /<span class="built_in">move</span> /e</span><br></pre></td></tr></table></figure>
+
+<p><strong>[参数讲解]</strong><br>　　其中，&#x2F;move表示移动。<br><strong>实例八：我只要文件夹骨架</strong><br>　　<strong>[实现效果]</strong><br>　　笔者的工作需要周期性地新建和整理大量的文件夹，每次的文件夹结构一样，只是文件不尽相同。如果是以前，就得一个一个简单重复去制作，而现在就不需要了。Robocopy和XXCOPY可以让你轻松实现复制文件夹结构。<br>　　<strong>[简单命令]</strong>  </p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxcopy d:\work e:\mystruct /t /yy /dl3</span><br></pre></td></tr></table></figure>
+
+<p>        <strong>[参数讲解]</strong><br>　　将d:\work的三层文件夹结构复制到e:\mystruct中。其中&#x2F;t表示创建文件夹结构，&#x2F;dl3表示复制的  文件夹结构为***，数字可以自行输入，如果没有此参数，默认建立整个文件夹结构。<br>　　Robocopy创建文件夹相对要麻烦一些，&#x2F;create参数不仅要创建结构，还要创建文件夹下所有文件的0字节文件，并非真正的结构，我们只好剑走偏锋了。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work e:\mystruct /e /lev:<span class="number">3</span> /minage:<span class="number">19000101</span>  </span><br></pre></td></tr></table></figure>
+
+<p>为Robocopy指定一个不可能创建文件的时间，因为有参数&#x2F;e 的作用，虽然没有文件符合要求（你机器里没有早于1900年1月1日的文件），但Robocopy还是会忠实地创建文件夹，这样就达到了生成文件夹结构的目的。另外，&#x2F;lev:3表示复制文件夹的层级，同样可以自行输入。<br><strong>实例九：隐藏文件我不要</strong><br>　　<strong>[实现效果]</strong><br>　　在默认状态下，隐藏文件是并不显示的，但在复制的过程中，它还会随着文件夹一起被复制。可不可以将这些隐藏文件排除在复制范围之外呢？<br>　　<strong>[简单命令]</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work e:\back /e /xa:<span class="built_in">h</span></span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>[参数讲解]</strong><br>　　Robocopy支持对属性进行操作。上面的命令将复制源文件夹中全部文件，但全部具有隐藏属性的文件将不会被复制。&#x2F;xa:h，表示将具有隐藏属性的排除出复制范围，与之相对应的是&#x2F;ia，表示包括只对拥有指定属性的执行操作。属性有R：只读，A：存档，S：系统，H：隐藏等几种供选择。<br>　　<strong>[举一反三]</strong><br>　　（1）此外，Robocopy还有&#x2F;a+、&#x2F;a-等参数对文件属性进行操作，分别表示在文件被拷贝后为文件添加、去除某属性。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work e:\back /ia:rs</span><br></pre></td></tr></table></figure>
+
+<p>　　表示只复制具有只读和系统属性的文件。<br>　　（2）</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy c: d: /<span class="literal">-a</span>:rsh</span><br></pre></td></tr></table></figure>
+
+<p>　　表示将文件拷贝到D盘后，将拷贝生成的文件的只读、系统、隐藏属性去掉，以方便查看和修改。<br><strong>实例十：NTFS权限跟着走</strong><br>　　<strong>[实现效果]</strong><br>　　在使用Windows 2000、Windows XP时，在多用户使用一台电脑时或管理服务器时，经常要为文件夹指定用户访问和修改的权限（如图1，需要分区为NTFS）。不过，用一般的复制方式无法保留我们设置的权限，这在服务器备份时意味着我们得重新设置用户权限。不过，Robocopy可以让我们在复制文件的时候，将属性、用户权限、所有者都可以一并复制到目标文件夹中。  </p>
+<p>备份双友邻精彩5例－Robocopy和xxcopy全掌握<br>　　<strong>[简单命令]</strong>  </p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work e:\back /e /copyall </span><br></pre></td></tr></table></figure>
+
+<p>        <strong>[参数讲解]</strong><br>　　&#x2F;copyall等于&#x2F;copy:datsou，表示将所有源文件夹的信息复制到目标文件夹中，其中D：文件数据，  A：文件属性，T：时间信息，S：权限信息，O：所有者信息，U：审核信息。<br>　　<strong>[举一反三]</strong><br>　　如果源文件夹的权限被修改，需要同样更新目标文件夹的权限时，我们不必再重复复制，只需输入</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work e:\back /is /<span class="built_in">copy</span>:sou</span><br></pre></td></tr></table></figure>
+
+<p>　　如果没有&#x2F;copy参数，默认为&#x2F;copy:dat，没有后面三项的信息。<br><strong>实例十一：集中备份到文件服务器</strong><br>　　<strong>[实现效果]</strong><br>　　希望每天能够把相应数据备份到文件服务器上，以免数据丢失。<br>　　<strong>[简单命令]</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work \ctips_serverarticlesshare /e /copyall</span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>[参数讲解]</strong><br>　　从中可以看出，robocopy完全支持文件服务器共享文件夹数据的拷贝。<br>　　<strong>[举一反三]</strong><br>　　（1）如果我们创建了一个环境变量，如定义%databack%\ctips_serverarticles\back，那只要输入相应的命令：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work %databack% /e /copyall</span><br></pre></td></tr></table></figure>
+
+<p>即可把d:\work下的文件全部备份到 \ctips_serverarticles\back下。当然，如果\ctips_serverarticles\back空间不够时，只要更换环境变量的值到其他文件夹，如\ctips_serverarticles ewback，上述命令无需更改就可以反数据拷贝到新<br>的文件夹中。<br>　　（2）如果你只想把数据备份到共享文件夹中以你的机器名为名字的共享文件夹中，使用xxcopy会更方便：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxcopy d:\work \ctips_serverarticles/<span class="variable">$HOST</span><span class="variable">$</span> /e /yy </span><br></pre></td></tr></table></figure>
+
+<p>其中&#x2F;$HOST$表示你的机器名，如你的机器名为CTIPS_SYJ，那会把d:\work文件夹下的文件拷贝到\ctips_serverarticles\CTIPS_SYJ文件夹下。如果你的机器名为CTIPS_MLB，那执行上述命令后就可以把d:\work文件夹下的文件拷贝到\ctips_serverarticles\CTIPS_MLB文件夹下。由于同局域网内的机器名字不会相同，执行上述命令后就可以保证数据不会被拷贝到同一文件夹下。<br><strong>实例十二：一动就备份</strong><br>　　<strong>[实现效果]</strong><br>　　有些工作内容非常重要，需要时时刻刻注意备份，可是我们哪里有这么好记性和耐性呢？这事，还是交给Robocopy来做吧。Robocopy能时时监视要备份的文件夹，只要文件夹修改到一定时间和程序，Robocopy就会立即开始备份。它会一直监视文件夹，除非用户自己终止。<br>　　<strong>[简单命令]</strong>  </p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work e:\back /e /copyall /mot:<span class="number">1</span> /mon:<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>[参数讲解]</strong><br>　　上述命令表示复制文件夹所有信息到目标文件夹并进行监视。执行此命令后，命令提示符窗口如图2所示。一旦时间过了一分钟，并且源文件夹至少有或2处以上的修改Robocopy就会自动启动另一个进程，执行上述备份操作。Robocopy能监视源文件夹结构、文件和文件夹名称、大小、最后修改时间，在这里，甚至连属性和权限等信息被修改时，Robocopy也会记为修改次数。<br>备份双友邻精彩5例－Robocopy和xxcopy全掌握<br>　　&#x2F;mot后接的是时间（分钟），是指Robocopy执行操作的最短时间；&#x2F;mon后接的是最少文件修改个数。在监视过程中，会自动记录时间和修改的次数，只有同时符合以上两个条件时，Robocopy才开始执行，执行完成后，这两个数据会自动清零，并重新开始监视文件夹，除非用户关闭命令提示符窗口或按下Ctrl+Break键。<br>　　<strong>[举一反三]</strong><br>　　如果你要开机就监视并备份相应文件夹，则可以把上述命令放到“启动”组中。<br><strong>实例十三：不到时间不备份</strong><br>　　<strong>[实现效果]</strong><br>　　复制的过程总会占用系统资源，如果能设置在自己不在电脑边上的时候开始复制备份，就会方便得多。比如，每天5:50下班，希望下班后，到达6点时，Robocopy自动开始备份相应数据。<br>　　<strong>[简单命令]</strong>  </p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work e:\back /e /rh:<span class="number">1800</span><span class="literal">-1830</span>  </span><br></pre></td></tr></table></figure>
+
+<p>        <strong>[举一反三]</strong><br>　　运行后，复制操作将会等待至指定时间开始（如图3）。其中，RH格式为&#x2F;RH:hhmm-hhmm，指定Robocopy开始的时间段，在这个时间段外，拷贝会被暂停。时间为24小时格式，4个数字长，从0000到2359，而且两个数字不能相同。<br>备份双友邻精彩5例－Robocopy和xxcopy全掌握<br><strong>实例十四：计划任务备份</strong><br>　　以上的到时间备份、监视文件夹备份方式，每次重启系统会都会要重新执行以上命令，还远远不够智能，如果能和Windows的计划任务配合，所有问题就迎刃而解了。以我们要在每天10:00自动调用Robocopy开始监视备份文件夹为例，说一说计划任务与Robocopy的携手。<br>　　第一步：新建BAT文件<br>新建一个批处理文件autobak.bat，输入如下命令  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy d:\work e:\back  /e /copyall  /mot:1 /mon:2</span><br></pre></td></tr></table></figure>
+
+<p>　　第二步：创建计划任务<br>选择“开始→设置→控制面板”，双击“任务计划”图标。把autobak.bat批处理文件拖放到“任务计划”窗口，然后双击新生成的autobak.bat图标，在弹出窗口中设置其属性。<br>　　第三步：设置开始时间<br>切换到“日程安排”标签，单击“任务计划”下拉列表框，从中选择“每天”，“开始时间”设置为<br>10:00，单击“高级”可以设置起止的日期（如图4）。<br>　　通过上述设置后，到了设置的时间，机器就会自动备份执行批处理文件，自动备份并监视文件夹。<br>备份双友邻精彩5例－Robocopy和xxcopy全掌握<br><strong>实例十五：清理文件也拿手</strong><br>　　除了一般的复制功能，XXCOPY还有文件清理功能，可以将不需要的文件快速清理出硬盘。以下命令会清除文件和文件夹，请先建立测试文件夹掌握其操作后再对文件夹进行操作。<br>1.清除所有无用文件  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxcopy d:\work*.tmp /s /h /yy /rs  </span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;rs表示不复制而直接从源文件夹中删除指定文件，&#x2F;h表示指定隐藏和系统文件。<br>2.清除文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxcopy c: emp /rmdir /db:2002-01-01 /yy</span><br></pre></td></tr></table></figure>
+
+<p>删除c: emp中在2002年1月1日前的修改的文件夹。<br>3.删除空文件夹  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxcopy c: emp /rmdir /sz:0 /yy</span><br></pre></td></tr></table></figure>
+
+<p>删除c: emp下所有空文件夹，&#x2F;sz:0指定大小为0的文件（夹）。<br>4.删除0字节文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxcopy c: emp*.* /sz:0 /s /h /yy /rs  </span><br></pre></td></tr></table></figure>
+
+<p>通过以上四种方式的组合，我们可以轻松实现对文件及文件夹的整理工作。<br>最后，还有一几个小技巧告诉你，希望能有利于你更好地使用XXCOPY和Robocopy。<br>★将命令变成任务<br>在Robocopy加上“&#x2F;save:任务名”可以将当前操作记录为任务文件，通过“&#x2F;job:任务名”就可方便调用，不需要再输入一长串的命令了。此任务文件可以用纯文本编辑器（如记事本）来编辑。<br>★将复制备份过程录下来<br>默认情况下，Robocopy的操作过程只是在命令提示符中显示，我们可以让它把操作过程输出为TXT文件，加上“&#x2F;log:文件名.txt”即可。</p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E8%BD%BD-%E4%BD%BF%E7%94%A8Robocopy%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">[转载]使用Robocopy命令</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/&text=[转载]使用Robocopy命令"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/&title=[转载]使用Robocopy命令"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/&is_video=false&description=[转载]使用Robocopy命令"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=[转载]使用Robocopy命令&body=Check out this article: https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/&title=[转载]使用Robocopy命令"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/&title=[转载]使用Robocopy命令"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/&title=[转载]使用Robocopy命令"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/&title=[转载]使用Robocopy命令"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/&name=[转载]使用Robocopy命令&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.depoze.xyz/2023/05/Robocopy-in-Windows/&t=[转载]使用Robocopy命令"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+	Contents are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-sa/4.0/legalcode">CC-BY-SA 4.0</a>.
+	<br>
+    Copyright &copy;
+    
+    
+    2021-2023
+    CuSO4_Deposit
+  </div>
+  <div class="footer-right">
+	Theme <a target="_blank" rel="noopener" href="https://github.com/probberechts/hexo-theme-cactus">Cactus</a>. Powered by Github Pages.
+  	<br>
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/atom.xml">RSS</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'CuSO4Deposit/CuSO4Deposit.github.io';
+      var utterances_issue_term = 'url';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>
