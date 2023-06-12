@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.depoze.xyz/">
 <meta property="article:published_time" content="2023-06-08T01:34:07.000Z">
-<meta property="article:modified_time" content="2023-06-11T14:41:53.480Z">
+<meta property="article:modified_time" content="2023-06-11T15:27:27.170Z">
 <meta property="article:author" content="CuSO4_Deposit">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -24,17 +24,17 @@
     
       
         
-          <link rel="shortcut icon" href="/images/GIMP_128.ico">
+          <link rel="shortcut icon" href="/images/depoze_512.png">
         
       
       
         
-          <link rel="icon" type="image/png" href="/images/GIMP_128.ico" sizes="192x192">
+          <link rel="icon" type="image/png" href="/images/depoze_512.png" sizes="192x192">
         
       
       
         
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/GIMP_128.ico">
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/depoze_512.png">
         
       
     
@@ -149,7 +149,7 @@
       
         <time datetime="2023-06-08T01:34:07.000Z" itemprop="datePublished">2023-06-08</time>
         
-        (Updated: <time datetime="2023-06-11T14:41:53.480Z" itemprop="dateModified">2023-06-11</time>)
+        (Updated: <time datetime="2023-06-11T15:27:27.170Z" itemprop="dateModified">2023-06-11</time>)
         
       
     </div>
@@ -232,6 +232,7 @@
 <p>Let a branch track some remote branch: <code>git branch -u &lt;remote name&gt;/&lt;branch name&gt;</code> or full version: <code>git branch --set-upstream-to &lt;remote name&gt;/&lt;branch name&gt;</code>.</p>
 <p>When you have a tracking branch set up, you can reference its upstream branch with <code>@&#123;upstream&#125;</code> or <code>@&#123;u&#125;</code> shorthand. e.g. <code>git merge @&#123;u&#125;</code>.</p>
 <p>Delete a remote branch using <code>git push &lt;remote name&gt; --delete &lt;branch name&gt;</code>.</p>
+<p>Rename: <code>git branch --move &lt;original branch name&gt; &lt;new branch name&gt;</code>.</p>
 <h3 id="See-diverge-history"><a href="#See-diverge-history" class="headerlink" title="See diverge history"></a>See diverge history</h3><p><code>git log --oneline --decorate --graph --all</code> will print the history of commits, show where your branch pointers are and how the history has diverged.</p>
 <h2 id="Share-your-Work"><a href="#Share-your-Work" class="headerlink" title="Share your Work"></a>Share your Work</h2><p><code>git push &lt;remote name&gt; &lt;local branch name&gt;:&lt;remote branch name&gt;</code> .</p>
 <h2 id="Rebasing"><a href="#Rebasing" class="headerlink" title="Rebasing"></a>Rebasing</h2><hr>
