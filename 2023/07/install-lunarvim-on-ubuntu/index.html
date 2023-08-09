@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Ubuntu 22.04. https:&#x2F;&#x2F;www.lunarvim.org&#x2F;docs&#x2F;installation Install prerequisitesNeovimThe neovim in Debian official repo is v0.6, but lunarvim acquires v0.8+. kde - Can&#39;t install neovim v0.8.0+ on U">
+<meta property="og:type" content="article">
+<meta property="og:title" content="install lunarvim on ubuntu">
+<meta property="og:url" content="https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/index.html">
+<meta property="og:site_name" content="CuSO4D&#39;s Electrolytic Cell">
+<meta property="og:description" content="Ubuntu 22.04. https:&#x2F;&#x2F;www.lunarvim.org&#x2F;docs&#x2F;installation Install prerequisitesNeovimThe neovim in Debian official repo is v0.6, but lunarvim acquires v0.8+. kde - Can&#39;t install neovim v0.8.0+ on U">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-17T08:49:11.000Z">
+<meta property="article:modified_time" content="2023-07-17T13:53:12.559Z">
+<meta property="article:author" content="CuSO4_Deposit">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Vim">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/depoze_512.png">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/depoze_512.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/depoze_512.png">
+        
+      
+    
+    <!-- title -->
+    <title>install lunarvim on ubuntu</title>
+    <!-- styles -->
+	<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-webfont/1.6.0/style.min.css" />
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="CuSO4D&#39;s Electrolytic Cell" type="application/atom+xml" />
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+	<!-- typesetting -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js"></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/atom.xml">RSS</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2023/08/nginx-password-protection/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/07/configure-sftp-on-ubuntu/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/&text=install lunarvim on ubuntu"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/&title=install lunarvim on ubuntu"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/&is_video=false&description=install lunarvim on ubuntu"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=install lunarvim on ubuntu&body=Check out this article: https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/&title=install lunarvim on ubuntu"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/&title=install lunarvim on ubuntu"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/&title=install lunarvim on ubuntu"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/&title=install lunarvim on ubuntu"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/&name=install lunarvim on ubuntu&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/&t=install lunarvim on ubuntu"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-prerequisites"><span class="toc-number">1.</span> <span class="toc-text">Install prerequisites</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Neovim"><span class="toc-number">1.1.</span> <span class="toc-text">Neovim</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#make"><span class="toc-number">1.2.</span> <span class="toc-text">make</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pip"><span class="toc-number">1.3.</span> <span class="toc-text">pip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#node-js-npm"><span class="toc-number">1.4.</span> <span class="toc-text">node.js, npm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cargo"><span class="toc-number">1.5.</span> <span class="toc-text">cargo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lazygit"><span class="toc-number">1.6.</span> <span class="toc-text">lazygit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-LunarVim"><span class="toc-number">2.</span> <span class="toc-text">Install LunarVim</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        install lunarvim on ubuntu
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">CuSO4_Deposit</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-07-17T08:49:11.000Z" itemprop="datePublished">2023-07-17</time>
+        
+        (Updated: <time datetime="2023-07-17T13:53:12.559Z" itemprop="dateModified">2023-07-17</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Linux/" rel="tag">Linux</a>, <a class="tag-link-link" href="/tags/Vim/" rel="tag">Vim</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Ubuntu 22.04.</p>
+<p><a target="_blank" rel="noopener" href="https://www.lunarvim.org/docs/installation">https://www.lunarvim.org/docs/installation</a></p>
+<h2 id="Install-prerequisites"><a href="#Install-prerequisites" class="headerlink" title="Install prerequisites"></a>Install prerequisites</h2><h3 id="Neovim"><a href="#Neovim" class="headerlink" title="Neovim"></a>Neovim</h3><p>The neovim in Debian official repo is v0.6, but lunarvim acquires v0.8+.</p>
+<p><a target="_blank" rel="noopener" href="https://superuser.com/a/1776825">kde - Can&#39;t install neovim v0.8.0+ on Ubuntu - Super User</a> provides a solution: install neovim from the <a target="_blank" rel="noopener" href="https://mpr.makedeb.org/packages/neovim">makedeb package registry</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.makedeb.org/using-the-mpr/installing-packages/">Installing Packages | makedeb Docs</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">bash -ci <span class="string">&quot;<span class="subst">$(wget -qO - &#x27;https://shlink.makedeb.org/install&#x27;)</span>&quot;</span></span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">wget -qO - <span class="string">&#x27;https://proget.makedeb.org/debian-feeds/prebuilt-mpr.pub&#x27;</span> | gpg --dearmor | sudo <span class="built_in">tee</span> /usr/share/keyrings/prebuilt-mpr-archive-keyring.gpg 1&gt; /dev/null</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash"><span class="built_in">echo</span> <span class="string">&quot;deb [arch=amd64 signed-by=/usr/share/keyrings/prebuilt-mpr-archive-keyring.gpg] https://proget.makedeb.org prebuilt-mpr <span class="subst">$(lsb_release -cs)</span>&quot;</span> | sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/prebuilt-mpr.list</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">sudo apt update</span></span><br></pre></td></tr></table></figure>
+
+<p><code>mist</code> doesn’t work in my case so I create the package using makedeb.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">git <span class="built_in">clone</span> https://mpr.makedeb.org/neovim.git</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash"><span class="built_in">cd</span> neovim</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">makedeb -si</span></span><br></pre></td></tr></table></figure>
+
+<p>After long long building, test neovim version:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">nvim -v</span></span><br><span class="line">NVIM v0.9.1</span><br><span class="line">Build type: Debug</span><br><span class="line">LuaJIT 2.1.0-beta3</span><br></pre></td></tr></table></figure>
+
+<h3 id="make"><a href="#make" class="headerlink" title="make"></a>make</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">sudo apt-get install make</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="pip"><a href="#pip" class="headerlink" title="pip"></a>pip</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">sudo apt-get install pip</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="node-js-npm"><a href="#node-js-npm" class="headerlink" title="node.js, npm"></a>node.js, npm</h3><p><a target="_blank" rel="noopener" href="https://github.com/nodesource/distributions#debinstall">GitHub - nodesource&#x2F;distributions: NodeSource Node.js Binary Distributions</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &amp;&amp;\</span></span><br><span class="line"><span class="language-bash">sudo apt-get install -y nodejs</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="cargo"><a href="#cargo" class="headerlink" title="cargo"></a>cargo</h3><p><a target="_blank" rel="noopener" href="https://forge.rust-lang.org/infra/other-installation-methods.html">Other Installation Methods - Rust Forge</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">curl --proto <span class="string">&#x27;=https&#x27;</span> --tlsv1.2 -sSf https://sh.rustup.rs | sh</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="lazygit"><a href="#lazygit" class="headerlink" title="lazygit"></a>lazygit</h3><p><a target="_blank" rel="noopener" href="https://github.com/jesseduffield/lazygit#installation">https://github.com/jesseduffield/lazygit#installation</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">LAZYGIT_VERSION=$(curl -s <span class="string">&quot;https://api.github.com/repos/jesseduffield/lazygit/releases/latest&quot;</span> | grep -Po <span class="string">&#x27;&quot;tag_name&quot;: &quot;v\K[^&quot;]*&#x27;</span>)</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">curl -Lo lazygit.tar.gz <span class="string">&quot;https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_<span class="variable">$&#123;LAZYGIT_VERSION&#125;</span>_Linux_x86_64.tar.gz&quot;</span></span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">tar xf lazygit.tar.gz lazygit</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">sudo install lazygit /usr/local/bin</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Install-LunarVim"><a href="#Install-LunarVim" class="headerlink" title="Install LunarVim"></a>Install LunarVim</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">LV_BRANCH=<span class="string">&#x27;release-1.3/neovim-0.9&#x27;</span> bash &lt;(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)</span></span><br></pre></td></tr></table></figure>
+
+<p>add the lvim dir to env:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">vim ~/.zshrc <span class="comment"># or .bashrc, etc. according to the shell used</span></span></span><br></pre></td></tr></table></figure>
+
+<p>add the following into it:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&quot;/home/&lt;username&gt;/.local/bin:$PATH&quot;</span><br></pre></td></tr></table></figure>
+
+<p>then run:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash"><span class="built_in">source</span> .zshrc</span></span><br></pre></td></tr></table></figure>
+
+<p>Now calling <code>lvim</code> will invoke LunarVim. </p>
+
+  </div>
+</article>
+
+
+    <div class="blog-post-comments">
+        <div id="utterances_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/atom.xml">RSS</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-prerequisites"><span class="toc-number">1.</span> <span class="toc-text">Install prerequisites</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Neovim"><span class="toc-number">1.1.</span> <span class="toc-text">Neovim</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#make"><span class="toc-number">1.2.</span> <span class="toc-text">make</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pip"><span class="toc-number">1.3.</span> <span class="toc-text">pip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#node-js-npm"><span class="toc-number">1.4.</span> <span class="toc-text">node.js, npm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cargo"><span class="toc-number">1.5.</span> <span class="toc-text">cargo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lazygit"><span class="toc-number">1.6.</span> <span class="toc-text">lazygit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-LunarVim"><span class="toc-number">2.</span> <span class="toc-text">Install LunarVim</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/&text=install lunarvim on ubuntu"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/&title=install lunarvim on ubuntu"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/&is_video=false&description=install lunarvim on ubuntu"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=install lunarvim on ubuntu&body=Check out this article: https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/&title=install lunarvim on ubuntu"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/&title=install lunarvim on ubuntu"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/&title=install lunarvim on ubuntu"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/&title=install lunarvim on ubuntu"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/&name=install lunarvim on ubuntu&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.depoze.xyz/2023/07/install-lunarvim-on-ubuntu/&t=install lunarvim on ubuntu"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+	Contents are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-sa/4.0/legalcode">CC-BY-SA 4.0</a>.
+	<br>
+    Copyright &copy;
+    
+    
+    2021-2023
+    CuSO4_Deposit
+  </div>
+  <div class="footer-right">
+	Theme <a target="_blank" rel="noopener" href="https://github.com/probberechts/hexo-theme-cactus">Cactus</a>. Powered by Github Pages.
+  	<br>
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Articles</a></li><!--
+     --><!--
+       --><li><a href="/friends/">Friends</a></li><!--
+     --><!--
+       --><li><a href="/atom.xml">RSS</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <script type="text/javascript">
+      var utterances_repo = 'CuSO4Deposit/CuSO4Deposit.github.io';
+      var utterances_issue_term = 'url';
+      var utterances_label = 'Comment';
+      var utterances_theme = 'github-dark';
+
+      (function(){
+          var script = document.createElement('script');
+
+          script.src = 'https://utteranc.es/client.js';
+          script.setAttribute('repo', utterances_repo);
+          script.setAttribute('issue-term', 'pathname');
+          script.setAttribute('label', utterances_label);
+          script.setAttribute('theme', utterances_theme);
+          script.setAttribute('crossorigin', 'anonymous');
+          script.async = true;
+          (document.getElementById('utterances_thread')).appendChild(script);
+      }());
+  </script>
+
+</body>
+</html>
