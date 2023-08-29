@@ -6,7 +6,7 @@
   <link href="https://blog.depoze.xyz/atom.xml" rel="self"/>
   
   <link href="https://blog.depoze.xyz/"/>
-  <updated>2023-08-09T15:19:10.215Z</updated>
+  <updated>2023-08-29T01:02:16.014Z</updated>
   <id>https://blog.depoze.xyz/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Terraria Potions Quickref</title>
+    <link href="https://blog.depoze.xyz/2023/08/terraria-potions-quickref/"/>
+    <id>https://blog.depoze.xyz/2023/08/terraria-potions-quickref/</id>
+    <published>2023-08-28T02:54:23.000Z</published>
+    <updated>2023-08-29T01:02:16.014Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="For-battle"><a href="#For-battle" class="headerlink" title="For battle"></a>For battle</h2><table><thead><tr><th>Potion</th><th>Fish</th><th>Herb</th><th>Other ingredients</th></tr></thead><tbody><tr><td>Endurance</td><td>Armored <strong>Cave</strong>fish</td><td>Blinkroot</td><td>-</td></tr><tr><td>Heartreach</td><td><strong>Crimson</strong> Tigerfish</td><td>Daybloom</td><td>-</td></tr><tr><td>Ironskin</td><td>-</td><td>Daybloom</td><td>Iron Ore</td></tr><tr><td>Lifeforce</td><td><strong>Prism</strong>ite</td><td>Moonglow + Shiverthorn + Waterleaf</td><td>-</td></tr><tr><td>Rage</td><td><strong>Hemo</strong>piranha</td><td>Deathweed</td><td>-</td></tr><tr><td>Regeneration</td><td>-</td><td>Daybloom</td><td>Mushroom</td></tr><tr><td>Swiftness</td><td>-</td><td>Blinkroot</td><td>Cactus</td></tr><tr><td>Summoning</td><td><strong>Variegated</strong> Lardfish</td><td>Moonglow</td><td>-</td></tr><tr><td>Thorns</td><td>-</td><td>Deathweed</td><td>Cactus</td></tr><tr><td>Wrath</td><td><strong>Ebon</strong>koi</td><td>Deathweed</td><td>-</td></tr></tbody></table><h2 id="For-battle-optional"><a href="#For-battle-optional" class="headerlink" title="For battle (optional)"></a>For battle (optional)</h2><table><thead><tr><th>Use cases</th><th>Potion&#x2F;Flask</th><th>Fish</th><th>Herb</th><th>Other ingredients</th></tr></thead><tbody><tr><td>Ranger</td><td>Ammo Reservation</td><td>Double Cod</td><td>Moonglow</td><td>-</td></tr><tr><td>Ranger</td><td>Archery</td><td>-</td><td>Daybloom</td><td>Lens</td></tr><tr><td>Decrease enemy spawn rate</td><td>Calming</td><td><strong>Damsel</strong>fish</td><td>Daybloom</td><td>-</td></tr><tr><td>Melee&#x2F;Whips</td><td>Flask of Ichor</td><td>-</td><td>-</td><td>Ichor</td></tr><tr><td>Fishron Duke</td><td>Inferno</td><td><strong>Flare</strong>fin koi + <strong>Obsidi</strong>fish</td><td>-</td><td>-</td></tr><tr><td>Mage</td><td>Magic Power</td><td>-</td><td>Moonglow + Deathweed</td><td>Fallen Star</td></tr><tr><td>Mage</td><td>Mana Regeneration</td><td>-</td><td>Moonglow + Daybloom</td><td>Fallen Star</td></tr><tr><td>Summoner</td><td>Summoning</td><td><strong>Variegated</strong> Lardfish</td><td>Moonglow</td><td>-</td></tr><tr><td>Increase KB</td><td>Titan</td><td>-</td><td>Deathweed + Shiverthorn</td><td>Bone</td></tr><tr><td>Cold battle</td><td>Warmth</td><td><strong>Frost</strong> Minnow</td><td>Shiverthorn</td><td>-</td></tr></tbody></table><h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><table><thead><tr><th>Potion</th><th>Fish</th><th>Herb</th><th>Other ingredients</th></tr></thead><tbody><tr><td>Dangersense</td><td>-</td><td>Shiverthorn</td><td>Cobweb</td></tr><tr><td>Obsidian Skin</td><td>-</td><td>Fireblossom + Waterleaf</td><td>Obsidian</td></tr><tr><td>Wormhole</td><td>Specular fish</td><td>Blinkroot</td><td>-</td></tr></tbody></table>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;For-battle&quot;&gt;&lt;a href=&quot;#For-battle&quot; class=&quot;headerlink&quot; title=&quot;For battle&quot;&gt;&lt;/a&gt;For battle&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Potion&lt;/th&gt;
+&lt;th&gt;</summary>
+      
+    
+    
+    
+    
+    <category term="Terraria" scheme="https://blog.depoze.xyz/tags/Terraria/"/>
+    
+  </entry>
   
   <entry>
     <title>nginx password protection</title>
@@ -460,29 +486,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>为小米手环配置Zepp Life的开源替代</title>
-    <link href="https://blog.depoze.xyz/2023/01/Gadgetbridge/"/>
-    <id>https://blog.depoze.xyz/2023/01/Gadgetbridge/</id>
-    <published>2023-01-22T11:57:32.000Z</published>
-    <updated>2023-01-22T12:04:35.000Z</updated>
-    
-    <content type="html"><![CDATA[<p> Steps: <a href="https://codeberg.org/Freeyourgadget/Gadgetbridge">https://codeberg.org/Freeyourgadget/Gadgetbridge</a></p><h2 id="下载Gadgetbridge"><a href="#下载Gadgetbridge" class="headerlink" title="下载Gadgetbridge"></a>下载Gadgetbridge</h2><p><a href="https://f-droid.org/app/nodomain.freeyourgadget.gadgetbridge">Gadgetbridge | F-Droid - Free and Open Source Android App Repository</a></p><h2 id="获取auth-key"><a href="#获取auth-key" class="headerlink" title="获取auth key"></a>获取auth key</h2><p>Steps: <a href="https://codeberg.org/Freeyourgadget/Gadgetbridge/wiki/Huami-Server-Pairing">Huami Server Pairing - Gadgetbridge - Codeberg.org</a></p><p>原来手环绑定的app如果是“小米穿戴”(com.xiaomi.wearable)，则不能返回正常的信息，可以先换用“Zepp Life”(com.xiaomi.hm.health)绑定手环。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://codeberg.org/argrento/huami-token.git</span><br><span class="line">$ cd huami-token</span><br><span class="line">$ python3 huami_token.py --method xiaomi --bt_keys</span><br></pre></td></tr></table></figure><p>按提示操作登录，并粘贴重定向至的链接，返回了类似这样的数据。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Token: [&#x27;C3_xxxxxxxxxxxxxxxxxxx&#x27;]</span><br><span class="line">Logging in...</span><br><span class="line">Logged in! User id: 10xxxxxxx</span><br><span class="line">Getting linked wearables...</span><br><span class="line"></span><br><span class="line">╓───Device 0</span><br><span class="line">║  MAC: 11:22:33:44:55:66, active: No</span><br><span class="line">║  Key: 0x11111111111111111111111111111111</span><br><span class="line">╙────────────</span><br><span class="line"></span><br><span class="line">╓───Device 1</span><br><span class="line">║  MAC: F4:11:22:33:44:55, active: Yes</span><br><span class="line">║  Key: 0xfe000000000000000000000000000000</span><br><span class="line">╙────────────</span><br><span class="line"></span><br><span class="line">Logged out.</span><br></pre></td></tr></table></figure><p>通过设备的蓝牙地址可以确定是哪一台设备（如果只有一个设备启用中，通过active: Yes也可以），对应的“Key”即为需要的auth key。</p><h2 id="连接到Gadgetbridge"><a href="#连接到Gadgetbridge" class="headerlink" title="连接到Gadgetbridge"></a>连接到Gadgetbridge</h2><p>不要解除手环和”Zepp Life”的绑定，Kill “Zepp Life”，此后在手机的蓝牙设置中就可以看到设备”Mi Smart Band 5”。</p><p>使用 <em>Gadgetbridge</em> 搜索设备，长按搜索到的设备卡片，在弹出窗口填入对应的”Key”选项。然后返回设备卡片页，单击卡片进行配对和连接。</p><p>首页显示了这个设备卡片，说明配对成功，可以直接卸载Zepp Life啦（不可以先解绑再卸载，因为auth key是每次绑定重新生成）。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt; Steps: &lt;a href=&quot;https://codeberg.org/Freeyourgadget/Gadgetbridge&quot;&gt;https://codeberg.org/Freeyourgadget/Gadgetbridge&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;下载Gad</summary>
-      
-    
-    
-    
-    
-    <category term="FOSS" scheme="https://blog.depoze.xyz/tags/FOSS/"/>
     
   </entry>
   
