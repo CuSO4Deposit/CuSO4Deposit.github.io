@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="Assume SSH is already set up, sftp is easy to configure. It uses the same port as SSH. Modify &#x2F;etc&#x2F;ssh&#x2F;sshd_config, comment this line: 1Subsystem      sftp    &#x2F;usr&#x2F;lib&#x2F;openssh&#x2F;sftp-server  add the fol">
+    <meta name="description" content="Set up Hadoop environment">
 <meta property="og:type" content="article">
-<meta property="og:title" content="configure sftp on ubuntu">
-<meta property="og:url" content="https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/index.html">
+<meta property="og:title" content="Big Data System Lab Note">
+<meta property="og:url" content="https://blog.depoze.xyz/2023/10/big-data-system-lab/index.html">
 <meta property="og:site_name" content="CuSO4D&#39;s Electrolytic Cell">
-<meta property="og:description" content="Assume SSH is already set up, sftp is easy to configure. It uses the same port as SSH. Modify &#x2F;etc&#x2F;ssh&#x2F;sshd_config, comment this line: 1Subsystem      sftp    &#x2F;usr&#x2F;lib&#x2F;openssh&#x2F;sftp-server  add the fol">
+<meta property="og:description" content="Set up Hadoop environment">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-07-17T08:33:09.000Z">
-<meta property="article:modified_time" content="2023-07-17T08:39:22.835Z">
+<meta property="article:published_time" content="2023-10-09T12:45:40.000Z">
+<meta property="article:modified_time" content="2023-10-09T13:12:38.408Z">
 <meta property="article:author" content="CuSO4_Deposit">
-<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Hadoop">
 <meta name="twitter:card" content="summary">
     
     
@@ -37,7 +37,7 @@
       
     
     <!-- title -->
-    <title>configure sftp on ubuntu</title>
+    <title>Big Data System Lab Note</title>
     <!-- styles -->
 	<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-webfont/1.6.0/style.min.css" />
     
@@ -92,10 +92,8 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" aria-label="Previous post" href="/2023/07/install-lunarvim-on-ubuntu/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        
-        <li><a class="icon" aria-label="Next post" href="/2023/07/linux-quickref/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Next post" href="/2023/09/never-ending-feast/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -108,22 +106,22 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/&text=configure sftp on ubuntu"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/&title=configure sftp on ubuntu"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/&is_video=false&description=configure sftp on ubuntu"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=configure sftp on ubuntu&body=Check out this article: https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/&title=configure sftp on ubuntu"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/&title=configure sftp on ubuntu"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/&title=configure sftp on ubuntu"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/&title=configure sftp on ubuntu"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/&name=configure sftp on ubuntu&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/&t=configure sftp on ubuntu"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.depoze.xyz/2023/10/big-data-system-lab/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.depoze.xyz/2023/10/big-data-system-lab/&text=Big Data System Lab Note"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.depoze.xyz/2023/10/big-data-system-lab/&title=Big Data System Lab Note"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.depoze.xyz/2023/10/big-data-system-lab/&is_video=false&description=Big Data System Lab Note"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Big Data System Lab Note&body=Check out this article: https://blog.depoze.xyz/2023/10/big-data-system-lab/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.depoze.xyz/2023/10/big-data-system-lab/&title=Big Data System Lab Note"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.depoze.xyz/2023/10/big-data-system-lab/&title=Big Data System Lab Note"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.depoze.xyz/2023/10/big-data-system-lab/&title=Big Data System Lab Note"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.depoze.xyz/2023/10/big-data-system-lab/&title=Big Data System Lab Note"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.depoze.xyz/2023/10/big-data-system-lab/&name=Big Data System Lab Note&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.depoze.xyz/2023/10/big-data-system-lab/&t=Big Data System Lab Note"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Set-up-Hadoop-environment"><span class="toc-number">1.</span> <span class="toc-text">Set up Hadoop environment</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -135,7 +133,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        configure sftp on ubuntu
+        Big Data System Lab Note
     </h1>
 
 
@@ -147,9 +145,9 @@
       
     <div class="postdate">
       
-        <time datetime="2023-07-17T08:33:09.000Z" itemprop="datePublished">2023-07-17</time>
+        <time datetime="2023-10-09T12:45:40.000Z" itemprop="datePublished">2023-10-09</time>
         
-        (Updated: <time datetime="2023-07-17T08:39:22.835Z" itemprop="dateModified">2023-07-17</time>)
+        (Updated: <time datetime="2023-10-09T13:12:38.408Z" itemprop="dateModified">2023-10-09</time>)
         
       
     </div>
@@ -160,7 +158,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/Linux/" rel="tag">Linux</a>
+        <a class="tag-link-link" href="/tags/Hadoop/" rel="tag">Hadoop</a>
     </div>
 
 
@@ -169,18 +167,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>Assume SSH is already set up, sftp is easy to configure. It uses the same port as SSH.</p>
-<p>Modify <code>/etc/ssh/sshd_config</code>, comment this line:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Subsystem      sftp    /usr/lib/openssh/sftp-server</span><br></pre></td></tr></table></figure>
-
-<p>add the following under this line:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Match User &lt;username&gt;</span><br><span class="line">        ChrootDirectory &lt;dir&gt;</span><br><span class="line">        X11Forwarding no</span><br><span class="line">        AllowTcpForwarding no</span><br><span class="line">        ForceCommand internal-sftp</span><br></pre></td></tr></table></figure>
-
-<p>where &lt;username&gt; is the <strong>fullname</strong> (not username) of the user. &lt;dir&gt; is the most upper directory this user can access. Then restart service, on ubuntu:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">sudo systemctl restart ssh</span></span><br></pre></td></tr></table></figure>
-
-<p>When login on ftp clients, the login username is the <strong>username</strong> (not fullname) of the configured user.</p>
-
+    <h1 id="Set-up-Hadoop-environment"><a href="#Set-up-Hadoop-environment" class="headerlink" title="Set up Hadoop environment"></a>Set up Hadoop environment</h1>
   </div>
 </article>
 
@@ -213,22 +200,22 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Set-up-Hadoop-environment"><span class="toc-number">1.</span> <span class="toc-text">Set up Hadoop environment</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/&text=configure sftp on ubuntu"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/&title=configure sftp on ubuntu"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/&is_video=false&description=configure sftp on ubuntu"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=configure sftp on ubuntu&body=Check out this article: https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/&title=configure sftp on ubuntu"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/&title=configure sftp on ubuntu"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/&title=configure sftp on ubuntu"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/&title=configure sftp on ubuntu"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/&name=configure sftp on ubuntu&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.depoze.xyz/2023/07/configure-sftp-on-ubuntu/&t=configure sftp on ubuntu"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.depoze.xyz/2023/10/big-data-system-lab/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.depoze.xyz/2023/10/big-data-system-lab/&text=Big Data System Lab Note"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.depoze.xyz/2023/10/big-data-system-lab/&title=Big Data System Lab Note"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.depoze.xyz/2023/10/big-data-system-lab/&is_video=false&description=Big Data System Lab Note"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Big Data System Lab Note&body=Check out this article: https://blog.depoze.xyz/2023/10/big-data-system-lab/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.depoze.xyz/2023/10/big-data-system-lab/&title=Big Data System Lab Note"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.depoze.xyz/2023/10/big-data-system-lab/&title=Big Data System Lab Note"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.depoze.xyz/2023/10/big-data-system-lab/&title=Big Data System Lab Note"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.depoze.xyz/2023/10/big-data-system-lab/&title=Big Data System Lab Note"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.depoze.xyz/2023/10/big-data-system-lab/&name=Big Data System Lab Note&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.depoze.xyz/2023/10/big-data-system-lab/&t=Big Data System Lab Note"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
